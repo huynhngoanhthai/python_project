@@ -5,6 +5,7 @@ from PyQt5 import QtWidgets
 from ShowHomeAdmin import showHomeAdmin
 from controller.loginController import loginUser,checkSeePassword 
 from controller.addClassController import clearContentsInHomeAdmin,addClassInHomeAdmin
+from controller.updateClassController import updateClassInHomeAdmin
 from view.Login import Ui_MainWindow
 from database import myDB
 from messageBox import MBox
@@ -22,14 +23,23 @@ class MainWindow:
         self.uic.login.clicked.connect(self.login)
         self.uic.password.returnPressed.connect(self.login)
         self.uic.seePassword.clicked.connect(self.checkPassword)
+    # Login User
     def login(self):
         return loginUser(self)
     def checkPassword(self):
         return checkSeePassword(self)
+
+    # Home Admin
     def clearContents(self):
         return clearContentsInHomeAdmin(self)
     def addClass(self):
         return addClassInHomeAdmin(self)
+    # Update Class
+    def updateClass(self):
+        return updateClassInHomeAdmin(self)
+
+
+    #code Default
     def show(self):
         self.main_win.show()
 
