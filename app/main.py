@@ -4,9 +4,15 @@ from PyQt5 import QtWidgets
 #import file
 from ShowHomeAdmin import showHomeAdmin
 from controller.loginController import loginUser,checkSeePassword 
+from controller.addClassController import clearContentsInHomeAdmin,addClassInHomeAdmin
 from view.Login import Ui_MainWindow
 from database import myDB
 from messageBox import MBox
+
+
+
+
+
 class MainWindow:
     def __init__(self):
         self.main_win = QMainWindow()
@@ -21,9 +27,9 @@ class MainWindow:
     def checkPassword(self):
         return checkSeePassword(self)
     def clearContents(self):
-        self.uic.ID_lop.setText("")
-        self.uic.ID_cau_hoi.setText("")
-        self.uic.ten_lop.setText("")
+        return clearContentsInHomeAdmin(self)
+    def addClass(self):
+        return addClassInHomeAdmin(self)
     def show(self):
         self.main_win.show()
 

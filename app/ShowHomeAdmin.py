@@ -12,6 +12,7 @@ def showHomeAdmin(self):
     self.main_win.show()
     #code
     self.uic.Clear.clicked.connect(self.clearContents)
+    self.uic.AddClass.clicked.connect(self.addClass)
    
 
     
