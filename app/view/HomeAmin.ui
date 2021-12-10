@@ -30,7 +30,7 @@
      <attribute name="title">
       <string>Add</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="Clear">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -43,7 +43,7 @@
        <string>Clear</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="Add_2">
+     <widget class="QPushButton" name="AddClass">
       <property name="geometry">
        <rect>
         <x>150</x>
