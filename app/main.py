@@ -25,8 +25,10 @@ class MainWindow:
         getPassword = self.uic.password.text()
         cur.execute("SELECT * FROM User WHERE mssv=%s AND password=%s",(getUname,getPassword))
         result = cur.fetchall()
-        if len(result):
-           print(result[0][-1])
+        if result[0][-1]=="ADMIN":
+            showHomeAdmin(self)
+        if result[0][-1]=="STUDENT":
+            print("123")
         else:
             MBox(0,'ERROR',"uname or password wrong",16)
     def checkPassword(self):

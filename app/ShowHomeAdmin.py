@@ -12,10 +12,7 @@ def showHomeAdmin(self):
     self.main_win.show()
     #code
     self.uic.Clear.clicked.connect(self.clearContents)
-    def clearContents():
-        self.uic.ID_lop.setText("")
-        self.uic.ID_cau_hoi.setText("")
-        self.uic.ten_lop.setText("")
+   
 
     
 
