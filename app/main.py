@@ -1,6 +1,9 @@
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow,QLineEdit
-from Login import Ui_MainWindow
+from PyQt5 import QtWidgets
+#import file
+from ShowHomeAdmin import showHomeAdmin
+from view.Login import Ui_MainWindow
 from database import myDB
 from messageBox import MBox
 
@@ -23,9 +26,7 @@ class MainWindow:
         cur.execute("SELECT * FROM sinh_vien WHERE mssv=%s AND password=%s",(getUname,getPassword))
         result = cur.fetchall()
         if len(result):
-            print ("Successfully logged in")
-            for x in result:
-                print(x)
+           showHomeAdmin(self)
         else:
             MBox(0,'ERROR',"uname or password wrong",16)
             print("uname or password wrong")
