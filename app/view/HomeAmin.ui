@@ -137,7 +137,7 @@
        <rect>
         <x>365</x>
         <y>80</y>
-        <width>311</width>
+        <width>221</width>
         <height>192</height>
        </rect>
       </property>
@@ -159,13 +159,8 @@
         <string>ten_lop</string>
        </property>
       </column>
-      <column>
-       <property name="text">
-        <string>ID_cau_hoi</string>
-       </property>
-      </column>
      </widget>
-     <widget class="QLineEdit" name="ID_lop_Update">
+     <widget class="QLineEdit" name="ID_lop_2">
       <property name="geometry">
        <rect>
         <x>30</x>
