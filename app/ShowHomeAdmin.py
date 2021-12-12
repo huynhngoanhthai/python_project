@@ -18,4 +18,5 @@ def showHomeAdmin(self):
     self.uic.AddClass.clicked.connect(self.addClass)
     # Update class
     self.uic.UpdateClass.clicked.connect(self.updateClass)
+    self.uic.ID_lop_update.returnPressed.connect(self.PressEnterSuggestion)
     self.uic.Clear_update.clicked.connect(self.clearContentsUpdateClass)

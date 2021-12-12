@@ -17,9 +17,9 @@
    <widget class="QTabWidget" name="tab">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>30</y>
-      <width>731</width>
+      <x>20</x>
+      <y>20</y>
+      <width>771</width>
       <height>521</height>
      </rect>
     </property>
@@ -135,7 +135,7 @@
      <widget class="QTableWidget" name="Suggest">
       <property name="geometry">
        <rect>
-        <x>365</x>
+        <x>465</x>
         <y>80</y>
         <width>221</width>
         <height>192</height>
@@ -160,7 +160,7 @@
        </property>
       </column>
      </widget>
-     <widget class="QLineEdit" name="ID_lop_2">
+     <widget class="QLineEdit" name="ID_lop_update">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -169,8 +169,11 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="placeholderText">
+       <string>ID_lop</string>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="Ten_lop_update">
+     <widget class="QLineEdit" name="ten_lop_update">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -179,15 +182,49 @@
         <height>20</height>
        </rect>
       </property>
+      <property name="placeholderText">
+       <string>ten_lop</string>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="ID_cau_hoi_update">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>170</y>
-        <width>301</width>
+        <x>530</x>
+        <y>50</y>
+        <width>161</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>SUGGEST</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>281</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Press Enter for suggest</string>
       </property>
      </widget>
     </widget>
@@ -195,6 +232,127 @@
      <attribute name="title">
       <string>Delete</string>
      </attribute>
+     <widget class="QPushButton" name="Clear_Delete">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>260</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ID_lop_Delete">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>130</y>
+        <width>301</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>ID_lop</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>90</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>SUGGEST</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="Suggest_Delete">
+      <property name="geometry">
+       <rect>
+        <x>515</x>
+        <y>120</y>
+        <width>221</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>ID_lop</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>ten_lop</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="DeleteClass">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>260</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="ten_lop_Delete">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>170</y>
+        <width>301</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>ten_lop</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>100</y>
+        <width>281</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Press Enter for suggest</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="ShowAll">
      <attribute name="title">

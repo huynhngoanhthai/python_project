@@ -1,11 +1,12 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
 from PyQt5 import QtWidgets
+import mysql.connector as sql
 #import file
-from ShowHomeAdmin import showHomeAdmin
 from controller.loginController import loginUser, checkSeePassword
 from controller.addClassController import clearContentsInHomeAdmin, addClassInHomeAdmin
-from controller.updateClassController import updateClassInHomeAdmin
+from controller.updateClassController import updateClassInHomeAdmin, clearContentsUpdateInHomeAdmin
+from ShowHomeAdmin import showHomeAdmin
 from view.Login import Ui_MainWindow
 from database import myDB
 from messageBox import MBox
@@ -23,7 +24,22 @@ class MainWindow:
     # Login User
 
     def login(self):
-        return loginUser(self)
+        try:
+            cur = myDB.cursor()
+            getUname = self.uic.uname.text().strip()
+            getPassword = self.uic.password.text()
+            cur.execute(
+                "SELECT * FROM User WHERE mssv=%s AND password=%s", (getUname, getPassword))
+            result = cur.fetchall()
+            if(result == []):
+                MBox(0, 'ERROR', "uname or password wrong", 16)
+            elif result[0][-1] == "TEACHER":
+                showHomeAdmin(self)
+            else:
+                # for role = students
+                print("123")
+        except sql.Error as e:
+            MBox(0, "Error", str(e), 32)
 
     def checkPassword(self):
         return checkSeePassword(self)
@@ -40,9 +56,28 @@ class MainWindow:
         return updateClassInHomeAdmin(self)
 
     def clearContentsUpdateClass(self):
-        return clearContentsInHomeAdmin(self)
+        return clearContentsUpdateInHomeAdmin(self)
+    # func Suggest where press Enter
 
+    def PressEnterSuggestion(self):
+        try:
+            cur = myDB.cursor()
+            idLop = self.uic.ID_lop_update.text().strip()
+            query = "SELECT * FROM lop WHERE ID_lop LIKE '%{}%' LIMIT 4".format(
+                idLop)
+            cur.execute(query)
+            result = cur.fetchall()
+            self.uic.Suggest.setColumnCount(2)
+            self.uic.Suggest.setRowCount(5)
+            columns = 0
+            for row in result:
+                self.uic.Suggest.setItem(columns, 0, QTableWidgetItem(row[0]))
+                self.uic.Suggest.setItem(columns, 1, QTableWidgetItem(row[1]))
+                columns += 1
+        except sql.Error as e:
+            MBox(0, "Error", str(e), 32)
     # code Default
+
     def show(self):
         self.main_win.show()
 
