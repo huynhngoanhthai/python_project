@@ -56,10 +56,8 @@ def mainUi():
 
 
 def nextSee2():
-    global ui
-    ui = see2.Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+
+    print(ui.KeyWord.text())
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'HomeAmin.ui'
+# Form implementation generated from reading ui file 'HomeAdmin.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -63,9 +63,9 @@ class Ui_MainWindow(object):
         self.ID_lop_update = QtWidgets.QLineEdit(self.Update)
         self.ID_lop_update.setGeometry(QtCore.QRect(30, 90, 301, 20))
         self.ID_lop_update.setObjectName("ID_lop_update")
-        self.ten_lop_update_2 = QtWidgets.QLineEdit(self.Update)
-        self.ten_lop_update_2.setGeometry(QtCore.QRect(30, 130, 301, 20))
-        self.ten_lop_update_2.setObjectName("ten_lop_update_2")
+        self.ten_lop_update = QtWidgets.QLineEdit(self.Update)
+        self.ten_lop_update.setGeometry(QtCore.QRect(30, 130, 301, 20))
+        self.ten_lop_update.setObjectName("ten_lop_update")
         self.label = QtWidgets.QLabel(self.Update)
         self.label.setGeometry(QtCore.QRect(530, 50, 161, 20))
         font = QtGui.QFont()
@@ -114,9 +114,9 @@ class Ui_MainWindow(object):
         self.DeleteClass = QtWidgets.QPushButton(self.Delete)
         self.DeleteClass.setGeometry(QtCore.QRect(80, 260, 75, 23))
         self.DeleteClass.setObjectName("DeleteClass")
-        self.ten_lop_update = QtWidgets.QLineEdit(self.Delete)
-        self.ten_lop_update.setGeometry(QtCore.QRect(80, 170, 301, 20))
-        self.ten_lop_update.setObjectName("ten_lop_update")
+        self.ten_lop_Delete = QtWidgets.QLineEdit(self.Delete)
+        self.ten_lop_Delete.setGeometry(QtCore.QRect(80, 170, 301, 20))
+        self.ten_lop_Delete.setObjectName("ten_lop_Delete")
         self.label_4 = QtWidgets.QLabel(self.Delete)
         self.label_4.setGeometry(QtCore.QRect(120, 100, 281, 16))
         font = QtGui.QFont()
@@ -161,7 +161,7 @@ class Ui_MainWindow(object):
         item = self.Suggest.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "ten_lop"))
         self.ID_lop_update.setPlaceholderText(_translate("MainWindow", "ID_lop"))
-        self.ten_lop_update_2.setPlaceholderText(_translate("MainWindow", "ten_lop"))
+        self.ten_lop_update.setPlaceholderText(_translate("MainWindow", "ten_lop"))
         self.label.setText(_translate("MainWindow", "SUGGEST"))
         self.label_2.setText(_translate("MainWindow", "Press Enter for suggest"))
         self.tab.setTabText(self.tab.indexOf(self.Update), _translate("MainWindow", "Update"))
@@ -175,7 +175,7 @@ class Ui_MainWindow(object):
         item = self.Suggest_Delete.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "ten_lop"))
         self.DeleteClass.setText(_translate("MainWindow", "Delete"))
-        self.ten_lop_update.setPlaceholderText(_translate("MainWindow", "ten_lop"))
+        self.ten_lop_Delete.setPlaceholderText(_translate("MainWindow", "ten_lop"))
         self.label_4.setText(_translate("MainWindow", "Press Enter for suggest"))
         self.tab.setTabText(self.tab.indexOf(self.Delete), _translate("MainWindow", "Delete"))
         self.tab.setTabText(self.tab.indexOf(self.ShowAll), _translate("MainWindow", "ShowAll"))

@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
 from PyQt5 import QtWidgets
-from view.HomeAmin import Ui_MainWindow
+from app.view.HomeAdmin import Ui_MainWindow
 
 
 def showHomeAdmin(self):
