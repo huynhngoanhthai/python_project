@@ -100,7 +100,8 @@ def mainUi():
 def loginUser():
     try:
         cur = myDB.cursor()
-        getUname = ui.uname.text().strip()
+        getUname = ui.uname.text().strip()  # GT
+        print(getUname[0:2])
         getPassword = ui.password.text()
         cur.execute("SELECT * FROM User WHERE mssv=%s AND password=%s",
                     (getUname, getPassword))
@@ -144,6 +145,8 @@ def clearContents():
     ui.ID_lop.setText("")
     ui.ID_cau_hoi.setText("")
     ui.ten_lop.setText("")
+
+# -------------------addbbdsuus---------------------------------------------
 
 
 def addClass():
