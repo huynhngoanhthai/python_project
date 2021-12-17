@@ -168,6 +168,7 @@ def addClass():
 def clearContentsUpdateClass():
     ui.ID_lop_update.setText("")
     ui.ten_lop_update.setText("")
+    # comment test
 
 
 def updateClass():
