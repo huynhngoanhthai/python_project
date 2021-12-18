@@ -72,6 +72,11 @@ def showHomeAdmin():
     ui.ClearUpdate.clicked.connect(ClearContentsUpdateQuestion)
     ui.QLineUIDCauHoi.returnPressed.connect(SuggestUpdateQuestion)
     ui.UpdateQuestion.clicked.connect(updateQuestion)
+    # event clicked for button in Delete
+    ui.ClearDelete.clicked.connect(ClearContentsDeleteQuestion)
+    ui.QLineDIDCauHoi.returnPressed.connect(SuggestDeleteQuestion)
+    ui.QLineDCauHoi.returnPressed.connect(SuggestDeleteQuestion)
+    ui.DeleteQuestion.clicked.connect(deleteQuestion)
 
 
 def addQuestion():
@@ -130,6 +135,7 @@ def ClearContentsUpdateQuestion():
     ui.QLineUAnswer.clear()
     ui.QLineUMaMH.clear()
     ui.QLineUIDCauHoi.setDisabled(False)
+    ui.QTableUpdate.clearContents()
 
 
 def SuggestUpdateQuestion():
@@ -150,6 +156,7 @@ def SuggestUpdateQuestion():
             ui.QLineUAnswer.setText(result[0][6])
             ui.QLineUMaMH.setText(result[0][7])
             ui.QLineUIDCauHoi.setDisabled(True)
+        ui.QTableUpdate.clearContents()
         ui.QTableUpdate.setColumnCount(8)
         ui.QTableUpdate.setRowCount(10)
         columns = 0
@@ -174,6 +181,8 @@ def updateQuestion():
         IDQuestion = ui.QLineUIDCauHoi.text().strip()
         if IDQuestion == '':
             return MBox(0, "Error", "not empty", 16)
+        if ui.QLineUIDCauHoi.isEnabled():
+            return MBox(0, "Error", "you need block", 16)
         Question = ui.QLineUQuestion.text().strip()
         if Question == '':
             return MBox(0, "Error", "Question not empty", 16)
@@ -202,6 +211,64 @@ def updateQuestion():
         myDB.commit()
         ClearContentsUpdateQuestion()
 
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def ClearContentsDeleteQuestion():
+    ui.QLineDCauHoi.clear()
+    ui.QLineDIDCauHoi.clear()
+    ui.QLineDCauHoi.setDisabled(False)
+    ui.QLineDIDCauHoi.setDisabled(False)
+    ui.QTableDelete.clearContents()
+
+
+def SuggestDeleteQuestion():
+    try:
+        cur = myDB.cursor()
+        IDQuestion = ui.QLineDIDCauHoi.text().strip()
+        CauHoi = ui.QLineDCauHoi.text().strip()
+        query = "SELECT * FROM dmch WHERE MaCH LIKE '%{0}%' AND CauHoi LIKE '%{1}%' LIMIT 15;".format(
+                IDQuestion, CauHoi)
+        cur.execute(query)
+        result = cur.fetchall()
+        if len(result) == 1:
+            ui.QLineDIDCauHoi.setText(str(result[0][0]))
+            ui.QLineDCauHoi.setText(result[0][1])
+            ui.QLineDIDCauHoi.setDisabled(True)
+            ui.QLineDCauHoi.setDisabled(True)
+        ui.QTableDelete.clearContents()
+        ui.QTableDelete.setColumnCount(8)
+        ui.QTableDelete.setRowCount(15)
+        columns = 0
+        for row in result:
+            ui.QTableDelete.setItem(columns, 0, QTableWidgetItem(str(row[0])))
+            ui.QTableDelete.setItem(columns, 1, QTableWidgetItem(row[1]))
+            ui.QTableDelete.setItem(columns, 2, QTableWidgetItem(row[2]))
+            ui.QTableDelete.setItem(columns, 3, QTableWidgetItem(row[3]))
+            ui.QTableDelete.setItem(columns, 4, QTableWidgetItem(row[4]))
+            ui.QTableDelete.setItem(columns, 5, QTableWidgetItem(row[5]))
+            ui.QTableDelete.setItem(columns, 6, QTableWidgetItem(row[6]))
+            ui.QTableDelete.setItem(columns, 7, QTableWidgetItem(row[7]))
+            columns += 1
+
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def deleteQuestion():
+    try:
+        cur = myDB.cursor()
+        IDQuestion = ui.QLineDIDCauHoi.text().strip()
+        CauHoi = ui.QLineDCauHoi.text().strip()
+        if ui.QLineDIDCauHoi.isEnabled() == True or ui.QLineDIDCauHoi.isEnabled() == True:
+            return MBox(0, "Error", "You need block ", 16)
+
+        cur.execute(
+            "DELETE FROM dmch WHERE MaCH = %s AND CauHoi = %s", (IDQuestion, CauHoi))
+        myDB.commit()
+        MBox(0, "Successfully", "Successfully", 32)
+        ClearContentsDeleteQuestion()
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 

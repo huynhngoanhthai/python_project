@@ -24,7 +24,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Add">
        <attribute name="title">
@@ -689,11 +689,11 @@
        <attribute name="title">
         <string>Delete</string>
        </attribute>
-       <widget class="QPushButton" name="Clear_Delete">
+       <widget class="QPushButton" name="ClearDelete">
         <property name="geometry">
          <rect>
-          <x>300</x>
-          <y>260</y>
+          <x>720</x>
+          <y>70</y>
           <width>75</width>
           <height>23</height>
          </rect>
@@ -702,75 +702,11 @@
          <string>Clear</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="ID_lop_Delete">
+       <widget class="QPushButton" name="DeleteQuestion">
         <property name="geometry">
          <rect>
-          <x>80</x>
-          <y>130</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>ID_lop</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>90</y>
-          <width>161</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text">
-         <string>SUGGEST</string>
-        </property>
-       </widget>
-       <widget class="QTableWidget" name="Suggest_Delete">
-        <property name="geometry">
-         <rect>
-          <x>515</x>
-          <y>120</y>
-          <width>221</width>
-          <height>192</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </row>
-        <column>
-         <property name="text">
-          <string>ID_lop</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>ten_lop</string>
-         </property>
-        </column>
-       </widget>
-       <widget class="QPushButton" name="DeleteClass">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>260</y>
+          <x>630</x>
+          <y>70</y>
           <width>75</width>
           <height>23</height>
          </rect>
@@ -779,35 +715,203 @@
          <string>Delete</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="ten_lop_Delete">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>170</y>
-          <width>301</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>ten_lop</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>120</x>
-          <y>100</y>
+          <x>320</x>
+          <y>30</y>
           <width>281</width>
-          <height>16</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
          <string>Press Enter for suggest</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="QTableDelete">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>110</y>
+          <width>731</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoScrollMargin">
+         <number>16</number>
+        </property>
+        <attribute name="horizontalHeaderDefaultSectionSize">
+         <number>85</number>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>24</number>
+        </attribute>
+        <attribute name="verticalHeaderDefaultSectionSize">
+         <number>1</number>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>MaCH</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CAU HOI</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CAU A</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CAU B</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CAU C</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CAU D</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DAP AN</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>MaMH</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+        </column>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>70</y>
+          <width>47</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>CAU HOI</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>70</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>MA CAU HOI</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="QLineDIDCauHoi">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>70</y>
+          <width>161</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>MA CAU HOI</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="QLineDCauHoi">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>70</y>
+          <width>151</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>CAU HOI</string>
         </property>
        </widget>
       </widget>
