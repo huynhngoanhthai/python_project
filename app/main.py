@@ -100,7 +100,7 @@ def mainUi():
 def loginUser():
     try:
         cur = myDB.cursor()
-        getUname = ui.uname.text().strip()  # GT
+        getUname = ui.uname.text().strip()  # GV
         print(getUname[0:2])
         getPassword = ui.password.text()
         cur.execute("SELECT * FROM User WHERE mssv=%s AND password=%s",
@@ -168,7 +168,6 @@ def addClass():
 def clearContentsUpdateClass():
     ui.ID_lop_update.setText("")
     ui.ten_lop_update.setText("")
-    # comment test
 
 
 def updateClass():
@@ -210,7 +209,25 @@ def PressEnterSuggestion():
     except sql.Error as e:
         MBox(0, "Error", str(e), 32)
 
+# -------------------------Student------------------------
 
+
+def showHomeStudent():
+    global ui
+    ui = HomeAdmin.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    ui.tab.setCurrentWidget(ui.Add)
+    # add
+    ui.Clear.clicked.connect(clearContents)
+    ui.AddClass.clicked.connect(addClass)
+    # Update
+    ui.UpdateClass.clicked.connect(updateClass)
+    ui.ID_lop_update.returnPressed.connect(PressEnterSuggestion)
+    ui.Clear_update.clicked.connect(clearContentsUpdateClass)
+
+
+    # Delete
 if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
