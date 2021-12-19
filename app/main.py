@@ -77,6 +77,13 @@ def showHomeAdmin():
     ui.QLineDIDCauHoi.returnPressed.connect(SuggestDeleteQuestion)
     ui.QLineDCauHoi.returnPressed.connect(SuggestDeleteQuestion)
     ui.DeleteQuestion.clicked.connect(deleteQuestion)
+    # event clicked for button in Show All list student
+    ui.ButtonSAClear.clicked.connect(ClearContentsShowAllQuestion)
+    ui.QLineSAMaSV.returnPressed.connect(SuggestShowAllQuestion)
+    ui.QLineSATenSV.returnPressed.connect(SuggestShowAllQuestion)
+    ui.QLineSADiem.returnPressed.connect(SuggestShowAllQueryQuestion)
+    ui.ButtonSASearch.clicked.connect(SuggestShowAllQueryQuestion)
+# Add
 
 
 def addQuestion():
@@ -123,6 +130,8 @@ def ClearContentsAddQuestion():
     ui.QLineAOPD.setText("")
     ui.QLineAAnswer.setText("")
     ui.QLineAMaMH.setText("")
+
+# Update
 
 
 def ClearContentsUpdateQuestion():
@@ -214,6 +223,8 @@ def updateQuestion():
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
+# delete
+
 
 def ClearContentsDeleteQuestion():
     ui.QLineDCauHoi.clear()
@@ -269,6 +280,88 @@ def deleteQuestion():
         myDB.commit()
         MBox(0, "Successfully", "Successfully", 32)
         ClearContentsDeleteQuestion()
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+# ShowAll
+def ClearContentsShowAllQuestion():
+    ui.QLineSAMaSV.clear()
+    ui.QLineSATenSV.clear()
+    ui.QLineSADiem.clear()
+    ui.QLineSAMaMH.clear()
+    ui.QLineSAMaSV.setDisabled(False)
+    ui.QLineSATenSV.setDisabled(False)
+    ui.QLineSATenSV.setDisabled(False)
+    ui.QLineSAMaSV.setDisabled(False)
+    ui.QTableShowAll.clearContents()
+
+
+def SuggestShowAllQuestion():
+    try:
+        cur = myDB.cursor()
+        MaSV = ui.QLineSAMaSV.text().strip()
+        TenSV = ui.QLineSATenSV.text().strip()
+        query = "SELECT dmsv.MaSV,HoSV,TenSV,Phai,NgaySinh,NoiSinh,TenLop,dmkq.MaMH,Diem,TenMH,SoTiet FROM dmsv inner join dmkq on dmsv.MaSV = dmkq.MaSV  inner join dmmh on dmkq.MaMH = dmmh.MaMH WHERE dmsv.MaSV LIKE '%{0}%' AND TenSV LIKE '%{1}%'".format(
+            MaSV, TenSV)
+        cur.execute(query)
+        result = cur.fetchall()
+
+        ui.QTableShowAll.clearContents()
+        ui.QTableShowAll.setColumnCount(11)
+        ui.QTableShowAll.setRowCount(15)
+        columns = 0
+        Diem = ''
+        for row in result:
+            ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(str(row[0])))
+            ui.QTableShowAll.setItem(columns, 1, QTableWidgetItem(row[1]))
+            ui.QTableShowAll.setItem(columns, 2, QTableWidgetItem(row[2]))
+            ui.QTableShowAll.setItem(columns, 3, QTableWidgetItem(row[3]))
+            ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[4]))
+            ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[5]))
+            ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[6]))
+            ui.QTableShowAll.setItem(columns, 7, QTableWidgetItem(row[7]))
+            if row[8] != None:
+                Diem = str(row[8])
+            ui.QTableShowAll.setItem(columns, 8, QTableWidgetItem(Diem))
+            ui.QTableShowAll.setItem(columns, 9, QTableWidgetItem(row[9]))
+            ui.QTableShowAll.setItem(
+                columns, 10, QTableWidgetItem(str(row[10])))
+            columns += 1
+
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def SuggestShowAllQueryQuestion():
+    try:
+        cur = myDB.cursor()
+        Diem = ui.QLineSADiem.text().strip()
+        MaMH = ui.QLineSADiem.text().strip()
+        query = "SELECT dmsv.MaSV,HoSV,TenSV,Phai,NgaySinh,NoiSinh,TenLop,dmkq.MaMH,Diem,TenMH,SoTiet FROM dmsv inner join dmkq on dmsv.MaSV = dmkq.MaSV  inner join dmmh on dmkq.MaMH = dmmh.MaMH WHERE Diem = %s or dmkq.MaMh = %s"
+        cur.execute(query, (Diem, MaMH))
+        result = cur.fetchall()
+        ui.QTableShowAll.clearContents()
+        ui.QTableShowAll.setColumnCount(11)
+        ui.QTableShowAll.setRowCount(15)
+        columns = 0
+        rs = ''
+        for row in result:
+            ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(str(row[0])))
+            ui.QTableShowAll.setItem(columns, 1, QTableWidgetItem(row[1]))
+            ui.QTableShowAll.setItem(columns, 2, QTableWidgetItem(row[2]))
+            ui.QTableShowAll.setItem(columns, 3, QTableWidgetItem(row[3]))
+            ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[4]))
+            ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[5]))
+            ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[6]))
+            ui.QTableShowAll.setItem(columns, 7, QTableWidgetItem(row[7]))
+            if row[8] != None:
+                rs = str(row[8])
+            ui.QTableShowAll.setItem(columns, 8, QTableWidgetItem(rs))
+            ui.QTableShowAll.setItem(columns, 9, QTableWidgetItem(row[9]))
+            ui.QTableShowAll.setItem(
+                columns, 10, QTableWidgetItem(str(row[10])))
+            columns += 1
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
