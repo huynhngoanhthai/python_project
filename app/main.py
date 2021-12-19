@@ -5,6 +5,8 @@ import mysql.connector as sql
 #import file
 import view.Login as Login
 import view.HomeAdmin as HomeAdmin
+import view.HomeStudent as HomeStudent
+import view.TakeTest as TakeTest
 from database import myDB
 from messageBox import MBox
 
@@ -23,12 +25,7 @@ def mainUi():
 def loginUser():
     try:
         cur = myDB.cursor()
-<<<<<<< HEAD
-        getUname = ui.uname.text().strip()  # GV
-        print(getUname[0:2])
-=======
         getUname = ui.uname.text().strip()  # GT
->>>>>>> 83065119d178aeb8ce0758dbcf023ffd6f49e8b1
         getPassword = ui.password.text()
 
         if(getUname[0:2] == "GT"):
@@ -126,11 +123,6 @@ def addQuestion():
         MBox(0, "Error", str(e), 16)
 
 
-<<<<<<< HEAD
-def clearContentsUpdateClass():
-    ui.ID_lop_update.setText("")
-    ui.ten_lop_update.setText("")
-=======
 def ClearContentsAddQuestion():
     ui.QLineUIDCauHoi.setText("")
     ui.QLineAQuestion.setText("")
@@ -142,7 +134,6 @@ def ClearContentsAddQuestion():
     ui.QLineAMaMH.setText("")
 
 # Update
->>>>>>> 83065119d178aeb8ce0758dbcf023ffd6f49e8b1
 
 
 def ClearContentsUpdateQuestion():
@@ -384,14 +375,6 @@ def showHomeStudent():
     ui = HomeAdmin.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    ui.tab.setCurrentWidget(ui.Add)
-    # add
-    ui.Clear.clicked.connect(clearContents)
-    ui.AddClass.clicked.connect(addClass)
-    # Update
-    ui.UpdateClass.clicked.connect(updateClass)
-    ui.ID_lop_update.returnPressed.connect(PressEnterSuggestion)
-    ui.Clear_update.clicked.connect(clearContentsUpdateClass)
 
 
     # Delete
