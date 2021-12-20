@@ -59,6 +59,7 @@ def showHomeAdmin():
     MainWindow.show()
     # default here add
     ui.tab.setCurrentWidget(ui.Add)
+    ui.ButtonLogout.clicked.connect(mainUi)
     # default ID is
     cur = myDB.cursor()
     cur.execute("SELECT max(MaCH) FROM dmch")
