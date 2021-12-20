@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
 from PyQt5 import QtWidgets
 import mysql.connector as sql
-#import file
+# import file
 import view.Login as Login
 import view.HomeAdmin as HomeAdmin
 import view.HomeStudent as HomeStudent
@@ -42,7 +42,7 @@ def loginUser():
         if(result == []):
             MBox(0, 'ERROR', "uname or password wrong", 16)
         else:
-            print("123")
+            showHomeStudent(result)
     except sql.Error as e:
         MBox(0, "Error", str(e), 32)
 
@@ -371,18 +371,38 @@ def SuggestShowAllQueryQuestion():
 # -------------------------Student------------------------
 
 
-def showHomeStudent():
+def showHomeStudent(info):
     global ui
-    ui = HomeAdmin.Ui_MainWindow()
+    ui = HomeStudent.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    # default tab1
+    ui.student.setCurrentWidget(ui.studentprofile)
+    # info Student Login
+    ui.showmasv.setText(info[0][0])
+    ui.showhosv.setText(info[0][2])
+    ui.showtensv.setText(info[0][3])
+    ui.showphai.setText(info[0][4])
+    ui.showngaysinh.setText(info[0][5])
+    ui.shownoisinh.setText(info[0][6])
+    ui.showtenlop.setText(info[0][7])
+    ui.showpassword.setText(info[0][1])
+    # event clicked for button in THI
+    ui.buttonvaothi.clicked.connect(showTakeTest)
+
+
+def showTakeTest():
+    global ui
+    ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
 
 
-    # Delete
 if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    # mainUi()
-    showHomeAdmin()
+    mainUi()
+    # showHomeStudent()
+    # showHomeAdmin()
     sys.exit(app.exec())
