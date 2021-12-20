@@ -380,13 +380,13 @@ def showHomeStudent(info):
     ui.student.setCurrentWidget(ui.studentprofile)
     # info Student Login
     ui.showmasv.setText(info[0][0])
-    ui.showhosv.setText(info[0][2])
-    ui.showtensv.setText(info[0][3])
-    ui.showphai.setText(info[0][4])
-    ui.showngaysinh.setText(info[0][5])
-    ui.shownoisinh.setText(info[0][6])
-    ui.showtenlop.setText(info[0][7])
-    ui.showpassword.setText(info[0][1])
+    ui.showhosv.setText(info[0][1])
+    ui.showtensv.setText(info[0][2])
+    ui.showphai.setText(info[0][3])
+    ui.showngaysinh.setText(info[0][4])
+    ui.shownoisinh.setText(info[0][5])
+    ui.showtenlop.setText(info[0][6])
+    ui.showpassword.setText(info[0][7])
     # event clicked for button in THI
     ui.buttonvaothi.clicked.connect(showTakeTest)
 
@@ -396,6 +396,33 @@ def showTakeTest():
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    ui.test.setCurrentWidget(ui.page1)
+    ui.A.toggled.connect(lambda: getAnswer())
+
+
+def getAnswer():
+    if ui.A.isChecked() == True:
+        # cur = myDB.cursor()
+        # cur.execute("SELECT * FROM dmch WHERE answer = ")
+        if ui.A.text() != "":
+            print("123")
+        else:
+            print("1233")
+    elif (ui.B.isChecked() == True):
+        if ui.B.text() != "":
+            print("456")
+        else:
+            print("4566")
+    elif (ui.C.isChecked() == True):
+        if ui.C.text() != "":
+            print("789")
+        else:
+            print("7899")
+    else:
+        if ui.D.text() != "":
+            print("611")
+        else:
+            print("6111")
 
 
 if __name__ == "__main__":
