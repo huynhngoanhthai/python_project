@@ -5,6 +5,8 @@ import mysql.connector as sql
 #import file
 import view.Login as Login
 import view.HomeAdmin as HomeAdmin
+import view.HomeStudent as HomeStudent
+import view.TakeTest as TakeTest
 from database import myDB
 from messageBox import MBox
 
@@ -366,7 +368,17 @@ def SuggestShowAllQueryQuestion():
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
+# -------------------------Student------------------------
 
+
+def showHomeStudent():
+    global ui
+    ui = HomeAdmin.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+
+
+    # Delete
 if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
