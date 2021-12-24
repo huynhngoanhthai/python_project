@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1356</width>
+    <height>668</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tab">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>1366</width>
+      <height>668</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>1000</width>
+      <height>1000</height>
+     </size>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="Add">
+     <attribute name="title">
+      <string>Add</string>
+     </attribute>
+     <widget class="QLineEdit" name="QLineAMaSV">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>100</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineAHoSV">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>130</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineATenSV">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>160</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="OpNAM">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>190</y>
+        <width>82</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>NAM</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="OpNU">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>190</y>
+        <width>82</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>NU</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="QDateANS">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>220</y>
+        <width>391</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2001</year>
+        <month>11</month>
+        <day>4</day>
+       </datetime>
+      </property>
+      <property name="maximumDateTime">
+       <datetime>
+        <hour>23</hour>
+        <minute>59</minute>
+        <second>59</second>
+        <year>2020</year>
+        <month>11</month>
+        <day>30</day>
+       </datetime>
+      </property>
+      <property name="maximumDate">
+       <date>
+        <year>2020</year>
+        <month>11</month>
+        <day>30</day>
+       </date>
+      </property>
+      <property name="displayFormat">
+       <string>d/M/yyyy</string>
+      </property>
+      <property name="date">
+       <date>
+        <year>2001</year>
+        <month>11</month>
+        <day>4</day>
+       </date>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineADC">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>250</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineALop">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>280</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>100</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MaSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>130</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>HoSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>160</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TenSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>190</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Phai</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>220</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ngai Sinh</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>250</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>noi Sinh</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>280</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lop</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>110</y>
+        <width>401</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>password của Sinh trùng với MaSV</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="QButtonAAddStudent">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>320</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="QButtonAClear">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>320</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Update">
+     <attribute name="title">
+      <string>Update</string>
+     </attribute>
+     <widget class="QPushButton" name="QButtonUUpdate">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>430</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="QButtonUClear">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>430</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="QTableUpdate">
+      <property name="geometry">
+       <rect>
+        <x>665</x>
+        <y>160</y>
+        <width>631</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoScrollMargin">
+       <number>16</number>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="horizontalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::CustomDashLine</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>85</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>24</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>1</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>MaSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>HoSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>PHAI</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NGAY SINH</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NOI SINH</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>LOP</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>130</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>SUGGEST</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>130</y>
+        <width>281</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Press Enter for suggest</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUMaSV">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>170</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUHoSV">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>200</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUTenSV">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>230</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>170</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MaSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>200</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>HoSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>230</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TenSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>260</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Phai</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>290</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ngay Sinh</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>320</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Noi Sinh</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>350</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lop</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="OpUPhai">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>260</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>NAM</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NU</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QDateEdit" name="QDateUNgaySinh">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>290</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2001</year>
+        <month>11</month>
+        <day>4</day>
+       </datetime>
+      </property>
+      <property name="maximumDateTime">
+       <datetime>
+        <hour>23</hour>
+        <minute>59</minute>
+        <second>59</second>
+        <year>2020</year>
+        <month>12</month>
+        <day>31</day>
+       </datetime>
+      </property>
+      <property name="displayFormat">
+       <string>d/M/yyyy</string>
+      </property>
+      <property name="date">
+       <date>
+        <year>2001</year>
+        <month>11</month>
+        <day>4</day>
+       </date>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUNoiSinh">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>320</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineULop">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>350</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Delete">
+     <attribute name="title">
+      <string>Delete</string>
+     </attribute>
+     <widget class="QPushButton" name="ClearDelete">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>70</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="DeleteQuestion">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>70</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>30</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Press Enter for suggest</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="QTableDelete">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>110</y>
+        <width>731</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>10</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoScrollMargin">
+       <number>16</number>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>85</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>24</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>1</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>MaCH</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CAU HOI</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CAU A</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CAU B</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CAU C</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>CAU D</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>DAP AN</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>MaMH</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>70</y>
+        <width>47</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CAU HOI</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MA CAU HOI</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineDIDCauHoi">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>70</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>MA CAU HOI</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineDCauHoi">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>70</y>
+        <width>151</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>CAU HOI</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ShowAll">
+     <attribute name="title">
+      <string>ShowAll</string>
+     </attribute>
+     <widget class="QLineEdit" name="QLineSAMaSV">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>60</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>MA SINH VIEN</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="QTableShowAll">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>1151</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <column>
+       <property name="text">
+        <string>MaSV</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>HoSV</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenSV</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Phai</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NgaySinh</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NoiSinh</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenLop</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>MaMH</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Diem</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenMH</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>SoTiet</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLineEdit" name="QLineSATenSV">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>90</y>
+        <width>251</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>TEN SINH VIEN</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineSADiem">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>60</y>
+        <width>221</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>DIEM </string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineSAMaMH">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>90</y>
+        <width>221</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>MA MON HOC</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ButtonSASearch">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>60</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ButtonSAClear">
+      <property name="geometry">
+       <rect>
+        <x>880</x>
+        <y>90</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>60</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MaSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>90</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TenSV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>60</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Diem</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>90</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MaMH</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>10</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>10</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>

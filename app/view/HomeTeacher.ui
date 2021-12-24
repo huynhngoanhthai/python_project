@@ -2,16 +2,31 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
-    <x>0</x>
-    <y>0</y>
+    <x>10</x>
+    <y>10</y>
     <width>800</width>
     <height>599</height>
    </rect>
   </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ActionsContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhEmailCharactersOnly</set>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -34,12 +49,12 @@
      <string>welcom </string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="NAMEGV">
     <property name="geometry">
      <rect>
       <x>360</x>
       <y>50</y>
-      <width>101</width>
+      <width>281</width>
       <height>31</height>
      </rect>
     </property>
@@ -51,27 +66,14 @@
      </font>
     </property>
     <property name="text">
-     <string>NAME</string>
+     <string>GIAO VIEN</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="QButtonSV">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>310</y>
-      <width>211</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Thêm GV</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>360</y>
+      <x>260</x>
+      <y>190</y>
       <width>211</width>
       <height>23</height>
      </rect>
@@ -80,11 +82,11 @@
      <string>Thêm SV</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="QButtonMH">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>400</y>
+      <x>260</x>
+      <y>220</y>
       <width>211</width>
       <height>23</height>
      </rect>
@@ -93,16 +95,19 @@
      <string>Thêm môn học</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <widget class="QPushButton" name="QButtonCH">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>250</y>
+      <width>211</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>thêm câu hỏi</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -1,11 +1,14 @@
 import sys
+from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
 from PyQt5 import QtWidgets
 import mysql.connector as sql
 # import file
 import view.Login as Login
-import view.HomeAdmin as HomeAdmin
+import view.HomeQuestion as HomeQuestion
+import view.HomeTeacher as HomeTeacher
 import view.HomeStudent as HomeStudent
+import view.Student as Student
 import view.TakeTest as TakeTest
 from database import myDB
 from messageBox import MBox
@@ -34,7 +37,7 @@ def loginUser():
             result = cur.fetchall()
             if(result == []):
                 return MBox(0, 'ERROR', "uname or password wrong", 16)
-            return showHomeAdmin()
+            return showHomeTeacher(result)
 
         cur.execute("SELECT * FROM dmsv WHERE MaSV=%s AND Password=%s",
                     (getUname, getPassword))
@@ -54,11 +57,177 @@ def checkPassword():
         ui.password.setEchoMode(QLineEdit.Password)
 
 
-def showHomeAdmin():
+def showHomeTeacher(info):
     global ui
-    ui = HomeAdmin.Ui_MainWindow()
+    ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    # default name for GV
+    # ui.NAMEGV.setText(info[0][3])
+    ui.QButtonCH.clicked.connect(showHomeQuestion)
+    ui.QButtonSV.clicked.connect(showStudent)
+
+
+def showStudent():
+    global ui
+    ui = Student.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.showMaximized()
+    # event clicked for button in add
+    ui.tab.setCurrentWidget(ui.Add)
+    ui.QButtonAClear.clicked.connect(ClearContentsAddStudent)
+    ui.QButtonAAddStudent.clicked.connect(addStudent)
+    ui.QLineALop.returnPressed.connect(addStudent)
+    # event clicked for button in update
+    ui.QLineUMaSV.returnPressed.connect(SuggestUpdateStudent)
+    ui.QButtonUClear.clicked.connect(ClearContentsUpdateStudent)
+    ui.QButtonUUpdate.clicked.connect(updateStudent)
+
+
+def ClearContentsAddStudent():
+    ui.QLineAMaSV.clear()
+    ui.QLineAHoSV.clear()
+    ui.QDateANS.setDate(date_changed("04/11/2001"))
+    ui.QLineATenSV.clear()
+    ui.QLineADC.clear()
+    ui.QLineALop.clear()
+
+
+def addStudent():
+    try:
+        MaSV = ui.QLineAMaSV.text()
+
+        HoSV = ui.QLineAHoSV.text()
+
+        TenSV = ui.QLineATenSV.text()
+
+        Phai = ''
+        if ui.OpNAM.isChecked():
+            Phai = "NAM"
+        elif ui.OpNU.isChecked():
+            Phai = "NU"
+        else:
+            return MBox(0, "Error", "you need choose Phai", 16)
+
+        NgaySinh = ui.QDateANS.text()
+        NoiSinh = ui.QLineADC.text()
+
+        Lop = ui.QLineALop.text()
+
+        checked = isCheckedEmpty(MaSV, HoSV, TenSV, NgaySinh, NoiSinh, Lop)
+        if not checked:
+            return MBox(0, "Error", "not empty", 16)
+
+        cur = myDB.cursor()
+        cur.execute(
+            "INSERT INTO dmsv (MaSV,Password,HoSV,TenSV,Phai,NgaySinh,NoiSinh,TenLop) VALUES (%s,%s, %s,%s,%s, %s,%s,%s) ",
+            (MaSV, MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, Lop))
+        myDB.commit()
+        MBox(0, "Successfully", "Successfully", 32)
+        ClearContentsAddStudent()
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+# update student
+def ClearContentsUpdateStudent():
+    ui.QLineUMaSV.clear()
+    ui.QLineUHoSV.clear()
+    ui.QLineUTenSV.clear()
+    ui.OpUPhai.setCurrentIndex(0)
+    ui.QDateUNgaySinh.setDate(date_changed("04/11/2001"))
+    ui.QLineUNoiSinh.clear()
+    ui.QLineULop.clear()
+
+    ui.QLineUMaSV.setDisabled(False)
+    ui.QTableUpdate.clearContents()
+
+
+def date_changed(day):
+    newDay = day.split('/')
+    return QDate(int(newDay[2]), int(newDay[1]), int(newDay[0]))
+
+
+def SuggestUpdateStudent():
+    try:
+        cur = myDB.cursor()
+        MaSV = ui.QLineUMaSV.text().strip()
+        query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' LIMIT 10;".format(
+            MaSV)
+        cur.execute(query)
+        result = cur.fetchall()
+
+        if len(result) == 1:
+            ui.QLineUMaSV.setText(result[0][0])
+            ui.QLineUHoSV.setText(result[0][2])
+            ui.QLineUTenSV.setText(result[0][3])
+            if result[0][4] == 'NAM':
+                ui.OpUPhai.setCurrentIndex(0)
+            else:
+                ui.OpUPhai.setCurrentIndex(1)
+            ui.QDateUNgaySinh.setDate(date_changed(result[0][5]))
+            ui.QLineUNoiSinh.setText(result[0][6])
+            ui.QLineULop.setText(result[0][7])
+            ui.QLineUMaSV.setDisabled(True)
+
+        ui.QTableUpdate.clearContents()
+        ui.QTableUpdate.setColumnCount(7)
+        ui.QTableUpdate.setRowCount(10)
+        columns = 0
+        for row in result:
+            ui.QTableUpdate.setItem(columns, 0, QTableWidgetItem(row[0]))
+            ui.QTableUpdate.setItem(columns, 1, QTableWidgetItem(row[2]))
+            ui.QTableUpdate.setItem(columns, 2, QTableWidgetItem(row[3]))
+            ui.QTableUpdate.setItem(columns, 3, QTableWidgetItem(row[4]))
+            ui.QTableUpdate.setItem(columns, 4, QTableWidgetItem(row[5]))
+            ui.QTableUpdate.setItem(columns, 5, QTableWidgetItem(row[6]))
+            ui.QTableUpdate.setItem(columns, 6, QTableWidgetItem(row[7]))
+            columns += 1
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def isCheckedEmpty(*argv):
+    #  argv is a tuple
+    for item in argv:
+        if item == '':
+            return False
+    return True
+
+
+def updateStudent():
+    try:
+        cur = myDB.cursor()
+        MaSV = ui.QLineUMaSV.text().strip()
+        HoSV = ui.QLineUHoSV.text().strip()
+        TenSV = ui.QLineUTenSV.text().strip()
+        Phai = ui.OpUPhai.currentText()
+        NgaySinh = ui.QDateUNgaySinh.text().strip()
+        NoiSinh = ui.QLineUNoiSinh.text().strip()
+        TenLop = ui.QLineULop.text().strip()
+        checked = isCheckedEmpty(
+            MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, TenLop)
+        if not checked:
+            return MBox(0, "Error", "not empty", 16)
+
+        query = "UPDATE dmsv SET HoSV=%s,TenSV=%s,Phai=%s,NgaySinh=%s,NoiSinh=%s,TenLop=%s WHERE MaSV=%s"
+
+        cur.execute(query, (HoSV, TenSV, Phai,
+                    NgaySinh, NoiSinh, TenLop, MaSV))
+        myDB.commit()
+        ClearContentsUpdateStudent()
+        MBox(0, "Successfully", "Successfully", 32)
+
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+# HomeQuestion
+
+
+def showHomeQuestion():
+    global ui
+    ui = HomeQuestion.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.showMaximized()
     # default here add
     ui.tab.setCurrentWidget(ui.Add)
     ui.ButtonLogout.clicked.connect(mainUi)
@@ -94,32 +263,30 @@ def addQuestion():
         cur = myDB.cursor()
         IDQuestion = ui.IDAddQuestion.text().strip()
         Question = ui.QLineAQuestion.text().strip()
-        if Question == '':
-            return MBox(0, "Error", "Question not empty", 16)
+
         OPA = ui.QLineAOPA.text().strip()
-        if OPA == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPB = ui.QLineAOPB.text().strip()
-        if OPB == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPC = ui.QLineAOPC.text().strip()
-        if OPC == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPD = ui.QLineAOPD.text().strip()
-        if OPD == '':
-            return MBox(0, "Error", "not empty", 16)
+
         Answer = ui.QLineAAnswer.text().strip()
-        if Answer == '':
-            return MBox(0, "Error", "not empty", 16)
+
         MaMH = ui.QLineAMaMH.text().strip()
-        if MaMH == '':
+
+        checked = isCheckedEmpty(IDQuestion, Question,
+                                 OPA, OPB, OPC, OPD, Answer, MaMH)
+        if not checked:
             return MBox(0, "Error", "not empty", 16)
+
         query = "INSERT INTO dmch (MaCH, CauHoi, CauA,CauB,CauC,CauD,DapAn,MaMH) VALUES (%s, %s,%s,%s, %s,%s,%s, %s)"
         cur.execute(query, (IDQuestion, Question,
                     OPA, OPB, OPC, OPD, Answer, MaMH))
         MBox(0, "Successfully", "Successfully", 32)
         myDB.commit()
-        showHomeAdmin()
+        showHomeQuestion()
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
@@ -191,31 +358,27 @@ def updateQuestion():
     try:
         cur = myDB.cursor()
         IDQuestion = ui.QLineUIDCauHoi.text().strip()
-        if IDQuestion == '':
-            return MBox(0, "Error", "not empty", 16)
         if ui.QLineUIDCauHoi.isEnabled():
             return MBox(0, "Error", "you need block", 16)
         Question = ui.QLineUQuestion.text().strip()
-        if Question == '':
-            return MBox(0, "Error", "Question not empty", 16)
+
         OPA = ui.QLineUOPA.text().strip()
-        if OPA == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPB = ui.QLineUOPB.text().strip()
-        if OPB == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPC = ui.QLineUOPC.text().strip()
-        if OPC == '':
-            return MBox(0, "Error", "not empty", 16)
+
         OPD = ui.QLineUOPD.text().strip()
-        if OPD == '':
-            return MBox(0, "Error", "not empty", 16)
+
         Answer = ui.QLineUAnswer.text().strip()
-        if Answer == '':
-            return MBox(0, "Error", "not empty", 16)
+
         MaMH = ui.QLineUMaMH.text().strip()
-        if MaMH == '':
+
+        checked = isCheckedEmpty(IDQuestion, Question,
+                                 OPA, OPB, OPC, OPD, Answer, MaMH)
+        if not checked:
             return MBox(0, "Error", "not empty", 16)
+
         query = "UPDATE dmch SET CauHoi=%s,CauA=%s,CauB=%s,CauC=%s,CauD=%s,DapAn=%s,MaMH=%s WHERE MaCH=%s"
         cur.execute(query, (Question,
                     OPA, OPB, OPC, OPD, Answer, MaMH, IDQuestion))
@@ -429,7 +592,9 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    mainUi()
+    # mainUi()
+    showHomeTeacher(123)
+    # showStudent()
     # showHomeStudent()
-    # showHomeAdmin()
+    # showHomeQuestion()
     sys.exit(app.exec())
