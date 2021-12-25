@@ -1,3 +1,7 @@
+from messageBox import MBox
+from database import myDB
+import view.TakeTest as TakeTest
+import view.Student as Student
 import sys
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
@@ -8,10 +12,6 @@ import view.Login as Login
 import view.HomeQuestion as HomeQuestion
 import view.HomeTeacher as HomeTeacher
 import view.HomeStudent as HomeStudent
-import view.Student as Student
-import view.TakeTest as TakeTest
-from database import myDB
-from messageBox import MBox
 
 
 def mainUi():
@@ -292,14 +292,13 @@ def addQuestion():
 
 
 def ClearContentsAddQuestion():
-    ui.QLineUIDCauHoi.setText("")
-    ui.QLineAQuestion.setText("")
-    ui.QLineAOPA.setText("")
-    ui.QLineAOPB.setText("")
-    ui.QLineAOPC.setText("")
-    ui.QLineAOPD.setText("")
-    ui.QLineAAnswer.setText("")
-    ui.QLineAMaMH.setText("")
+    ui.QLineAQuestion.clear()
+    ui.QLineAOPA.clear()
+    ui.QLineAOPB.clear()
+    ui.QLineAOPC.clear()
+    ui.QLineAOPD.clear()
+    ui.QLineAAnswer.clear()
+    ui.QLineAMaMH.clear()
 
 # Update
 
