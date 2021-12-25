@@ -1,5 +1,18 @@
 import sys
-sys.path.append('../')
+from PyQt5 import QtWidgets
+import see2
 
-from app.database import myDB 
-print(myDB)
+
+def mainUi():
+    global ui
+    ui = see2.Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+
+
+if __name__ == '__main__':
+    ui = ''
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    mainUi()
+    sys.exit(app.exec())
