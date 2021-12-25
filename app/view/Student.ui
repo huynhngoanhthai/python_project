@@ -51,7 +51,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -731,11 +731,11 @@
      <attribute name="title">
       <string>Delete</string>
      </attribute>
-     <widget class="QPushButton" name="ClearDelete">
+     <widget class="QPushButton" name="QButtonDClear">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>70</y>
+        <x>930</x>
+        <y>90</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -744,11 +744,11 @@
        <string>Clear</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="DeleteQuestion">
+     <widget class="QPushButton" name="QButtonDDelete">
       <property name="geometry">
        <rect>
-        <x>630</x>
-        <y>70</y>
+        <x>840</x>
+        <y>90</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -760,8 +760,8 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>30</y>
+        <x>530</x>
+        <y>50</y>
         <width>281</width>
         <height>31</height>
        </rect>
@@ -780,8 +780,8 @@
      <widget class="QTableWidget" name="QTableDelete">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>110</y>
+        <x>300</x>
+        <y>130</y>
         <width>731</width>
         <height>351</height>
        </rect>
@@ -907,53 +907,62 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>70</y>
-        <width>47</width>
+        <x>646</x>
+        <y>90</y>
+        <width>31</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>CAU HOI</string>
+       <string>TEN</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>70</y>
-        <width>61</width>
+        <x>340</x>
+        <y>90</y>
+        <width>71</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>MA CAU HOI</string>
+       <string>MA SINH VIEN</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineDIDCauHoi">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>70</y>
+        <x>420</x>
+        <y>90</y>
         <width>161</width>
         <height>20</height>
        </rect>
       </property>
       <property name="placeholderText">
-       <string>MA CAU HOI</string>
+       <string>MA SINH VIEN</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineDCauHoi">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>70</y>
+        <x>680</x>
+        <y>90</y>
         <width>151</width>
         <height>20</height>
        </rect>
       </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
       <property name="placeholderText">
-       <string>CAU HOI</string>
+       <string>TEN SINH VIEN</string>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
       </property>
      </widget>
     </widget>
