@@ -560,7 +560,10 @@ def showTakeTest():
     ui.setupUi(MainWindow)
     MainWindow.show()
     ui.test.setCurrentWidget(ui.page1)
-    ui.A.toggled.connect(lambda: getAnswer())
+    ui.A.toggled.connect(getAnswer)
+    ui.B.toggled.connect(getAnswer)
+    ui.C.toggled.connect(getAnswer)
+    ui.D.toggled.connect(getAnswer)
 
 
 def getAnswer():
@@ -592,8 +595,8 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    # mainUi()
-    showHomeTeacher(123)
+    mainUi()
+    # showHomeTeacher(123)
     # showStudent()
     # showHomeStudent()
     # showHomeQuestion()
