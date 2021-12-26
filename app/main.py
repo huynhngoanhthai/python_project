@@ -4,7 +4,7 @@ import view.TakeTest as TakeTest
 import view.Student as Student
 import sys
 from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QRadioButton, QTableWidgetItem
 from PyQt5 import QtWidgets
 import mysql.connector as sql
 # import file
@@ -18,7 +18,7 @@ def mainUi():
     global ui
     ui = Login.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
 
     ui.login.clicked.connect(loginUser)
     ui.password.returnPressed.connect(loginUser)
@@ -61,7 +61,7 @@ def showHomeTeacher(info):
     global ui
     ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default name for GV
     # ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
@@ -537,7 +537,7 @@ def showHomeStudent(info):
     global ui
     ui = HomeStudent.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default tab1
     ui.student.setCurrentWidget(ui.studentprofile)
     # info Student Login
@@ -557,37 +557,37 @@ def showTakeTest():
     global ui
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
-    ui.test.setCurrentWidget(ui.page1)
-    ui.A.toggled.connect(getAnswer)
-    ui.B.toggled.connect(getAnswer)
-    ui.C.toggled.connect(getAnswer)
-    ui.D.toggled.connect(getAnswer)
+    MainWindow.showMaximized()
+
+    getAnswer()
+
+    # ui.B.toggled.connect(getAnswer)
+    # ui.C.toggled.connect(getAnswer)
+    # ui.D.toggled.connect(getAnswer)
 
 
 def getAnswer():
-    if ui.A.isChecked() == True:
-        # cur = myDB.cursor()
-        # cur.execute("SELECT * FROM dmch WHERE answer = ")
-        if ui.A.text() != "":
-            print("123")
-        else:
-            print("1233")
-    elif (ui.B.isChecked() == True):
-        if ui.B.text() != "":
-            print("456")
-        else:
-            print("4566")
-    elif (ui.C.isChecked() == True):
-        if ui.C.text() != "":
-            print("789")
-        else:
-            print("7899")
-    else:
-        if ui.D.text() != "":
-            print("611")
-        else:
-            print("6111")
+    ui.tabWidget.setCurrentWidget(ui.tab)
+    ui.A.toggled.connect(onClicked)
+    ui.B.toggled.connect(onClicked)
+    ui.C.toggled.connect(onClicked)
+    ui.D.toggled.connect(onClicked)
+
+
+def onClicked():
+    cur = myDB.cursor()
+    if ui.A.isChecked():
+        DapAn = ui.A.text().strip()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        print(result)
+    if ui.B.isChecked():
+        print("222")
+    if ui.C.isChecked():
+        print("333")
+    if ui.D.isChecked():
+        print("444")
 
 
 if __name__ == "__main__":
