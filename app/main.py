@@ -4,7 +4,7 @@ import view.TakeTest as TakeTest
 import view.Student as Student
 import sys
 from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QRadioButton, QTableWidgetItem
 from PyQt5 import QtWidgets
 import mysql.connector as sql
 # import file
@@ -18,7 +18,7 @@ def mainUi():
     global ui
     ui = Login.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
 
     ui.login.clicked.connect(loginUser)
     ui.password.returnPressed.connect(loginUser)
@@ -61,7 +61,7 @@ def showHomeTeacher(info):
     global ui
     ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default name for GV
     # ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
@@ -664,7 +664,7 @@ def showHomeStudent(info):
     global ui
     ui = HomeStudent.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default tab1
     ui.student.setCurrentWidget(ui.studentprofile)
     # info Student Login
@@ -684,30 +684,58 @@ def showTakeTest():
     global ui
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
-    ui.test.setCurrentWidget(ui.page1)
-    # ui.page1.clicked.connect(getAnswer)
+    MainWindow.showMaximized()
+    ui.tabWidget.setCurrentWidget(ui.tab)
+
+    ui.A.toggled.connect(onClicked)
+    ui.B.toggled.connect(onClicked)
+    ui.C.toggled.connect(onClicked)
+    ui.D.toggled.connect(onClicked)
+    ui.A_2.toggled.connect(onClicked)
+    ui.B_2.toggled.connect(onClicked)
+    ui.C_2.toggled.connect(onClicked)
+    ui.D_2.toggled.connect(onClicked)
 
 
-def getAnswer():
-    if ui.A.isChecked() == True:
-        print("A")
-    elif (ui.B.isChecked() == True):
-        print("B")
-    elif (ui.C.isChecked() == True):
-        print("C")
-    elif (ui.D.isChecked() == True):
-        print("D")
+# def getAnswer(button):
+#     return
+
+
+def onClicked():
+    cur = myDB.cursor()
+    if ui.A.isChecked():
+        DapAn = ui.A.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        print(result)
+    elif ui.B.isChecked():
+        print("222")
+    elif ui.C.isChecked():
+        print("333")
+    elif ui.D.isChecked():
+        print("444")
+    if ui.A_2.isChecked():
+        DapAn = ui.A_2.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        print(result)
+    elif ui.B_2.isChecked():
+        print("222")
+    elif ui.C_2.isChecked():
+        print("333")
+    elif ui.D_2.isChecked():
+        print("444")
 
 
 if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    # mainUi()
-    # showTakeTest()
+    mainUi()
     # showHomeTeacher(123)
-    showStudent()
+    # showStudent()
     # showHomeStudent()
     # showHomeQuestion()
     sys.exit(app.exec())
