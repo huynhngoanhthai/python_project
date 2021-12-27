@@ -37,7 +37,7 @@ def loginUser():
             result = cur.fetchall()
             if(result == []):
                 return MBox(0, 'ERROR', "uname or password wrong", 16)
-            return showHomeTeacher(result)
+            return showHomeTeacher(result[0])
 
         cur.execute("SELECT * FROM dmsv WHERE MaSV=%s AND Password=%s",
                     (getUname, getPassword))
@@ -63,9 +63,10 @@ def showHomeTeacher(info):
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default name for GV
-    # ui.NAMEGV.setText(info[0][3])
+    ui.NAMEGV.setText(info[3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
     ui.QButtonSV.clicked.connect(showStudent)
+    #
 
 
 def showStudent():
@@ -74,10 +75,13 @@ def showStudent():
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default here
+
     ui.QTableDelete.setColumnCount(7)
     ui.QTableDelete.setRowCount(15)
     ui.QTableShowAll.setColumnCount(7)
     ui.QTableShowAll.setRowCount(15)
+
+    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
     # event clicked for button in add
     ui.tab.setCurrentWidget(ui.Add)
     ui.QButtonAClear.clicked.connect(ClearContentsAddStudent)
@@ -98,6 +102,10 @@ def showStudent():
     ui.QButtonShowAll.clicked.connect(showAllStudent)
     ui.QLineSAMaSV.returnPressed.connect(showAllStudent)
     ui.QLineSATenSV.returnPressed.connect(showAllStudent)
+
+
+def callBackShowHomeTeacher():
+    return showHomeTeacher(("", '', '', "YOU"))
 
 
 def ClearContentsAddStudent():

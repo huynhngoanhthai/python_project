@@ -14,12 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1356, 668)
+        MainWindow.resize(1356, 696)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tab = QtWidgets.QTabWidget(self.centralwidget)
         self.tab.setEnabled(True)
-        self.tab.setGeometry(QtCore.QRect(0, 10, 1366, 668))
+        self.tab.setGeometry(QtCore.QRect(0, 0, 1341, 581))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -434,13 +434,21 @@ class Ui_MainWindow(object):
         self.QTableShowAll.horizontalHeader().setMinimumSectionSize(24)
         self.QTableShowAll.verticalHeader().setDefaultSectionSize(1)
         self.tab.addTab(self.ShowAll, "")
+        self.QButtonBack = QtWidgets.QPushButton(self.centralwidget)
+        self.QButtonBack.setGeometry(QtCore.QRect(1250, 600, 91, 41))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.QButtonBack.setFont(font)
+        self.QButtonBack.setObjectName("QButtonBack")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tab.setCurrentIndex(2)
+        self.tab.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -533,3 +541,4 @@ class Ui_MainWindow(object):
         item = self.QTableShowAll.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "TenLop"))
         self.tab.setTabText(self.tab.indexOf(self.ShowAll), _translate("MainWindow", "ShowAll"))
+        self.QButtonBack.setText(_translate("MainWindow", "BACK"))
