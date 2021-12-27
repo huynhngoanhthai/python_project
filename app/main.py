@@ -558,35 +558,47 @@ def showTakeTest():
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
-
-    getAnswer()
-
-    # ui.B.toggled.connect(getAnswer)
-    # ui.C.toggled.connect(getAnswer)
-    # ui.D.toggled.connect(getAnswer)
-
-
-def getAnswer():
     ui.tabWidget.setCurrentWidget(ui.tab)
+
     ui.A.toggled.connect(onClicked)
     ui.B.toggled.connect(onClicked)
     ui.C.toggled.connect(onClicked)
     ui.D.toggled.connect(onClicked)
+    ui.A_2.toggled.connect(onClicked)
+    ui.B_2.toggled.connect(onClicked)
+    ui.C_2.toggled.connect(onClicked)
+    ui.D_2.toggled.connect(onClicked)
+
+
+# def getAnswer(button):
+#     return
 
 
 def onClicked():
     cur = myDB.cursor()
     if ui.A.isChecked():
-        DapAn = ui.A.text().strip()
+        DapAn = ui.A.text()
         query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
         cur.execute(query)
         result = cur.fetchall()
         print(result)
-    if ui.B.isChecked():
+    elif ui.B.isChecked():
         print("222")
-    if ui.C.isChecked():
+    elif ui.C.isChecked():
         print("333")
-    if ui.D.isChecked():
+    elif ui.D.isChecked():
+        print("444")
+    if ui.A_2.isChecked():
+        DapAn = ui.A_2.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        print(result)
+    elif ui.B_2.isChecked():
+        print("222")
+    elif ui.C_2.isChecked():
+        print("333")
+    elif ui.D_2.isChecked():
         print("444")
 
 
