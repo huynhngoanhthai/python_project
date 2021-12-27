@@ -73,6 +73,11 @@ def showStudent():
     ui = Student.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
+    # default here
+    ui.QTableDelete.setColumnCount(7)
+    ui.QTableDelete.setRowCount(15)
+    ui.QTableShowAll.setColumnCount(7)
+    ui.QTableShowAll.setRowCount(15)
     # event clicked for button in add
     ui.tab.setCurrentWidget(ui.Add)
     ui.QButtonAClear.clicked.connect(ClearContentsAddStudent)
@@ -82,6 +87,17 @@ def showStudent():
     ui.QLineUMaSV.returnPressed.connect(SuggestUpdateStudent)
     ui.QButtonUClear.clicked.connect(ClearContentsUpdateStudent)
     ui.QButtonUUpdate.clicked.connect(updateStudent)
+    # event clicked for button in delete
+    ui.QButtonDClear.clicked.connect(ClearContentsDeleteStudent)
+    ui.QLineDMaSV.returnPressed.connect(SuggestDeleteStudent)
+    ui.QLineDTenSV.returnPressed.connect(SuggestDeleteStudent)
+    ui.QButtonDDelete.clicked.connect(deleteStudent)
+    # event clicked for button in Show All
+    ui.QButtonSAClear.clicked.connect(ClearContentsShowAllStudent)
+
+    ui.QButtonShowAll.clicked.connect(showAllStudent)
+    ui.QLineSAMaSV.returnPressed.connect(showAllStudent)
+    ui.QLineSATenSV.returnPressed.connect(showAllStudent)
 
 
 def ClearContentsAddStudent():
@@ -218,6 +234,117 @@ def updateStudent():
         ClearContentsUpdateStudent()
         MBox(0, "Successfully", "Successfully", 32)
 
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+# delete Student
+
+
+def ClearContentsDeleteStudent():
+    ui.QLineDMaSV.clear()
+    ui.QLineDTenSV.clear()
+
+    ui.QLineDMaSV.setDisabled(False)
+    ui.QLineDTenSV.setDisabled(False)
+    ui.QTableDelete.clearContents()
+
+
+def SuggestDeleteStudent():
+    try:
+        cur = myDB.cursor()
+        query = ''
+        TenSV = ui.QLineDTenSV.text().strip()
+        MaSV = ui.QLineDMaSV.text().strip()
+        if MaSV == '':
+            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 15;".format(
+                TenSV)
+        elif TenSV == '':
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' LIMIT 15;".format(
+                MaSV)
+        else:
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' AND TenSV LIKE '%{1}%' LIMIT 15;".format(
+                MaSV, TenSV)
+
+        cur.execute(query)
+        result = cur.fetchall()
+        if len(result) == 1:
+            ui.QLineDMaSV.setText(result[0][0])
+            ui.QLineDTenSV.setText(result[0][3])
+            ui.QLineDMaSV.setDisabled(True)
+            ui.QLineDTenSV.setDisabled(True)
+        ui.QTableDelete.clearContents()
+        columns = 0
+        for row in result:
+            ui.QTableDelete.setItem(columns, 0, QTableWidgetItem(row[0]))
+            ui.QTableDelete.setItem(columns, 1, QTableWidgetItem(row[2]))
+            ui.QTableDelete.setItem(columns, 2, QTableWidgetItem(row[3]))
+            ui.QTableDelete.setItem(columns, 3, QTableWidgetItem(row[4]))
+            ui.QTableDelete.setItem(columns, 4, QTableWidgetItem(row[5]))
+            ui.QTableDelete.setItem(columns, 5, QTableWidgetItem(row[6]))
+            ui.QTableDelete.setItem(columns, 6, QTableWidgetItem(row[7]))
+            columns += 1
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def deleteStudent():
+    try:
+        cur = myDB.cursor()
+        MaSV = ui.QLineDMaSV.text().strip()
+        TenSV = ui.QLineDTenSV.text().strip()
+        if ui.QLineDMaSV.isEnabled() == True or ui.QLineDTenSV.isEnabled() == True:
+            return MBox(0, "Error", "You need block ", 16)
+
+        cur.execute(
+            "DELETE FROM dmsv WHERE MaSV = %s AND TenSV = %s ", (MaSV, TenSV))
+        myDB.commit()
+        MBox(0, "Successfully", "Successfully", 32)
+        ClearContentsDeleteStudent()
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+# Show All
+
+
+def ClearContentsShowAllStudent():
+    ui.QLineSAMaSV.clear()
+    ui.QLineSATenSV.clear()
+
+    ui.QTableShowAll.clearContents()
+
+
+def showAllStudent():
+    try:
+        cur = myDB.cursor()
+
+        query = ''
+        TenSV = ui.QLineSATenSV.text().strip()
+        MaSV = ui.QLineSAMaSV.text().strip()
+        if MaSV == '':
+            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 15;".format(
+                TenSV)
+        elif TenSV == '':
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' LIMIT 15;".format(
+                MaSV)
+        else:
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' AND TenSV LIKE '%{1}%' LIMIT 15;".format(
+                MaSV, TenSV)
+
+        cur.execute(query)
+        result = cur.fetchall()
+        if len(result) == 1:
+            ui.QLineSAMaSV.setText(result[0][0])
+            ui.QLineSATenSV.setText(result[0][3])
+        ui.QTableShowAll.clearContents()
+        columns = 0
+        for row in result:
+            ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(row[0]))
+            ui.QTableShowAll.setItem(columns, 1, QTableWidgetItem(row[2]))
+            ui.QTableShowAll.setItem(columns, 2, QTableWidgetItem(row[3]))
+            ui.QTableShowAll.setItem(columns, 3, QTableWidgetItem(row[4]))
+            ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[5]))
+            ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[6]))
+            ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[7]))
+            columns += 1
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 # HomeQuestion
@@ -441,7 +568,7 @@ def deleteQuestion():
             return MBox(0, "Error", "You need block ", 16)
 
         cur.execute(
-            "DELETE FROM dmch WHERE MaCH = %s AND CauHoi = %s", (IDQuestion, CauHoi))
+            "DELETE FROM dmch WHERE MaCH = '%s' AND CauHoi = '%s'", (IDQuestion, CauHoi))
         myDB.commit()
         MBox(0, "Successfully", "Successfully", 32)
         ClearContentsDeleteQuestion()
@@ -559,32 +686,18 @@ def showTakeTest():
     ui.setupUi(MainWindow)
     MainWindow.show()
     ui.test.setCurrentWidget(ui.page1)
-    ui.A.toggled.connect(lambda: getAnswer())
+    # ui.page1.clicked.connect(getAnswer)
 
 
 def getAnswer():
     if ui.A.isChecked() == True:
-        # cur = myDB.cursor()
-        # cur.execute("SELECT * FROM dmch WHERE answer = ")
-        if ui.A.text() != "":
-            print("123")
-        else:
-            print("1233")
+        print("A")
     elif (ui.B.isChecked() == True):
-        if ui.B.text() != "":
-            print("456")
-        else:
-            print("4566")
+        print("B")
     elif (ui.C.isChecked() == True):
-        if ui.C.text() != "":
-            print("789")
-        else:
-            print("7899")
-    else:
-        if ui.D.text() != "":
-            print("611")
-        else:
-            print("6111")
+        print("C")
+    elif (ui.D.isChecked() == True):
+        print("D")
 
 
 if __name__ == "__main__":
@@ -592,8 +705,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     # mainUi()
-    showHomeTeacher(123)
-    # showStudent()
+    # showTakeTest()
+    # showHomeTeacher(123)
+    showStudent()
     # showHomeStudent()
     # showHomeQuestion()
     sys.exit(app.exec())

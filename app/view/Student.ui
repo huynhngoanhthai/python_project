@@ -349,6 +349,9 @@
       </property>
      </widget>
      <widget class="QTableWidget" name="QTableUpdate">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>665</x>
@@ -778,6 +781,9 @@
       </property>
      </widget>
      <widget class="QTableWidget" name="QTableDelete">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -792,6 +798,13 @@
         <height>20</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
@@ -799,7 +812,7 @@
        <number>16</number>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>85</number>
+       <number>101</number>
       </attribute>
       <attribute name="horizontalHeaderMinimumSectionSize">
        <number>24</number>
@@ -809,7 +822,7 @@
       </attribute>
       <column>
        <property name="text">
-        <string>MaCH</string>
+        <string>MaSV</string>
        </property>
        <property name="font">
         <font>
@@ -821,7 +834,7 @@
       </column>
       <column>
        <property name="text">
-        <string>CAU HOI</string>
+        <string>HoSV</string>
        </property>
        <property name="font">
         <font>
@@ -833,7 +846,7 @@
       </column>
       <column>
        <property name="text">
-        <string>CAU A</string>
+        <string>TenSV</string>
        </property>
        <property name="font">
         <font>
@@ -845,7 +858,7 @@
       </column>
       <column>
        <property name="text">
-        <string>CAU B</string>
+        <string>Phai</string>
        </property>
        <property name="font">
         <font>
@@ -857,7 +870,7 @@
       </column>
       <column>
        <property name="text">
-        <string>CAU C</string>
+        <string>NgaySinh</string>
        </property>
        <property name="font">
         <font>
@@ -869,7 +882,7 @@
       </column>
       <column>
        <property name="text">
-        <string>CAU D</string>
+        <string>NoiSinh</string>
        </property>
        <property name="font">
         <font>
@@ -881,19 +894,7 @@
       </column>
       <column>
        <property name="text">
-        <string>DAP AN</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>MaMH</string>
+        <string>TenLop</string>
        </property>
        <property name="font">
         <font>
@@ -930,7 +931,7 @@
        <string>MA SINH VIEN</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="QLineDIDCauHoi">
+     <widget class="QLineEdit" name="QLineDMaSV">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -943,7 +944,7 @@
        <string>MA SINH VIEN</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="QLineDCauHoi">
+     <widget class="QLineEdit" name="QLineDTenSV">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -965,31 +966,52 @@
        <enum>Qt::LogicalMoveStyle</enum>
       </property>
      </widget>
+     <zorder>QButtonDClear</zorder>
+     <zorder>QButtonDDelete</zorder>
+     <zorder>label_4</zorder>
+     <zorder>label_3</zorder>
+     <zorder>label_6</zorder>
+     <zorder>QLineDMaSV</zorder>
+     <zorder>QLineDTenSV</zorder>
+     <zorder>QTableDelete</zorder>
     </widget>
     <widget class="QWidget" name="ShowAll">
      <attribute name="title">
       <string>ShowAll</string>
      </attribute>
-     <widget class="QLineEdit" name="QLineSAMaSV">
+     <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>60</y>
-        <width>251</width>
+        <x>320</x>
+        <y>120</y>
+        <width>71</width>
         <height>20</height>
        </rect>
       </property>
-      <property name="placeholderText">
+      <property name="text">
        <string>MA SINH VIEN</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="QTableShowAll">
+     <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>130</y>
-        <width>1151</width>
-        <height>331</height>
+        <x>626</x>
+        <y>120</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TEN</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>80</y>
+        <width>281</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -999,119 +1021,63 @@
         <bold>true</bold>
        </font>
       </property>
-      <column>
-       <property name="text">
-        <string>MaSV</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>HoSV</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TenSV</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Phai</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>NgaySinh</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>NoiSinh</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TenLop</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>MaMH</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Diem</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TenMH</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>SoTiet</string>
-       </property>
-      </column>
+      <property name="text">
+       <string>Press Enter for suggest</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineSAMaSV">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>120</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>MA SINH VIEN</string>
+      </property>
      </widget>
      <widget class="QLineEdit" name="QLineSATenSV">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>90</y>
-        <width>251</width>
+        <x>660</x>
+        <y>120</y>
+        <width>151</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
       </property>
       <property name="placeholderText">
        <string>TEN SINH VIEN</string>
       </property>
-     </widget>
-     <widget class="QLineEdit" name="QLineSADiem">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>60</y>
-        <width>221</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>DIEM </string>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
       </property>
      </widget>
-     <widget class="QLineEdit" name="QLineSAMaMH">
+     <widget class="QPushButton" name="QButtonShowAll">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>90</y>
-        <width>221</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>MA MON HOC</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ButtonSASearch">
-      <property name="geometry">
-       <rect>
-        <x>880</x>
-        <y>60</y>
+        <x>820</x>
+        <y>120</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>Search</string>
+       <string>Show</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="ButtonSAClear">
+     <widget class="QPushButton" name="QButtonSAClear">
       <property name="geometry">
        <rect>
-        <x>880</x>
-        <y>90</y>
+        <x>910</x>
+        <y>120</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -1120,57 +1086,123 @@
        <string>Clear</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_14">
+     <widget class="QTableWidget" name="QTableShowAll">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>60</y>
-        <width>31</width>
-        <height>20</height>
+        <x>280</x>
+        <y>160</y>
+        <width>731</width>
+        <height>351</height>
        </rect>
       </property>
-      <property name="text">
-       <string>MaSV</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_15">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>90</y>
-        <width>31</width>
+      <property name="minimumSize">
+       <size>
+        <width>10</width>
         <height>20</height>
-       </rect>
+       </size>
       </property>
-      <property name="text">
-       <string>TenSV</string>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
       </property>
-     </widget>
-     <widget class="QLabel" name="label_16">
-      <property name="geometry">
-       <rect>
-        <x>560</x>
-        <y>60</y>
-        <width>31</width>
-        <height>20</height>
-       </rect>
+      <property name="autoScrollMargin">
+       <number>16</number>
       </property>
-      <property name="text">
-       <string>Diem</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_17">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>90</y>
-        <width>41</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>MaMH</string>
-      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>101</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>24</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>1</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>MaSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>HoSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenSV</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Phai</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NgaySinh</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NoiSinh</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TenLop</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>
