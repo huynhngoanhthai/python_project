@@ -37,7 +37,7 @@ def loginUser():
             result = cur.fetchall()
             if(result == []):
                 return MBox(0, 'ERROR', "uname or password wrong", 16)
-            return showHomeTeacher(result[0])
+            return showHomeTeacher(result)
 
         cur.execute("SELECT * FROM dmsv WHERE MaSV=%s AND Password=%s",
                     (getUname, getPassword))
@@ -63,10 +63,9 @@ def showHomeTeacher(info):
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default name for GV
-    ui.NAMEGV.setText(info[3])
+    # ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
     ui.QButtonSV.clicked.connect(showStudent)
-    #
 
 
 def showStudent():
@@ -74,14 +73,6 @@ def showStudent():
     ui = Student.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
-    # default here
-
-    ui.QTableDelete.setColumnCount(7)
-    ui.QTableDelete.setRowCount(15)
-    ui.QTableShowAll.setColumnCount(7)
-    ui.QTableShowAll.setRowCount(15)
-
-    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
     # event clicked for button in add
     ui.tab.setCurrentWidget(ui.Add)
     ui.QButtonAClear.clicked.connect(ClearContentsAddStudent)
@@ -91,21 +82,6 @@ def showStudent():
     ui.QLineUMaSV.returnPressed.connect(SuggestUpdateStudent)
     ui.QButtonUClear.clicked.connect(ClearContentsUpdateStudent)
     ui.QButtonUUpdate.clicked.connect(updateStudent)
-    # event clicked for button in delete
-    ui.QButtonDClear.clicked.connect(ClearContentsDeleteStudent)
-    ui.QLineDMaSV.returnPressed.connect(SuggestDeleteStudent)
-    ui.QLineDTenSV.returnPressed.connect(SuggestDeleteStudent)
-    ui.QButtonDDelete.clicked.connect(deleteStudent)
-    # event clicked for button in Show All
-    ui.QButtonSAClear.clicked.connect(ClearContentsShowAllStudent)
-
-    ui.QButtonShowAll.clicked.connect(showAllStudent)
-    ui.QLineSAMaSV.returnPressed.connect(showAllStudent)
-    ui.QLineSATenSV.returnPressed.connect(showAllStudent)
-
-
-def callBackShowHomeTeacher():
-    return showHomeTeacher(("", '', '', "YOU"))
 
 
 def ClearContentsAddStudent():
@@ -242,117 +218,6 @@ def updateStudent():
         ClearContentsUpdateStudent()
         MBox(0, "Successfully", "Successfully", 32)
 
-    except sql.Error as e:
-        MBox(0, "Error", str(e), 16)
-
-# delete Student
-
-
-def ClearContentsDeleteStudent():
-    ui.QLineDMaSV.clear()
-    ui.QLineDTenSV.clear()
-
-    ui.QLineDMaSV.setDisabled(False)
-    ui.QLineDTenSV.setDisabled(False)
-    ui.QTableDelete.clearContents()
-
-
-def SuggestDeleteStudent():
-    try:
-        cur = myDB.cursor()
-        query = ''
-        TenSV = ui.QLineDTenSV.text().strip()
-        MaSV = ui.QLineDMaSV.text().strip()
-        if MaSV == '':
-            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 15;".format(
-                TenSV)
-        elif TenSV == '':
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' LIMIT 15;".format(
-                MaSV)
-        else:
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' AND TenSV LIKE '%{1}%' LIMIT 15;".format(
-                MaSV, TenSV)
-
-        cur.execute(query)
-        result = cur.fetchall()
-        if len(result) == 1:
-            ui.QLineDMaSV.setText(result[0][0])
-            ui.QLineDTenSV.setText(result[0][3])
-            ui.QLineDMaSV.setDisabled(True)
-            ui.QLineDTenSV.setDisabled(True)
-        ui.QTableDelete.clearContents()
-        columns = 0
-        for row in result:
-            ui.QTableDelete.setItem(columns, 0, QTableWidgetItem(row[0]))
-            ui.QTableDelete.setItem(columns, 1, QTableWidgetItem(row[2]))
-            ui.QTableDelete.setItem(columns, 2, QTableWidgetItem(row[3]))
-            ui.QTableDelete.setItem(columns, 3, QTableWidgetItem(row[4]))
-            ui.QTableDelete.setItem(columns, 4, QTableWidgetItem(row[5]))
-            ui.QTableDelete.setItem(columns, 5, QTableWidgetItem(row[6]))
-            ui.QTableDelete.setItem(columns, 6, QTableWidgetItem(row[7]))
-            columns += 1
-    except sql.Error as e:
-        MBox(0, "Error", str(e), 16)
-
-
-def deleteStudent():
-    try:
-        cur = myDB.cursor()
-        MaSV = ui.QLineDMaSV.text().strip()
-        TenSV = ui.QLineDTenSV.text().strip()
-        if ui.QLineDMaSV.isEnabled() == True or ui.QLineDTenSV.isEnabled() == True:
-            return MBox(0, "Error", "You need block ", 16)
-
-        cur.execute(
-            "DELETE FROM dmsv WHERE MaSV = %s AND TenSV = %s ", (MaSV, TenSV))
-        myDB.commit()
-        MBox(0, "Successfully", "Successfully", 32)
-        ClearContentsDeleteStudent()
-    except sql.Error as e:
-        MBox(0, "Error", str(e), 16)
-# Show All
-
-
-def ClearContentsShowAllStudent():
-    ui.QLineSAMaSV.clear()
-    ui.QLineSATenSV.clear()
-
-    ui.QTableShowAll.clearContents()
-
-
-def showAllStudent():
-    try:
-        cur = myDB.cursor()
-
-        query = ''
-        TenSV = ui.QLineSATenSV.text().strip()
-        MaSV = ui.QLineSAMaSV.text().strip()
-        if MaSV == '':
-            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 15;".format(
-                TenSV)
-        elif TenSV == '':
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' LIMIT 15;".format(
-                MaSV)
-        else:
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{0}%' AND TenSV LIKE '%{1}%' LIMIT 15;".format(
-                MaSV, TenSV)
-
-        cur.execute(query)
-        result = cur.fetchall()
-        if len(result) == 1:
-            ui.QLineSAMaSV.setText(result[0][0])
-            ui.QLineSATenSV.setText(result[0][3])
-        ui.QTableShowAll.clearContents()
-        columns = 0
-        for row in result:
-            ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(row[0]))
-            ui.QTableShowAll.setItem(columns, 1, QTableWidgetItem(row[2]))
-            ui.QTableShowAll.setItem(columns, 2, QTableWidgetItem(row[3]))
-            ui.QTableShowAll.setItem(columns, 3, QTableWidgetItem(row[4]))
-            ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[5]))
-            ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[6]))
-            ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[7]))
-            columns += 1
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 # HomeQuestion
@@ -576,7 +441,7 @@ def deleteQuestion():
             return MBox(0, "Error", "You need block ", 16)
 
         cur.execute(
-            "DELETE FROM dmch WHERE MaCH = '%s' AND CauHoi = '%s'", (IDQuestion, CauHoi))
+            "DELETE FROM dmch WHERE MaCH = %s AND CauHoi = %s", (IDQuestion, CauHoi))
         myDB.commit()
         MBox(0, "Successfully", "Successfully", 32)
         ClearContentsDeleteQuestion()
@@ -703,38 +568,253 @@ def showTakeTest():
     ui.B_2.toggled.connect(onClicked)
     ui.C_2.toggled.connect(onClicked)
     ui.D_2.toggled.connect(onClicked)
-
-
-# def getAnswer(button):
-#     return
+    # 3
+    ui.A_3.toggled.connect(onClicked)
+    ui.B_3.toggled.connect(onClicked)
+    ui.C_3.toggled.connect(onClicked)
+    ui.D_3.toggled.connect(onClicked)
+    # 4
+    ui.A_4.toggled.connect(onClicked)
+    ui.B_4.toggled.connect(onClicked)
+    ui.C_4.toggled.connect(onClicked)
+    ui.D_4.toggled.connect(onClicked)
+    # 5
+    ui.A_5.toggled.connect(onClicked)
+    ui.B_5.toggled.connect(onClicked)
+    ui.C_5.toggled.connect(onClicked)
+    ui.D_5.toggled.connect(onClicked)
+    # 6
+    ui.A_6.toggled.connect(onClicked)
+    ui.B_6.toggled.connect(onClicked)
+    ui.C_6.toggled.connect(onClicked)
+    ui.D_6.toggled.connect(onClicked)
+    # 7
+    ui.A_7.toggled.connect(onClicked)
+    ui.B_7.toggled.connect(onClicked)
+    ui.C_7.toggled.connect(onClicked)
+    ui.D_7.toggled.connect(onClicked)
+    # 8
+    ui.A_8.toggled.connect(onClicked)
+    ui.B_8.toggled.connect(onClicked)
+    ui.C_8.toggled.connect(onClicked)
+    ui.D_8.toggled.connect(onClicked)
+    # 9
+    ui.A_9.toggled.connect(onClicked)
+    ui.B_9.toggled.connect(onClicked)
+    ui.C_9.toggled.connect(onClicked)
+    ui.D_9.toggled.connect(onClicked)
+    # 10
+    ui.A_10.toggled.connect(onClicked)
+    ui.B_10.toggled.connect(onClicked)
+    ui.C_10.toggled.connect(onClicked)
+    ui.D_10.toggled.connect(onClicked)
 
 
 def onClicked():
+    diem = 0
     cur = myDB.cursor()
     if ui.A.isChecked():
         DapAn = ui.A.text()
         query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
         cur.execute(query)
         result = cur.fetchall()
-        print(result)
+        print(diem)
+        # print(result)
     elif ui.B.isChecked():
-        print("222")
+        return
+        # print("222")
     elif ui.C.isChecked():
-        print("333")
+        return
+        # print("333")
     elif ui.D.isChecked():
-        print("444")
+        return
+        # print("444")
+
     if ui.A_2.isChecked():
         DapAn = ui.A_2.text()
         query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
         cur.execute(query)
         result = cur.fetchall()
-        print(result)
+        diem += 1
+        print(diem)
+        # print(result)
     elif ui.B_2.isChecked():
-        print("222")
+        # print("222")
+        return
     elif ui.C_2.isChecked():
-        print("333")
+        # print("333")
+        return
     elif ui.D_2.isChecked():
-        print("444")
+        # print("444")
+        return
+
+    # câu 3
+    if ui.A_3.isChecked():
+        DapAn = ui.A_3.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_3.isChecked():
+        # print("222")
+        return
+    elif ui.C_3.isChecked():
+        # print("333")
+        return
+    elif ui.D_3.isChecked():
+        # print("444")
+        return
+
+    # câu 4
+    if ui.A_4.isChecked():
+        DapAn = ui.A_4.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_4.isChecked():
+        # print("222")
+        return
+    elif ui.C_4.isChecked():
+        # print("333")
+        return
+    elif ui.D_4.isChecked():
+        # print("444")
+        return
+
+    # câu 5
+    if ui.A_5.isChecked():
+        DapAn = ui.A_5.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_5.isChecked():
+        # print("222")
+        return
+    elif ui.C_5.isChecked():
+        # print("333")
+        return
+    elif ui.D_5.isChecked():
+        # print("444")
+        return
+
+    # câu 6
+    if ui.A_6.isChecked():
+        DapAn = ui.A_6.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_6.isChecked():
+        # print("222")
+        return
+    elif ui.C_6.isChecked():
+        # print("333")
+        return
+    elif ui.D_6.isChecked():
+        # print("444")
+        return
+
+    # câu 7
+    if ui.A_7.isChecked():
+        DapAn = ui.A_7.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_7.isChecked():
+        # print("222")
+        return
+    elif ui.C_7.isChecked():
+        # print("333")
+        return
+    elif ui.D_7.isChecked():
+        # print("444")
+        return
+
+    # câu 8
+    if ui.A_8.isChecked():
+        DapAn = ui.A_8.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_8.isChecked():
+        # print("222")
+        return
+    elif ui.C_8.isChecked():
+        # print("333")
+        return
+    elif ui.D_8.isChecked():
+        # print("444")
+        return
+
+    # câu 9
+    if ui.A_9.isChecked():
+        DapAn = ui.A_9.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_9.isChecked():
+        # print("222")
+        return
+    elif ui.C_9.isChecked():
+        # print("333")
+        return
+    elif ui.D_9.isChecked():
+        # print("444")
+        return
+
+    # câu 10
+    if ui.A_10.isChecked():
+        DapAn = ui.A_10.text()
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        cur.execute(query)
+        result = cur.fetchall()
+        diem += 1
+        print(diem)
+        # print(result)
+    elif ui.B_10.isChecked():
+        # print("222")
+        return
+    elif ui.C_10.isChecked():
+        # print("333")
+        return
+    elif ui.D_10.isChecked():
+        # print("444")
+        return
+
+    # cur.execute("Update dmsv SET Diem = %s", diem)
+    ui.finish.clicked.connect(ketQuaThi)
+
+
+def ketQuaThi():
+    cur = myDB.cursor()
+    cur.execute("SELECT Diem FROM dmsv")
+    diem = cur.fetchall()
+    print(diem)
+    # if diem[0] == 10:
+    #     print("ban xuat sac duoc: " + diem + " diem")
+    # elif (diem < 10 and diem > 6):
+    #     print("Can co gang them")
+    # else:
+    #     print("Ban can xem lai viec hoc")
 
 
 if __name__ == "__main__":
