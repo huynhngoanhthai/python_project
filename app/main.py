@@ -535,35 +535,42 @@ def SuggestShowAllQueryQuestion():
 
 def showHomeStudent(info):
     global ui
+    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
+    global info1
+    info1 = info
     ui = HomeStudent.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default tab1
     ui.student.setCurrentWidget(ui.studentprofile)
     # info Student Login
-    ui.showmasv.setText(info[0][0])
-    ui.showhosv.setText(info[0][1])
-    ui.showtensv.setText(info[0][2])
-    ui.showphai.setText(info[0][3])
-    ui.showngaysinh.setText(info[0][4])
-    ui.shownoisinh.setText(info[0][5])
-    ui.showtenlop.setText(info[0][6])
-    ui.showpassword.setText(info[0][7])
+    ui.showmasv.setText(info1[0][0])
+    ui.showhosv.setText(info1[0][1])
+    ui.showtensv.setText(info1[0][2])
+    ui.showphai.setText(info1[0][3])
+    ui.showngaysinh.setText(info1[0][4])
+    ui.shownoisinh.setText(info1[0][5])
+    ui.showtenlop.setText(info1[0][6])
+    ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
     ui.buttonvaothi.clicked.connect(showTakeTest)
 
 
 def showTakeTest():
-    global ui
+    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
+    global ui, info1
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
 
+    # CÁC NÚT ĐÁP ÁN CỦA CÁC CÂU HỎI
+    # CÂU 1
     ui.A.toggled.connect(onClicked)
     ui.B.toggled.connect(onClicked)
     ui.C.toggled.connect(onClicked)
     ui.D.toggled.connect(onClicked)
+    # 2
     ui.A_2.toggled.connect(onClicked)
     ui.B_2.toggled.connect(onClicked)
     ui.C_2.toggled.connect(onClicked)
@@ -611,61 +618,43 @@ def showTakeTest():
 
 
 def onClicked():
+    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
+    global diem, info1
     diem = 0
     cur = myDB.cursor()
+
+    # TUI ĐANG CHO VÍ DỤ TẤT CẢ ĐÁP ÁN ĐÚNG LÀ A, NẾU SINH VIÊN CHECK A THÌ ĐƯỢC CỘNG 1 ĐIỂM
     if ui.A.isChecked():
         DapAn = ui.A.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
+        # ÔNG THAO TÁC VỚI DB GIÚP TUI
+        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(
+            DapAn)
         cur.execute(query)
         result = cur.fetchall()
+        diem += 1
         print(diem)
         # print(result)
-    elif ui.B.isChecked():
-        return
-        # print("222")
-    elif ui.C.isChecked():
-        return
-        # print("333")
-    elif ui.D.isChecked():
-        return
-        # print("444")
 
     if ui.A_2.isChecked():
         DapAn = ui.A_2.text()
+        # ÔNG THAO TÁC VỚI DB GIÚP TUI
         query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
         cur.execute(query)
         result = cur.fetchall()
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_2.isChecked():
-        # print("222")
-        return
-    elif ui.C_2.isChecked():
-        # print("333")
-        return
-    elif ui.D_2.isChecked():
-        # print("444")
-        return
 
     # câu 3
     if ui.A_3.isChecked():
         DapAn = ui.A_3.text()
+        # ÔNG THAO TÁC VỚI DB GIÚP TUI
         query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
         cur.execute(query)
         result = cur.fetchall()
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_3.isChecked():
-        # print("222")
-        return
-    elif ui.C_3.isChecked():
-        # print("333")
-        return
-    elif ui.D_3.isChecked():
-        # print("444")
-        return
 
     # câu 4
     if ui.A_4.isChecked():
@@ -676,15 +665,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_4.isChecked():
-        # print("222")
-        return
-    elif ui.C_4.isChecked():
-        # print("333")
-        return
-    elif ui.D_4.isChecked():
-        # print("444")
-        return
 
     # câu 5
     if ui.A_5.isChecked():
@@ -695,15 +675,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_5.isChecked():
-        # print("222")
-        return
-    elif ui.C_5.isChecked():
-        # print("333")
-        return
-    elif ui.D_5.isChecked():
-        # print("444")
-        return
 
     # câu 6
     if ui.A_6.isChecked():
@@ -714,15 +685,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_6.isChecked():
-        # print("222")
-        return
-    elif ui.C_6.isChecked():
-        # print("333")
-        return
-    elif ui.D_6.isChecked():
-        # print("444")
-        return
 
     # câu 7
     if ui.A_7.isChecked():
@@ -733,15 +695,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_7.isChecked():
-        # print("222")
-        return
-    elif ui.C_7.isChecked():
-        # print("333")
-        return
-    elif ui.D_7.isChecked():
-        # print("444")
-        return
 
     # câu 8
     if ui.A_8.isChecked():
@@ -752,15 +705,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_8.isChecked():
-        # print("222")
-        return
-    elif ui.C_8.isChecked():
-        # print("333")
-        return
-    elif ui.D_8.isChecked():
-        # print("444")
-        return
 
     # câu 9
     if ui.A_9.isChecked():
@@ -771,15 +715,6 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_9.isChecked():
-        # print("222")
-        return
-    elif ui.C_9.isChecked():
-        # print("333")
-        return
-    elif ui.D_9.isChecked():
-        # print("444")
-        return
 
     # câu 10
     if ui.A_10.isChecked():
@@ -790,28 +725,24 @@ def onClicked():
         diem += 1
         print(diem)
         # print(result)
-    elif ui.B_10.isChecked():
-        # print("222")
-        return
-    elif ui.C_10.isChecked():
-        # print("333")
-        return
-    elif ui.D_10.isChecked():
-        # print("444")
-        return
 
-    # cur.execute("Update dmsv SET Diem = %s", diem)
     ui.finish.clicked.connect(ketQuaThi)
 
 
 def ketQuaThi():
-    cur = myDB.cursor()
-    cur.execute("SELECT Diem FROM dmsv")
-    diem = cur.fetchall()
+    # ĐÂY LÀ ĐIỂM CỦA SINH VIÊN(info1). ÔNG THAO TÁC VỚI DB GIÚP TUI
+
+    # global diem
+    # cur = myDB.cursor()
+    # info1[0][0] là mã sinh viên vừa mới hoàn thành bài thi
+    # cur.execute('Update dmkq SET Diem = %d where MaSV = %s', diem, info1[0][0])
+    # diem = cur.fetchall()
+
     print(diem)
-    # if diem[0] == 10:
+
+    # if diem == 10:
     #     print("ban xuat sac duoc: " + diem + " diem")
-    # elif (diem < 10 and diem > 6):
+    # elif (diem < 10 and diem > 5):
     #     print("Can co gang them")
     # else:
     #     print("Ban can xem lai viec hoc")

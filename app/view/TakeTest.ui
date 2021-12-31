@@ -218,7 +218,7 @@
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 3</string>
      </attribute>
      <widget class="QRadioButton" name="C_3">
       <property name="geometry">
@@ -313,7 +313,7 @@
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 4</string>
      </attribute>
      <widget class="QLabel" name="question_4">
       <property name="geometry">
@@ -408,7 +408,7 @@
     </widget>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 5</string>
      </attribute>
      <widget class="QLabel" name="question_5">
       <property name="geometry">
@@ -503,7 +503,7 @@
     </widget>
     <widget class="QWidget" name="tab_6">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 6</string>
      </attribute>
      <widget class="QLabel" name="question_6">
       <property name="geometry">
@@ -598,7 +598,7 @@
     </widget>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 7</string>
      </attribute>
      <widget class="QLabel" name="question_7">
       <property name="geometry">
@@ -693,7 +693,7 @@
     </widget>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 8</string>
      </attribute>
      <widget class="QLabel" name="question_8">
       <property name="geometry">
@@ -788,7 +788,7 @@
     </widget>
     <widget class="QWidget" name="tab_9">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 9</string>
      </attribute>
      <widget class="QLabel" name="question_9">
       <property name="geometry">
@@ -883,7 +883,7 @@
     </widget>
     <widget class="QWidget" name="tab_10">
      <attribute name="title">
-      <string>Page</string>
+      <string>Tab 10</string>
      </attribute>
      <widget class="QLabel" name="question_10">
       <property name="geometry">
