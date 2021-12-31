@@ -81,7 +81,12 @@ def showSubjects():
     ui.QButtonAClear.clicked.connect(clearContentsAddSubjects)
     ui.QButtonAAdd.clicked.connect(addSubject)
     # event clicked for button in Update
-    ui.QButtonDClear.clicked.connect()
+    ui.QButtonUClear.clicked.connect(clearContentsUpdateSubjects)
+    ui.QLineUMaMH.returnPressed.connect(suggestUpdateSubjects)
+    ui.QButtonUUpdate.clicked.connect(updateSubject)
+    # event clicked for button in DELETE
+
+# Add subject
 
 
 def clearContentsAddSubjects():
@@ -105,6 +110,63 @@ def addSubject():
         MBox(0, "Successfully", "Successfully", 32)
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
+
+# update
+
+
+def clearContentsUpdateSubjects():
+    ui.QLineUMaMH.clear()
+    ui.QLineUTenMH.clear()
+    ui.QBoxUSoTiet.setValue(0)
+    ui.QLineUMaMH.setEnabled(True)
+
+
+def suggestUpdateSubjects():
+    try:
+        cur = myDB.cursor()
+        MaMH = ui.QLineUMaMH.text().strip()
+        query = "SELECT * FROM dmmh WHERE MaMH LIKE '%{}%';".format(MaMH)
+        cur.execute(query)
+        result = cur.fetchall()
+        if len(result) == 1:
+            ui.QLineUMaMH.setText(result[0][0])
+            ui.QLineUTenMH.setText(result[0][1])
+            ui.QBoxUSoTiet.setValue(result[0][2])
+            ui.QLineUMaMH.setDisabled(True)
+
+        ui.QTableUpdate.clearContents()
+        ui.QTableUpdate.setColumnCount(3)
+        ui.QTableUpdate.setRowCount(10)
+        columns = 0
+        for row in result:
+            ui.QTableUpdate.setItem(columns, 0, QTableWidgetItem(row[0]))
+            ui.QTableUpdate.setItem(columns, 1, QTableWidgetItem(row[1]))
+            ui.QTableUpdate.setItem(columns, 2, QTableWidgetItem(str(row[2])))
+
+            columns += 1
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def updateSubject():
+    try:
+        if ui.QLineUMaMH.isEnabled() == True:
+            return MBox(0, "Error", "You need block ", 16)
+        cur = myDB.cursor()
+        MaMH = ui.QLineUMaMH.text().strip()
+        TenMH = ui.QLineUTenMH.text().strip()
+        SoTiet = ui.QBoxUSoTiet.text()
+        if isCheckedEmpty(MaMH, TenMH, SoTiet) == False:
+            return MBox(0, "Error", "not empty", 16)
+
+        query = "UPDATE dmmh SET TenMH=%s,SoTiet=%s WHERE MaMH=%s"
+        cur.execute(query, (TenMH, SoTiet, MaMH))
+        myDB.commit()
+        MBox(0, "Successfully", "Successfully", 32)
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+# show Student
 
 
 def callBackShowHomeTeacher():
