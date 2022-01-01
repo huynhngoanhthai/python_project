@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1514</width>
+    <width>1438</width>
     <height>643</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
       <x>0</x>
       <y>0</y>
       <width>1341</width>
-      <height>581</height>
+      <height>541</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -51,7 +51,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -111,6 +111,65 @@
         <width>42</width>
         <height>22</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>160</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MaMH</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>190</y>
+        <width>47</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TenMH</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>146</x>
+        <y>240</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SoTiet</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>60</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>THEM MON HOC</string>
       </property>
      </widget>
     </widget>
@@ -306,7 +365,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>MaSV</string>
+       <string>MaMH</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_19">
@@ -319,7 +378,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>HoSV</string>
+       <string>TenMH</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_20">
@@ -332,7 +391,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>TenSV</string>
+       <string>SoTiet</string>
       </property>
      </widget>
      <widget class="QSpinBox" name="QBoxUSoTiet">
@@ -476,14 +535,14 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>646</x>
+        <x>606</x>
         <y>90</y>
-        <width>31</width>
+        <width>71</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>TEN</string>
+       <string>TEN MON HOC</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
@@ -496,7 +555,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>MA SINH VIEN</string>
+       <string>MA MON HOC</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineDMaMH">
@@ -509,7 +568,7 @@
        </rect>
       </property>
       <property name="placeholderText">
-       <string>MA SINH VIEN</string>
+       <string>MA MON HOC</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineDTenMH">
@@ -528,7 +587,7 @@
        <bool>false</bool>
       </property>
       <property name="placeholderText">
-       <string>TEN SINH VIEN</string>
+       <string>TEN MON HOC</string>
       </property>
       <property name="cursorMoveStyle">
        <enum>Qt::LogicalMoveStyle</enum>
@@ -543,188 +602,19 @@
      <zorder>QLineDTenMH</zorder>
      <zorder>QTableDelete</zorder>
     </widget>
-    <widget class="QWidget" name="ShowAll">
-     <attribute name="title">
-      <string>ShowAll</string>
-     </attribute>
-     <widget class="QLabel" name="label_14">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>120</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>MA SINH VIEN</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_15">
-      <property name="geometry">
-       <rect>
-        <x>626</x>
-        <y>120</y>
-        <width>31</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEN</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_16">
-      <property name="geometry">
-       <rect>
-        <x>510</x>
-        <y>80</y>
-        <width>281</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Press Enter for suggest</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="QLineSAMaMH">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>120</y>
-        <width>161</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>MA SINH VIEN</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="QLineSATenMH">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>120</y>
-        <width>151</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="dragEnabled">
-       <bool>false</bool>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-      <property name="placeholderText">
-       <string>TEN SINH VIEN</string>
-      </property>
-      <property name="cursorMoveStyle">
-       <enum>Qt::LogicalMoveStyle</enum>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="QButtonShowAll">
-      <property name="geometry">
-       <rect>
-        <x>820</x>
-        <y>120</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Show</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="QButtonSAClear">
-      <property name="geometry">
-       <rect>
-        <x>910</x>
-        <y>120</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Clear</string>
-      </property>
-     </widget>
-     <widget class="QTableWidget" name="QTableShowAll">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>150</y>
-        <width>351</width>
-        <height>351</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>10</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="autoScrollMargin">
-       <number>16</number>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>101</number>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>24</number>
-      </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>1</number>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>MaMH</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>TenMH</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>SoTiet</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-      </column>
-     </widget>
-    </widget>
+   </widget>
+   <widget class="QPushButton" name="QButtonBack">
+    <property name="geometry">
+     <rect>
+      <x>1250</x>
+      <y>540</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>BACK</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -732,7 +622,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1514</width>
+     <width>1438</width>
      <height>21</height>
     </rect>
    </property>
@@ -750,18 +640,13 @@
   <tabstop>QTableDelete</tabstop>
   <tabstop>QLineDMaMH</tabstop>
   <tabstop>QLineDTenMH</tabstop>
-  <tabstop>QLineSAMaMH</tabstop>
-  <tabstop>QLineSATenMH</tabstop>
   <tabstop>QButtonUUpdate</tabstop>
-  <tabstop>QButtonSAClear</tabstop>
-  <tabstop>QTableShowAll</tabstop>
   <tabstop>QLineAMaMH</tabstop>
   <tabstop>QLineATenMH</tabstop>
   <tabstop>QButtonAAdd</tabstop>
   <tabstop>QButtonAClear</tabstop>
   <tabstop>QBoxASoTiet</tabstop>
   <tabstop>tab</tabstop>
-  <tabstop>QButtonShowAll</tabstop>
  </tabstops>
  <resources/>
  <connections/>

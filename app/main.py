@@ -77,6 +77,7 @@ def showSubjects():
     MainWindow.showMaximized()
     # default
     ui.tab.setCurrentWidget(ui.Add)
+    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
     # event clicked for button in add
     ui.QButtonAClear.clicked.connect(clearContentsAddSubjects)
     ui.QButtonAAdd.clicked.connect(addSubject)
@@ -85,6 +86,11 @@ def showSubjects():
     ui.QLineUMaMH.returnPressed.connect(suggestUpdateSubjects)
     ui.QButtonUUpdate.clicked.connect(updateSubject)
     # event clicked for button in DELETE
+    ui.QButtonDClear.clicked.connect(clearContentsDeleteSubjects)
+    ui.QLineDMaMH.returnPressed.connect(suggestDeleteSubjects)
+    ui.QLineDTenMH.returnPressed.connect(suggestDeleteSubjects)
+    ui.QButtonDDelete.clicked.connect(deleteSubject)
+
 
 # Add subject
 
@@ -108,6 +114,7 @@ def addSubject():
         cur.execute(query, (MaMH, TenMH, SoTiet))
         myDB.commit()
         MBox(0, "Successfully", "Successfully", 32)
+        clearContentsAddSubjects()
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
@@ -162,6 +169,73 @@ def updateSubject():
         query = "UPDATE dmmh SET TenMH=%s,SoTiet=%s WHERE MaMH=%s"
         cur.execute(query, (TenMH, SoTiet, MaMH))
         myDB.commit()
+        clearContentsUpdateSubjects()
+        MBox(0, "Successfully", "Successfully", 32)
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+# Delete
+def clearContentsDeleteSubjects():
+    ui.QLineDMaMH.clear()
+    ui.QLineDTenMH.clear()
+
+    ui.QLineDMaMH.setEnabled(True)
+    ui.QLineDTenMH.setEnabled(True)
+    ui.QTableDelete.clearContents()
+
+
+def suggestDeleteSubjects():
+    try:
+        query = ""
+        cur = myDB.cursor()
+        MaMH = ui.QLineDMaMH.text().strip()
+        TenMH = ui.QLineDTenMH.text().strip()
+        if MaMH == "":
+            query = "SELECT * FROM dmmh WHERE  TenMH LIKE '%{}%';".format(
+                TenMH)
+        elif TenMH == '':
+            query = "SELECT * FROM dmmh WHERE MaMH LIKE '%{}%';".format(MaMH)
+        else:
+            query = "SELECT * FROM dmmh WHERE  TenMH LIKE '%{}%' AND MaMH LIKE '%{}%';".format(
+                TenMH, MaMH)
+
+        cur.execute(query)
+        result = cur.fetchall()
+        if len(result) == 1:
+            ui.QLineDMaMH.setText(result[0][0])
+            ui.QLineDTenMH.setText(result[0][1])
+            ui.QLineDMaMH.setDisabled(True)
+            ui.QLineDTenMH.setDisabled(True)
+        ui.QTableDelete.clearContents()
+        ui.QTableDelete.setColumnCount(3)
+        ui.QTableDelete.setRowCount(10)
+        columns = 0
+        for row in result:
+            ui.QTableDelete.setItem(columns, 0, QTableWidgetItem(row[0]))
+            ui.QTableDelete.setItem(columns, 1, QTableWidgetItem(row[1]))
+            ui.QTableDelete.setItem(columns, 2, QTableWidgetItem(str(row[2])))
+            columns += 1
+
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
+def deleteSubject():
+    try:
+        if ui.QLineDMaMH.isEnabled() or ui.QLineDTenMH.isEnabled():
+            return MBox(0, "Error", "you need block", 16)
+        cur = myDB.cursor()
+        MaMH = ui.QLineDMaMH.text().strip()
+        TenMH = ui.QLineDTenMH.text().strip()
+
+        query = "DELETE FROM dmmh WHERE MaMH = %s AND TenMH = %s"
+        cur.execute(query, (MaMH, TenMH))
+        myDB.commit()
+        clearContentsDeleteSubjects()
         MBox(0, "Successfully", "Successfully", 32)
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
