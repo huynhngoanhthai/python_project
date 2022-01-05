@@ -866,17 +866,44 @@ def showHomeStudent(info):
     ui.showtenlop.setText(info1[0][6])
     ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
-    ui.buttonvaothi.clicked.connect(showTakeTest)
+
+    ui.buttonvaothi.clicked.connect(adc)
 
 
-def showTakeTest():
+def adc():
+    MaMH = ui.inputmamh.text()
+    showTakeTest(MaMH)
+
+
+def showTakeTest(MaMH):
     # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
-    global ui, info1
+    global ui
+    # MaMH = ui.MaMH
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
+    cur = myDB.cursor()
+    query = "SELECT * FROM dmch WHERE MaMH = %s "
+    cur.execute(query, (MaMH,))
+    result = cur.fetchall()
+    ui.DSDapAnDB = []
+    for item in result:
+        ui.DSDapAnDB.append(item[6])
 
+    # cau hoi
+    ui.question.setText(result[0][1])
+    ui.question_2.setText(result[1][1])
+    ui.question_3.setText(result[2][1])
+    # ui.question_4.setText(result[3][1])
+    # ui.question_5.setText(result[4][1])
+    # ui.question_6.setText(result[5][1])
+    # ui.question_7.setText(result[6][1])
+    # ui.question_8.setText(result[7][1])
+    # ui.question_9.setText(result[8][1])
+    # ui.question_10.setText(result[9][1])
+    # cau tra loi
+    ui.A.setText(result[0][2])
     # CÁC NÚT ĐÁP ÁN CỦA CÁC CÂU HỎI
     # CÂU 1
     ui.A.toggled.connect(onClicked)
@@ -928,43 +955,31 @@ def showTakeTest():
     ui.B_10.toggled.connect(onClicked)
     ui.C_10.toggled.connect(onClicked)
     ui.D_10.toggled.connect(onClicked)
+    ui.finish.clicked.connect(ketQuaThi)
 
 
 def onClicked():
     # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
-    global diem, info1
+    global diem
     diem = 0
-    cur = myDB.cursor()
 
     # TUI ĐANG CHO VÍ DỤ TẤT CẢ ĐÁP ÁN ĐÚNG LÀ A, NẾU SINH VIÊN CHECK A THÌ ĐƯỢC CỘNG 1 ĐIỂM
     if ui.A.isChecked():
         DapAn = ui.A.text()
+        # [dp1,dp2,...]
         # ÔNG THAO TÁC VỚI DB GIÚP TUI
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(
-            DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
         diem += 1
         print(diem)
         # print(result)
 
     if ui.A_2.isChecked():
         DapAn = ui.A_2.text()
-        # ÔNG THAO TÁC VỚI DB GIÚP TUI
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
-        diem += 1
         print(diem)
         # print(result)
 
     # câu 3
     if ui.A_3.isChecked():
         DapAn = ui.A_3.text()
-        # ÔNG THAO TÁC VỚI DB GIÚP TUI
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
         diem += 1
         print(diem)
         # print(result)
@@ -972,9 +987,6 @@ def onClicked():
     # câu 4
     if ui.A_4.isChecked():
         DapAn = ui.A_4.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
         diem += 1
         print(diem)
         # print(result)
@@ -982,9 +994,7 @@ def onClicked():
     # câu 5
     if ui.A_5.isChecked():
         DapAn = ui.A_5.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
@@ -992,9 +1002,7 @@ def onClicked():
     # câu 6
     if ui.A_6.isChecked():
         DapAn = ui.A_6.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
@@ -1002,9 +1010,7 @@ def onClicked():
     # câu 7
     if ui.A_7.isChecked():
         DapAn = ui.A_7.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
@@ -1012,9 +1018,7 @@ def onClicked():
     # câu 8
     if ui.A_8.isChecked():
         DapAn = ui.A_8.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
@@ -1022,9 +1026,7 @@ def onClicked():
     # câu 9
     if ui.A_9.isChecked():
         DapAn = ui.A_9.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
@@ -1032,17 +1034,14 @@ def onClicked():
     # câu 10
     if ui.A_10.isChecked():
         DapAn = ui.A_10.text()
-        query = "SELECT * FROM dmch WHERE DapAn LIKE '%{}%';".format(DapAn)
-        cur.execute(query)
-        result = cur.fetchall()
+
         diem += 1
         print(diem)
         # print(result)
 
-    ui.finish.clicked.connect(ketQuaThi)
-
 
 def ketQuaThi():
+    print(ui.DSDapAnDB)
     # ĐÂY LÀ ĐIỂM CỦA SINH VIÊN(info1). ÔNG THAO TÁC VỚI DB GIÚP TUI
 
     # global diem
@@ -1050,8 +1049,6 @@ def ketQuaThi():
     # info1[0][0] là mã sinh viên vừa mới hoàn thành bài thi
     # cur.execute('Update dmkq SET Diem = %d where MaSV = %s', diem, info1[0][0])
     # diem = cur.fetchall()
-
-    print(diem)
 
     # if diem == 10:
     #     print("ban xuat sac duoc: " + diem + " diem")
