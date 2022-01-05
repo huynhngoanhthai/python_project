@@ -878,7 +878,7 @@ def adc():
 def showTakeTest(MaMH):
     # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
     global ui
-    # MaMH = ui.MaMH
+    print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
@@ -902,8 +902,19 @@ def showTakeTest(MaMH):
     # ui.question_8.setText(result[7][1])
     # ui.question_9.setText(result[8][1])
     # ui.question_10.setText(result[9][1])
+
     # cau tra loi
     ui.A.setText(result[0][2])
+    ui.A_2.setText(result[1][2])
+    ui.A_3.setText(result[2][2])
+    # ui.A_4.setText(result[3][2])
+    # ui.A_5.setText(result[4][2])
+    # ui.A_6.setText(result[5][2])
+    # ui.A_7.setText(result[6][2])
+    # ui.A_8.setText(result[7][2])
+    # ui.A_9.setText(result[8][2])
+    # ui.A_10.setText(result[9][2])
+
     # CÁC NÚT ĐÁP ÁN CỦA CÁC CÂU HỎI
     # CÂU 1
     ui.A.toggled.connect(onClicked)
@@ -974,6 +985,7 @@ def onClicked():
 
     if ui.A_2.isChecked():
         DapAn = ui.A_2.text()
+        diem += 1
         print(diem)
         # print(result)
 
