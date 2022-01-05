@@ -1065,11 +1065,11 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    # mainUi()
+    mainUi()
     # showHomeTeacher(123)
     # showStudent()
     # showSubjects()
-    showTakeTest()
+    # showTakeTest()
     # showHomeStudent()
     # showHomeQuestion()
     sys.exit(app.exec())
