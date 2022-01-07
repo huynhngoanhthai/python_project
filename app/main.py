@@ -1,6 +1,7 @@
 from messageBox import MBox
 from database import myDB
 import sys
+from werkzeug.security import generate_password_hash, check_password_hash
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QRadioButton, QTableWidgetItem
 from PyQt5 import QtWidgets
@@ -15,7 +16,7 @@ import view.Student as Student
 import view.Subjects as Subjects
 
 
-def mainUi():
+def showLogin():
     global ui
     ui = Login.Ui_MainWindow()
     ui.setupUi(MainWindow)
@@ -40,11 +41,12 @@ def loginUser():
                 return MBox(0, 'ERROR', "uname or password wrong", 16)
             return showHomeTeacher(result)
 
-        cur.execute("SELECT * FROM dmsv WHERE MaSV=%s AND Password=%s",
-                    (getUname, getPassword))
+        cur.execute("SELECT * FROM dmsv WHERE MaSV=%s", (getUname,))
         result = cur.fetchall()
-        if(result == []):
-            MBox(0, 'ERROR', "uname or password wrong", 16)
+        if not result:
+            return MBox(0, 'ERROR', "uname or password wrong", 16)
+        if not check_password_hash(result[0][1], getPassword):
+            return MBox(0, 'ERROR', "uname or password wrong", 16)
         else:
             showHomeStudent(result)
     except sql.Error as e:
@@ -62,12 +64,13 @@ def showHomeTeacher(info):
     global ui
     ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.showMaximized()
+    MainWindow.show()
     # default name for GV
     ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
     ui.QButtonSV.clicked.connect(showStudent)
     ui.QButtonMH.clicked.connect(showSubjects)
+    ui.QButtonLogout.clicked.connect(showLogin)
 
 
 def showSubjects():
@@ -277,6 +280,8 @@ def showStudent():
     ui.QLineSAMaSV.returnPressed.connect(suggestDeleteStudent)
     ui.QLineSATenSV.returnPressed.connect(suggestDeleteStudent)
 
+# add student
+
 
 def clearContentsAddStudent():
     ui.QLineAMaSV.clear()
@@ -285,6 +290,7 @@ def clearContentsAddStudent():
     ui.QLineATenSV.clear()
     ui.QLineADC.clear()
     ui.QLineALop.clear()
+    ui.QLineAEmail.clear()
 
 
 def addStudent():
@@ -307,15 +313,18 @@ def addStudent():
         NoiSinh = ui.QLineADC.text()
 
         Lop = ui.QLineALop.text()
+        Email = ui.QLineAEmail.text().strip()
 
-        checked = isCheckedEmpty(MaSV, HoSV, TenSV, NgaySinh, NoiSinh, Lop)
+        checked = isCheckedEmpty(
+            MaSV, HoSV, TenSV, NgaySinh, NoiSinh, Lop, Email)
         if not checked:
             return MBox(0, "Error", "not empty", 16)
+        password = generate_password_hash(MaSV)
 
         cur = myDB.cursor()
         cur.execute(
-            "INSERT INTO dmsv (MaSV,Password,HoSV,TenSV,Phai,NgaySinh,NoiSinh,TenLop) VALUES (%s,%s, %s,%s,%s, %s,%s,%s) ",
-            (MaSV, MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, Lop))
+            "INSERT INTO dmsv (MaSV,Password,HoSV,TenSV,Phai,NgaySinh,NoiSinh,TenLop,Email) VALUES (%s,%s, %s,%s,%s, %s,%s,%s,%s) ",
+            (MaSV, password, HoSV, TenSV, Phai, NgaySinh, NoiSinh, Lop, Email))
         myDB.commit()
         MBox(0, "Successfully", "Successfully", 32)
         clearContentsAddStudent()
@@ -332,6 +341,7 @@ def clearContentsUpdateStudent():
     ui.QDateUNgaySinh.setDate(date_changed("04/11/2001"))
     ui.QLineUNoiSinh.clear()
     ui.QLineULop.clear()
+    ui.QLineUEmail.clear()
 
     ui.QLineUMaSV.setDisabled(False)
     ui.QTableUpdate.clearContents()
@@ -362,11 +372,20 @@ def suggestUpdateStudent():
             ui.QDateUNgaySinh.setDate(date_changed(result[0][5]))
             ui.QLineUNoiSinh.setText(result[0][6])
             ui.QLineULop.setText(result[0][7])
+            ui.QLineUEmail.setText(result[0][8])
             ui.QLineUMaSV.setDisabled(True)
 
         ui.QTableUpdate.clearContents()
-        ui.QTableUpdate.setColumnCount(7)
+        ui.QTableUpdate.setColumnCount(8)
         ui.QTableUpdate.setRowCount(10)
+        ui.QTableUpdate.setColumnWidth(0, 100)
+        ui.QTableUpdate.setColumnWidth(1, 500)
+        ui.QTableUpdate.setColumnWidth(2, 100)
+        ui.QTableUpdate.setColumnWidth(3, 50)
+        ui.QTableUpdate.setColumnWidth(4, 400)
+        ui.QTableUpdate.setColumnWidth(5, 600)
+        ui.QTableUpdate.setColumnWidth(6, 100)
+        ui.QTableUpdate.setColumnWidth(7, 500)
         columns = 0
         for row in result:
             ui.QTableUpdate.setItem(columns, 0, QTableWidgetItem(row[0]))
@@ -376,6 +395,7 @@ def suggestUpdateStudent():
             ui.QTableUpdate.setItem(columns, 4, QTableWidgetItem(row[5]))
             ui.QTableUpdate.setItem(columns, 5, QTableWidgetItem(row[6]))
             ui.QTableUpdate.setItem(columns, 6, QTableWidgetItem(row[7]))
+            ui.QTableUpdate.setItem(columns, 7, QTableWidgetItem(row[8]))
             columns += 1
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
@@ -399,15 +419,16 @@ def updateStudent():
         NgaySinh = ui.QDateUNgaySinh.text().strip()
         NoiSinh = ui.QLineUNoiSinh.text().strip()
         TenLop = ui.QLineULop.text().strip()
+        Email = ui.QLineUEmail.text().strip()
         checked = isCheckedEmpty(
-            MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, TenLop)
+            MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, TenLop, Email)
         if not checked:
             return MBox(0, "Error", "not empty", 16)
 
-        query = "UPDATE dmsv SET HoSV=%s,TenSV=%s,Phai=%s,NgaySinh=%s,NoiSinh=%s,TenLop=%s WHERE MaSV=%s"
+        query = "UPDATE dmsv SET HoSV=%s,TenSV=%s,Phai=%s,NgaySinh=%s,NoiSinh=%s,TenLop=%s,Email=%s WHERE MaSV=%s"
 
         cur.execute(query, (HoSV, TenSV, Phai,
-                    NgaySinh, NoiSinh, TenLop, MaSV))
+                    NgaySinh, NoiSinh, TenLop, Email, MaSV))
         myDB.commit()
         clearContentsUpdateStudent()
         MBox(0, "Successfully", "Successfully", 32)
@@ -543,11 +564,14 @@ def showHomeQuestion():
     MainWindow.showMaximized()
     # default here add
     ui.tab.setCurrentWidget(ui.Add)
-    ui.ButtonLogout.clicked.connect(mainUi)
+    ui.ButtonBacked.clicked.connect(callBackShowHomeTeacher)
     # default ID is
-    cur = myDB.cursor()
-    cur.execute("SELECT max(MaCH) FROM dmch")
-    result = cur.fetchall()[0][0]+1
+    try:
+        cur = myDB.cursor()
+        cur.execute("SELECT max(MaCH) FROM dmch")
+        result = cur.fetchall()[0][0]+1
+    except:
+        result = 1
     ui.IDAddQuestion.setText(str(result))
     # event clicked for button in add
     ui.QLineAMaMH.returnPressed.connect(addQuestion)
@@ -571,6 +595,17 @@ def showHomeQuestion():
 # Add
 
 
+def answerFilter(option):
+    if option == 'A':
+        return ui.QLineAOPA.text().strip()
+    if option == 'B':
+        return ui.QLineAOPB.text().strip()
+    elif option == 'C':
+        return ui.QLineAOPC.text().strip()
+    else:
+        return ui.QLineAOPD.text().strip()
+
+
 def addQuestion():
     try:
         cur = myDB.cursor()
@@ -585,7 +620,9 @@ def addQuestion():
 
         OPD = ui.QLineAOPD.text().strip()
 
-        Answer = ui.QLineAAnswer.text().strip()
+        tempAnswer = ui.QComboBoxAAnswer.currentText()
+
+        Answer = answerFilter(tempAnswer)
 
         MaMH = ui.QLineAMaMH.text().strip()
 
@@ -867,11 +904,14 @@ def showHomeStudent(info):
     ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
 
-    ui.buttonvaothi.clicked.connect(adc)
+    ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
 
 
-def adc():
+def callBackShowTakeTest():
+
     MaMH = ui.inputmamh.text()
+    if not isCheckedEmpty(MaMH):
+        return MBox(0, "Error", "Not empty", 32)
     showTakeTest(MaMH)
 
 
@@ -1062,7 +1102,7 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    mainUi()
+    showLogin()
     # showHomeTeacher(123)
     # showStudent()
     # showSubjects()

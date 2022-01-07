@@ -20,7 +20,6 @@ class Ui_MainWindow(object):
         MainWindow.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
         MainWindow.setInputMethodHints(QtCore.Qt.ImhEmailCharactersOnly)
         MainWindow.setDockNestingEnabled(False)
-
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -48,19 +47,23 @@ class Ui_MainWindow(object):
         self.QButtonCH = QtWidgets.QPushButton(self.centralwidget)
         self.QButtonCH.setGeometry(QtCore.QRect(260, 250, 211, 23))
         self.QButtonCH.setObjectName("QButtonCH")
+        self.QButtonLogout = QtWidgets.QPushButton(self.centralwidget)
+        self.QButtonLogout.setGeometry(QtCore.QRect(260, 280, 211, 23))
+        self.QButtonLogout.setObjectName("QButtonLogout")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-
         self.label.setText(_translate("MainWindow", "welcom "))
         self.NAMEGV.setText(_translate("MainWindow", "GIAO VIEN"))
         self.QButtonSV.setText(_translate("MainWindow", "Thêm SV"))
         self.QButtonMH.setText(_translate("MainWindow", "Thêm môn học"))
         self.QButtonCH.setText(_translate("MainWindow", "thêm câu hỏi"))
+        self.QButtonLogout.setText(_translate("MainWindow", "LOGOUT"))

@@ -20,6 +20,10 @@ class Ui_MainWindow(object):
         self.Answer = QtWidgets.QComboBox(self.centralwidget)
         self.Answer.setGeometry(QtCore.QRect(230, 220, 69, 22))
         self.Answer.setObjectName("Answer")
+        self.Answer.addItem("")
+        self.Answer.addItem("")
+        self.Answer.addItem("")
+        self.Answer.addItem("")
         self.Question = QtWidgets.QLabel(self.centralwidget)
         self.Question.setGeometry(QtCore.QRect(240, 140, 47, 13))
         self.Question.setObjectName("Question")
@@ -41,5 +45,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.Answer.setItemText(0, _translate("MainWindow", "a"))
+        self.Answer.setItemText(1, _translate("MainWindow", "b"))
+        self.Answer.setItemText(2, _translate("MainWindow", "c"))
+        self.Answer.setItemText(3, _translate("MainWindow", "d"))
         self.Question.setText(_translate("MainWindow", "TextLabel"))
         self.NEXT.setText(_translate("MainWindow", "NEXT"))
