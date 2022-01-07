@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="2" column="1">
-     <widget class="QPushButton" name="ButtonLogout">
+     <widget class="QPushButton" name="ButtonBacked">
       <property name="font">
        <font>
         <pointsize>16</pointsize>
@@ -25,7 +25,7 @@
        </font>
       </property>
       <property name="text">
-       <string>LOGOUT</string>
+       <string>BACK</string>
       </property>
      </widget>
     </item>
@@ -51,7 +51,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Add">
        <attribute name="title">
@@ -153,19 +153,6 @@
         </property>
         <property name="placeholderText">
          <string>CAU D</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="QLineAAnswer">
-        <property name="geometry">
-         <rect>
-          <x>420</x>
-          <y>270</y>
-          <width>501</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>DAP AN</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="QLineAMaMH">
@@ -297,6 +284,49 @@
         <property name="text">
          <string>Add</string>
         </property>
+       </widget>
+       <widget class="QComboBox" name="QComboBoxAAnswer">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>270</y>
+          <width>69</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>A</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>B</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>C</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>D</string>
+         </property>
+        </item>
        </widget>
       </widget>
       <widget class="QWidget" name="Update">
@@ -1155,6 +1185,42 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>QLineAQuestion</tabstop>
+  <tabstop>QLineAOPA</tabstop>
+  <tabstop>QLineAOPB</tabstop>
+  <tabstop>QLineAOPC</tabstop>
+  <tabstop>QLineUOPA</tabstop>
+  <tabstop>QLineAOPD</tabstop>
+  <tabstop>QComboBoxAAnswer</tabstop>
+  <tabstop>QLineDCauHoi</tabstop>
+  <tabstop>QLineAMaMH</tabstop>
+  <tabstop>ClearQuestion</tabstop>
+  <tabstop>AddQuestion</tabstop>
+  <tabstop>UpdateQuestion</tabstop>
+  <tabstop>QTableUpdate</tabstop>
+  <tabstop>QLineUIDCauHoi</tabstop>
+  <tabstop>tab</tabstop>
+  <tabstop>QLineUOPB</tabstop>
+  <tabstop>QLineUOPC</tabstop>
+  <tabstop>QLineUOPD</tabstop>
+  <tabstop>QLineUAnswer</tabstop>
+  <tabstop>QLineUMaMH</tabstop>
+  <tabstop>ClearDelete</tabstop>
+  <tabstop>DeleteQuestion</tabstop>
+  <tabstop>QTableDelete</tabstop>
+  <tabstop>QLineDIDCauHoi</tabstop>
+  <tabstop>QLineSAMaSV</tabstop>
+  <tabstop>QTableShowAll</tabstop>
+  <tabstop>QLineSATenSV</tabstop>
+  <tabstop>QLineSADiem</tabstop>
+  <tabstop>QLineSAMaMH</tabstop>
+  <tabstop>ButtonSASearch</tabstop>
+  <tabstop>ButtonSAClear</tabstop>
+  <tabstop>ButtonBacked</tabstop>
+  <tabstop>QLineUQuestion</tabstop>
+  <tabstop>ClearUpdate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

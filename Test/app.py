@@ -20,44 +20,13 @@ def showQuiz():
     ui = quiz.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-    ui.count = 0
     # database
-    MaMH = "a"
-    cur = myDB.cursor()
-    query = "SELECT * FROM dmch WHERE MaMH = %s "
-    cur.execute(query, (MaMH,))
-    ui.result = cur.fetchall()
 
-    ui.Question.setText(ui.result[ui.count][1])
-    for i in range(2, 6):
-        ui.Answer.addItem(ui.result[ui.count][i])
-    ui.count += 1
-    ui.NEXT.clicked.connect(clickNext)
+    ui.NEXT.clicked.connect(adc)
 
 
-def clickNext():
-    try:
-
-        ui.Question.setText(ui.result[ui.count][1])
-        ui.Answer.clear()
-        for i in range(2, 6):
-            ui.Answer.addItem(ui.result[ui.count][i])
-        ui.count += 1
-        ui.NEXT.clicked.connect(clickNext)
-    except:
-        ui.NEXT.setText("Finished!!")
-        ui.NEXT.clicked.connect(showsee2)
-
-
-def finishProgram():
-    return MBox(0, "Error", "123", 32)
-
-
-def showsee2():
-    global ui
-    ui = see2.Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+def adc():
+    print(ui.Answer.currentText())
 
 
 if __name__ == "__main__":
