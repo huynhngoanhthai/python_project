@@ -80,7 +80,7 @@ def showSubjects():
     MainWindow.showMaximized()
     # default
     ui.tab.setCurrentWidget(ui.Add)
-    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
+    ui.QButtonBack.clicked.connect(showHomeTeacherHandler)
     # event clicked for button in add
     ui.QButtonAClear.clicked.connect(clearContentsAddSubjects)
     ui.QButtonAAdd.clicked.connect(addSubject)
@@ -246,7 +246,7 @@ def deleteSubject():
 # show Student
 
 
-def callBackShowHomeTeacher():
+def showHomeTeacherHandler():
     return showHomeTeacher([('', '', '', 'GIAO VIEN')])
 
 
@@ -256,7 +256,7 @@ def showStudent():
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default
-    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
+    ui.QButtonBack.clicked.connect(showHomeTeacherHandler)
 
     # event clicked for button in add
     ui.tab.setCurrentWidget(ui.Add)
@@ -378,14 +378,6 @@ def suggestUpdateStudent():
         ui.QTableUpdate.clearContents()
         ui.QTableUpdate.setColumnCount(8)
         ui.QTableUpdate.setRowCount(10)
-        ui.QTableUpdate.setColumnWidth(0, 100)
-        ui.QTableUpdate.setColumnWidth(1, 500)
-        ui.QTableUpdate.setColumnWidth(2, 100)
-        ui.QTableUpdate.setColumnWidth(3, 50)
-        ui.QTableUpdate.setColumnWidth(4, 400)
-        ui.QTableUpdate.setColumnWidth(5, 600)
-        ui.QTableUpdate.setColumnWidth(6, 100)
-        ui.QTableUpdate.setColumnWidth(7, 500)
         columns = 0
         for row in result:
             ui.QTableUpdate.setItem(columns, 0, QTableWidgetItem(row[0]))
@@ -490,7 +482,7 @@ def suggestDeleteStudent():
 
 def deleteStudent():
     try:
-        if ui.QLineDMaSV.isEnabled() == True and ui.QLineDMaSV.isEnabled() == True:
+        if ui.QLineDMaSV.isEnabled() and ui.QLineDMaSV.isEnabled():
             return MBox(0, "Error", "You need block ", 16)
         cur = myDB.cursor()
         MaSV = ui.QLineDMaSV.text().strip()
@@ -564,7 +556,7 @@ def showHomeQuestion():
     MainWindow.showMaximized()
     # default here add
     ui.tab.setCurrentWidget(ui.Add)
-    ui.ButtonBacked.clicked.connect(callBackShowHomeTeacher)
+    ui.ButtonBacked.clicked.connect(showHomeTeacherHandler)
     # default ID is
     try:
         cur = myDB.cursor()
@@ -600,7 +592,7 @@ def answerFilter(option):
         return ui.QLineAOPA.text().strip()
     if option == 'B':
         return ui.QLineAOPB.text().strip()
-    elif option == 'C':
+    if option == 'C':
         return ui.QLineAOPC.text().strip()
     else:
         return ui.QLineAOPD.text().strip()
@@ -904,10 +896,10 @@ def showHomeStudent(info):
     ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
 
-    ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
+    ui.buttonvaothi.clicked.connect(showTakeTestHandler)
 
 
-def callBackShowTakeTest():
+def showTakeTestHandler():
 
     MaMH = ui.inputmamh.text()
     if not isCheckedEmpty(MaMH):

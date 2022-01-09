@@ -32,17 +32,19 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
     <property name="baseSize">
      <size>
       <width>1000</width>
       <height>1000</height>
      </size>
+    </property>
+    <property name="font">
+     <font>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
     </property>
     <property name="tabPosition">
      <enum>QTabWidget::North</enum>
@@ -51,7 +53,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -391,8 +393,14 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>10</width>
+        <width>731</width>
         <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>731</width>
+        <height>16777215</height>
        </size>
       </property>
       <property name="font">
@@ -429,6 +437,9 @@
       <property name="gridStyle">
        <enum>Qt::CustomDashLine</enum>
       </property>
+      <property name="rowCount">
+       <number>1</number>
+      </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>85</number>
       </attribute>
@@ -438,6 +449,7 @@
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>1</number>
       </attribute>
+      <row/>
       <column>
        <property name="text">
         <string>MaSV</string>
