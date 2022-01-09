@@ -895,12 +895,11 @@ def showHomeStudent(info):
     ui.showtenlop.setText(info1[0][6])
     ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
+    ui.inputmamh.returnPressed.connect(callBackShowTakeTest)
+    ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
 
-    ui.buttonvaothi.clicked.connect(showTakeTestHandler)
 
-
-def showTakeTestHandler():
-
+def callBackShowTakeTest():
     MaMH = ui.inputmamh.text()
     if not isCheckedEmpty(MaMH):
         return MBox(0, "Error", "Not empty", 32)
@@ -908,9 +907,8 @@ def showTakeTestHandler():
 
 
 def showTakeTest(MaMH):
-    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
     global ui
-    # MaMH = ui.MaMH
+    print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
@@ -923,6 +921,18 @@ def showTakeTest(MaMH):
     for item in result:
         ui.DSDapAnDB.append(item[6])
 
+    # ID_cau hoi
+    ui.id_question.setText(result[0][0])
+    ui.id_question2.setText(result[1][0])
+    ui.id_question3.setText(result[2][0])
+    # ui.id_question4.setText(result[3][0])
+    # ui.id_question5.setText(result[4][0])
+    # ui.id_question6.setText(result[5][0])
+    # ui.id_question7.setText(result[6][0])
+    # ui.id_question8.setText(result[7][0])
+    # ui.id_question9.setText(result[8][0])
+    # ui.id_question10.setText(result[9][0])
+
     # cau hoi
     ui.question.setText(result[0][1])
     ui.question_2.setText(result[1][1])
@@ -934,8 +944,62 @@ def showTakeTest(MaMH):
     # ui.question_8.setText(result[7][1])
     # ui.question_9.setText(result[8][1])
     # ui.question_10.setText(result[9][1])
+
     # cau tra loi
-    ui.A.setText(result[0][2])
+    A = "A. "
+    B = "B. "
+    C = "C. "
+    D = "D. "
+    ui.A.setText(A + result[0][2])
+    ui.B.setText(B + result[0][3])
+    ui.C.setText(C + result[0][4])
+    ui.D.setText(D + result[0][5])
+    # 2
+    ui.A_2.setText(A + result[1][2])
+    ui.B_2.setText(B + result[1][3])
+    ui.C_2.setText(C + result[1][4])
+    ui.D_2.setText(D + result[1][5])
+
+    ui.A_3.setText(A + result[2][2])
+    ui.B_3.setText(B + result[2][3])
+    ui.C_3.setText(C + result[2][4])
+    ui.D_3.setText(D + result[2][5])
+
+    # ui.A_4.setText(result[3][2])
+    # ui.B_4.setText(result[3][3])
+    # ui.C_4.setText(result[3][4])
+    # ui.D_4.setText(result[3][5])
+
+    # ui.A_5.setText(result[4][2])
+    # ui.B_5.setText(result[4][3])
+    # ui.C_5.setText(result[4][4])
+    # ui.D_5.setText(result[4][5])
+
+    # ui.A_6.setText(result[5][2])
+    # ui.B_6.setText(result[5][3])
+    # ui.C_6.setText(result[5][4])
+    # ui.D_6.setText(result[5][5])
+
+    # ui.A_7.setText(result[6][2])
+    # ui.B_7.setText(result[6][3])
+    # ui.C_7.setText(result[6][4])
+    # ui.D_7.setText(result[6][5])
+
+    # ui.A_8.setText(result[7][2])
+    # ui.B_8.setText(result[7][3])
+    # ui.C_8.setText(result[7][4])
+    # ui.D_8.setText(result[7][5])
+
+    # ui.A_9.setText(result[8][2])
+    # ui.B_9.setText(result[8][3])
+    # ui.C_9.setText(result[8][4])
+    # ui.D_9.setText(result[8][5])
+
+    # ui.A_10.setText(result[9][2])
+    # ui.B_10.setText(result[9][3])
+    # ui.C_10.setText(result[9][4])
+    # ui.D_10.setText(result[9][5])
+
     # CÁC NÚT ĐÁP ÁN CỦA CÁC CÂU HỎI
     # CÂU 1
     ui.A.toggled.connect(onClicked)
@@ -991,103 +1055,118 @@ def showTakeTest(MaMH):
 
 
 def onClicked():
-    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
-    global diem
-    diem = 0
+    ui.DSDapAnSV = []
 
-    # TUI ĐANG CHO VÍ DỤ TẤT CẢ ĐÁP ÁN ĐÚNG LÀ A, NẾU SINH VIÊN CHECK A THÌ ĐƯỢC CỘNG 1 ĐIỂM
     if ui.A.isChecked():
-        DapAn = ui.A.text()
-        # [dp1,dp2,...]
-        # ÔNG THAO TÁC VỚI DB GIÚP TUI
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A.text()[3::])
+    elif ui.B.isChecked():
+        ui.DSDapAnSV.append(ui.B.text()[3::])
+    elif ui.C.isChecked():
+        ui.DSDapAnSV.append(ui.C.text()[3::])
+    elif ui.D.isChecked():
+        ui.DSDapAnSV.append(ui.D.text()[3::])
 
     if ui.A_2.isChecked():
-        DapAn = ui.A_2.text()
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_2.text()[3::])
+    elif ui.B_2.isChecked():
+        ui.DSDapAnSV.append(ui.B_2.text()[3::])
+    elif ui.C_2.isChecked():
+        ui.DSDapAnSV.append(ui.C_2.text()[3::])
+    elif ui.D_2.isChecked():
+        ui.DSDapAnSV.append(ui.D_2.text()[3::])
 
     # câu 3
     if ui.A_3.isChecked():
-        DapAn = ui.A_3.text()
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_3.text()[3::])
+    elif ui.B_3.isChecked():
+        ui.DSDapAnSV.append(ui.B_3.text()[3::])
+    elif ui.C_3.isChecked():
+        ui.DSDapAnSV.append(ui.C_3.text()[3::])
+    elif ui.D_3.isChecked():
+        ui.DSDapAnSV.append(ui.D_3.text()[3::])
 
     # câu 4
     if ui.A_4.isChecked():
-        DapAn = ui.A_4.text()
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_4.text()[3::])
+    elif ui.B_4.isChecked():
+        ui.DSDapAnSV.append(ui.B_4.text()[3::])
+    elif ui.C_4.isChecked():
+        ui.DSDapAnSV.append(ui.C_4.text()[3::])
+    elif ui.D_4.isChecked():
+        ui.DSDapAnSV.append(ui.D_4.text()[3::])
 
     # câu 5
     if ui.A_5.isChecked():
-        DapAn = ui.A_5.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_5.text()[3::])
+    elif ui.B_5.isChecked():
+        ui.DSDapAnSV.append(ui.B_5.text()[3::])
+    elif ui.C_5.isChecked():
+        ui.DSDapAnSV.append(ui.C_5.text()[3::])
+    elif ui.D_5.isChecked():
+        ui.DSDapAnSV.append(ui.D_5.text()[3::])
 
     # câu 6
     if ui.A_6.isChecked():
-        DapAn = ui.A_6.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_6.text()[3::])
+    elif ui.B_6.isChecked():
+        ui.DSDapAnSV.append(ui.B_6.text()[3::])
+    elif ui.C_6.isChecked():
+        ui.DSDapAnSV.append(ui.C_6.text()[3::])
+    elif ui.D_6.isChecked():
+        ui.DSDapAnSV.append(ui.D_6.text()[3::])
 
     # câu 7
     if ui.A_7.isChecked():
-        DapAn = ui.A_7.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_7.text()[3::])
+    elif ui.B_7.isChecked():
+        ui.DSDapAnSV.append(ui.B_7.text()[3::])
+    elif ui.C_7.isChecked():
+        ui.DSDapAnSV.append(ui.C_7.text()[3::])
+    elif ui.D_7.isChecked():
+        ui.DSDapAnSV.append(ui.D_7.text()[3::])
 
     # câu 8
     if ui.A_8.isChecked():
-        DapAn = ui.A_8.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_8.text()[3::])
+    elif ui.B_8.isChecked():
+        ui.DSDapAnSV.append(ui.B_8.text()[3::])
+    elif ui.C_8.isChecked():
+        ui.DSDapAnSV.append(ui.C_8.text()[3::])
+    elif ui.D_8.isChecked():
+        ui.DSDapAnSV.append(ui.D_8.text()[3::])
 
     # câu 9
     if ui.A_9.isChecked():
-        DapAn = ui.A_9.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_9.text()[3::])
+    elif ui.B_9.isChecked():
+        ui.DSDapAnSV.append(ui.B_9.text()[3::])
+    elif ui.C_9.isChecked():
+        ui.DSDapAnSV.append(ui.C_9.text()[3::])
+    elif ui.D_9.isChecked():
+        ui.DSDapAnSV.append(ui.D_9.text()[3::])
 
     # câu 10
     if ui.A_10.isChecked():
-        DapAn = ui.A_10.text()
-
-        diem += 1
-        print(diem)
-        # print(result)
+        ui.DSDapAnSV.append(ui.A_10.text()[3::])
+    elif ui.B_10.isChecked():
+        ui.DSDapAnSV.append(ui.B_10.text()[3::])
+    elif ui.C_10.isChecked():
+        ui.DSDapAnSV.append(ui.C_10.text()[3::])
+    elif ui.D_10.isChecked():
+        ui.DSDapAnSV.append(ui.D_10.text()[3::])
 
 
 def ketQuaThi():
     print(ui.DSDapAnDB)
-    # ĐÂY LÀ ĐIỂM CỦA SINH VIÊN(info1). ÔNG THAO TÁC VỚI DB GIÚP TUI
+    print(ui.DSDapAnSV)
 
-    # global diem
-    # cur = myDB.cursor()
-    # info1[0][0] là mã sinh viên vừa mới hoàn thành bài thi
-    # cur.execute('Update dmkq SET Diem = %d where MaSV = %s', diem, info1[0][0])
-    # diem = cur.fetchall()
+    diem = 0
 
-    # if diem == 10:
-    #     print("ban xuat sac duoc: " + diem + " diem")
-    # elif (diem < 10 and diem > 5):
-    #     print("Can co gang them")
-    # else:
-    #     print("Ban can xem lai viec hoc")
+    for item in ui.DSDapAnDB:
+        if item in ui.DSDapAnSV:
+            diem += 1
+
+    print(diem)
 
 
 if __name__ == "__main__":

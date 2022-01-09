@@ -28,7 +28,7 @@
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Câu 1</string>
      </attribute>
      <widget class="QRadioButton" name="D">
       <property name="geometry">
@@ -87,9 +87,9 @@
      <widget class="QLabel" name="question">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>290</x>
         <y>100</y>
-        <width>541</width>
+        <width>371</width>
         <height>81</height>
        </rect>
       </property>
@@ -99,7 +99,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 1: Ai là abc?</string>
+       <string>Ai là abc?</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="B">
@@ -120,10 +120,28 @@
        <string>B. aab</string>
       </property>
      </widget>
+     <widget class="QLabel" name="id_question">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>100</y>
+        <width>141</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Câu 2</string>
      </attribute>
      <widget class="QRadioButton" name="B_2">
       <property name="geometry">
@@ -182,7 +200,7 @@
      <widget class="QLabel" name="question_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>280</x>
         <y>100</y>
         <width>541</width>
         <height>81</height>
@@ -194,7 +212,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 2: Cái gì là ijk?</string>
+       <string>Cái gì là ijk?</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_2">
@@ -215,10 +233,28 @@
        <string>A. mno</string>
       </property>
      </widget>
+     <widget class="QLabel" name="id_question2">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Tab 3</string>
+      <string>Câu 3</string>
      </attribute>
      <widget class="QRadioButton" name="C_3">
       <property name="geometry">
@@ -241,8 +277,8 @@
      <widget class="QLabel" name="question_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>100</y>
+        <x>300</x>
+        <y>110</y>
         <width>541</width>
         <height>81</height>
        </rect>
@@ -253,7 +289,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 3: Ai là 123456?</string>
+       <string>Ai là 123456?</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="B_3">
@@ -310,17 +346,35 @@
        <string>D. xyz</string>
       </property>
      </widget>
+     <widget class="QLabel" name="id_question3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>110</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
-      <string>Tab 4</string>
+      <string>Câu 4</string>
      </attribute>
-     <widget class="QLabel" name="question_4">
+     <widget class="QLabel" name="id_question4">
       <property name="geometry">
        <rect>
         <x>130</x>
         <y>90</y>
-        <width>541</width>
+        <width>141</width>
         <height>81</height>
        </rect>
       </property>
@@ -330,7 +384,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 4: 123?</string>
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_4">
@@ -405,16 +459,11 @@
        <string>C. dca</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_5">
-     <attribute name="title">
-      <string>Tab 5</string>
-     </attribute>
-     <widget class="QLabel" name="question_5">
+     <widget class="QLabel" name="question_4">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>100</y>
+        <x>280</x>
+        <y>90</y>
         <width>541</width>
         <height>81</height>
        </rect>
@@ -425,7 +474,30 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 5:456?</string>
+       <string>123?</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Câu 5</string>
+     </attribute>
+     <widget class="QLabel" name="id_question5">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>100</y>
+        <width>121</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_5">
@@ -500,15 +572,10 @@
        <string>C. dca</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>Tab 6</string>
-     </attribute>
-     <widget class="QLabel" name="question_6">
+     <widget class="QLabel" name="question_5">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>260</x>
         <y>100</y>
         <width>541</width>
         <height>81</height>
@@ -520,7 +587,30 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 6: ?</string>
+       <string>456?</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Câu 6</string>
+     </attribute>
+     <widget class="QLabel" name="id_question6">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_6">
@@ -595,18 +685,13 @@
        <string>C. dca</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_7">
-     <attribute name="title">
-      <string>Tab 7</string>
-     </attribute>
-     <widget class="QLabel" name="question_7">
+     <widget class="QLabel" name="question_6">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>310</x>
         <y>100</y>
-        <width>541</width>
-        <height>81</height>
+        <width>181</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -615,7 +700,30 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 7: 6?</string>
+       <string>?</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Câu 7</string>
+     </attribute>
+     <widget class="QLabel" name="id_question7">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>100</y>
+        <width>141</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_7">
@@ -690,17 +798,35 @@
        <string>C. dca</string>
       </property>
      </widget>
+     <widget class="QLabel" name="question_7">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>100</y>
+        <width>501</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>AAAAA?</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
-      <string>Tab 8</string>
+      <string>Câu 8</string>
      </attribute>
-     <widget class="QLabel" name="question_8">
+     <widget class="QLabel" name="id_question8">
       <property name="geometry">
        <rect>
         <x>130</x>
         <y>100</y>
-        <width>541</width>
+        <width>151</width>
         <height>81</height>
        </rect>
       </property>
@@ -710,7 +836,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 8: ?</string>
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_8">
@@ -785,17 +911,12 @@
        <string>C. dca</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_9">
-     <attribute name="title">
-      <string>Tab 9</string>
-     </attribute>
-     <widget class="QLabel" name="question_9">
+     <widget class="QLabel" name="question_8">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>110</y>
-        <width>541</width>
+        <x>280</x>
+        <y>100</y>
+        <width>341</width>
         <height>81</height>
        </rect>
       </property>
@@ -805,7 +926,30 @@
        </font>
       </property>
       <property name="text">
-       <string>Câu 9: 6?</string>
+       <string>?</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_9">
+     <attribute name="title">
+      <string>Câu 9</string>
+     </attribute>
+     <widget class="QLabel" name="id_question9">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>110</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="A_9">
@@ -880,17 +1024,35 @@
        <string>C. dca</string>
       </property>
      </widget>
+     <widget class="QLabel" name="question_9">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>110</y>
+        <width>421</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ABACAS?</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_10">
      <attribute name="title">
-      <string>Tab 10</string>
+      <string>Câu 10</string>
      </attribute>
      <widget class="QLabel" name="question_10">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>300</x>
         <y>110</y>
-        <width>541</width>
+        <width>291</width>
         <height>81</height>
        </rect>
       </property>
@@ -991,6 +1153,24 @@
       </property>
       <property name="text">
        <string>Ket Thuc Bai Thi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="id_question10">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>151</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>28</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID câu hỏi</string>
       </property>
      </widget>
     </widget>
