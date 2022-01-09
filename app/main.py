@@ -906,47 +906,50 @@ def callBackShowTakeTest():
     MaMH = ui.inputmamh.text()
     if not isCheckedEmpty(MaMH):
         return MBox(0, "Error", "Not empty", 32)
-    showTakeTest(MaMH)
+    cur = myDB.cursor()
+    query = "SELECT * FROM dmch WHERE MaMH = %s "
+    cur.execute(query, (MaMH,))
+    result = cur.fetchall()
+    if len(result) < 10:
+        return MBox(0, "Error", "Không đủ số lượng câu hỏi hoặc không tồn tại mã môn", 16)
+    showTakeTest(MaMH, result)
 
 
-def showTakeTest(MaMH):
+def showTakeTest(MaMH, result):
     global ui
     print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
-    cur = myDB.cursor()
-    query = "SELECT * FROM dmch WHERE MaMH = %s "
-    cur.execute(query, (MaMH,))
-    result = cur.fetchall()
+
     ui.DSDapAnDB = []
     for item in result:
         ui.DSDapAnDB.append(item[6])
 
     # ID_cau hoi
-    ui.id_question.setText(result[0][0])
-    ui.id_question2.setText(result[1][0])
-    ui.id_question3.setText(result[2][0])
-    # ui.id_question4.setText(result[3][0])
-    # ui.id_question5.setText(result[4][0])
-    # ui.id_question6.setText(result[5][0])
-    # ui.id_question7.setText(result[6][0])
-    # ui.id_question8.setText(result[7][0])
-    # ui.id_question9.setText(result[8][0])
-    # ui.id_question10.setText(result[9][0])
+    ui.id_question.setText(str(result[0][0]))
+    ui.id_question2.setText(str(result[1][0]))
+    ui.id_question3.setText(str(result[2][0]))
+    ui.id_question4.setText(str(result[3][0]))
+    ui.id_question5.setText(str(result[4][0]))
+    ui.id_question6.setText(str(result[5][0]))
+    ui.id_question7.setText(str(result[6][0]))
+    ui.id_question8.setText(str(result[7][0]))
+    ui.id_question9.setText(str(result[8][0]))
+    ui.id_question10.setText(str(result[9][0]))
 
     # cau hoi
     ui.question.setText(result[0][1])
     ui.question_2.setText(result[1][1])
     ui.question_3.setText(result[2][1])
-    # ui.question_4.setText(result[3][1])
-    # ui.question_5.setText(result[4][1])
-    # ui.question_6.setText(result[5][1])
-    # ui.question_7.setText(result[6][1])
-    # ui.question_8.setText(result[7][1])
-    # ui.question_9.setText(result[8][1])
-    # ui.question_10.setText(result[9][1])
+    ui.question_4.setText(result[3][1])
+    ui.question_5.setText(result[4][1])
+    ui.question_6.setText(result[5][1])
+    ui.question_7.setText(result[6][1])
+    ui.question_8.setText(result[7][1])
+    ui.question_9.setText(result[8][1])
+    ui.question_10.setText(result[9][1])
 
     # cau tra loi
     A = "A. "
@@ -968,40 +971,40 @@ def showTakeTest(MaMH):
     ui.C_3.setText(C + result[2][4])
     ui.D_3.setText(D + result[2][5])
 
-    # ui.A_4.setText(result[3][2])
-    # ui.B_4.setText(result[3][3])
-    # ui.C_4.setText(result[3][4])
-    # ui.D_4.setText(result[3][5])
+    ui.A_4.setText(A + result[3][2])
+    ui.B_4.setText(B + result[3][3])
+    ui.C_4.setText(C + result[3][4])
+    ui.D_4.setText(D + result[3][5])
 
-    # ui.A_5.setText(result[4][2])
-    # ui.B_5.setText(result[4][3])
-    # ui.C_5.setText(result[4][4])
-    # ui.D_5.setText(result[4][5])
+    ui.A_5.setText(A + result[4][2])
+    ui.B_5.setText(B + result[4][3])
+    ui.C_5.setText(C + result[4][4])
+    ui.D_5.setText(D + result[4][5])
 
-    # ui.A_6.setText(result[5][2])
-    # ui.B_6.setText(result[5][3])
-    # ui.C_6.setText(result[5][4])
-    # ui.D_6.setText(result[5][5])
+    ui.A_6.setText(A + result[5][2])
+    ui.B_6.setText(B + result[5][3])
+    ui.C_6.setText(C + result[5][4])
+    ui.D_6.setText(D + result[5][5])
 
-    # ui.A_7.setText(result[6][2])
-    # ui.B_7.setText(result[6][3])
-    # ui.C_7.setText(result[6][4])
-    # ui.D_7.setText(result[6][5])
+    ui.A_7.setText(A + result[6][2])
+    ui.B_7.setText(B + result[6][3])
+    ui.C_7.setText(C + result[6][4])
+    ui.D_7.setText(D + result[6][5])
 
-    # ui.A_8.setText(result[7][2])
-    # ui.B_8.setText(result[7][3])
-    # ui.C_8.setText(result[7][4])
-    # ui.D_8.setText(result[7][5])
+    ui.A_8.setText(A + result[7][2])
+    ui.B_8.setText(B + result[7][3])
+    ui.C_8.setText(C + result[7][4])
+    ui.D_8.setText(D + result[7][5])
 
-    # ui.A_9.setText(result[8][2])
-    # ui.B_9.setText(result[8][3])
-    # ui.C_9.setText(result[8][4])
-    # ui.D_9.setText(result[8][5])
+    ui.A_9.setText(A + result[8][2])
+    ui.B_9.setText(B + result[8][3])
+    ui.C_9.setText(C + result[8][4])
+    ui.D_9.setText(D + result[8][5])
 
-    # ui.A_10.setText(result[9][2])
-    # ui.B_10.setText(result[9][3])
-    # ui.C_10.setText(result[9][4])
-    # ui.D_10.setText(result[9][5])
+    ui.A_10.setText(A + result[9][2])
+    ui.B_10.setText(B + result[9][3])
+    ui.C_10.setText(C + result[9][4])
+    ui.D_10.setText(D + result[9][5])
 
     # CÁC NÚT ĐÁP ÁN CỦA CÁC CÂU HỎI
     # CÂU 1
@@ -1165,8 +1168,8 @@ def ketQuaThi():
 
     diem = 0
 
-    for item in ui.DSDapAnDB:
-        if item in ui.DSDapAnSV:
+    for i in range(0, len(ui.DSDapAnSV)):
+        if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
             diem += 1
 
     print(diem)
