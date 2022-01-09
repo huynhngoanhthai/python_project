@@ -32,17 +32,19 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
     <property name="baseSize">
      <size>
       <width>1000</width>
       <height>1000</height>
      </size>
+    </property>
+    <property name="font">
+     <font>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
     </property>
     <property name="tabPosition">
      <enum>QTabWidget::North</enum>
@@ -51,7 +53,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -373,7 +375,7 @@
      </widget>
      <widget class="QTableWidget" name="QTableUpdate">
       <property name="enabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -384,29 +386,32 @@
        </rect>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="minimumSize">
        <size>
-        <width>10</width>
+        <width>731</width>
         <height>20</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>731</width>
+        <height>16777215</height>
        </size>
       </property>
       <property name="font">
        <font>
         <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="autoScrollMargin">
-       <number>16</number>
       </property>
       <property name="editTriggers">
        <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
@@ -429,6 +434,9 @@
       <property name="gridStyle">
        <enum>Qt::CustomDashLine</enum>
       </property>
+      <property name="rowCount">
+       <number>1</number>
+      </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>85</number>
       </attribute>
@@ -438,6 +446,7 @@
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>1</number>
       </attribute>
+      <row/>
       <column>
        <property name="text">
         <string>MaSV</string>
@@ -871,7 +880,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
         <stylestrategy>PreferAntialias</stylestrategy>
@@ -1164,9 +1173,6 @@
       </property>
      </widget>
      <widget class="QTableWidget" name="QTableShowAll">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -1183,9 +1189,9 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="layoutDirection">
@@ -1290,6 +1296,13 @@
       <column>
        <property name="text">
         <string>Email</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
       </column>
      </widget>

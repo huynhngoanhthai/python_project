@@ -80,7 +80,7 @@ def showSubjects():
     MainWindow.showMaximized()
     # default
     ui.tab.setCurrentWidget(ui.Add)
-    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
+    ui.QButtonBack.clicked.connect(showHomeTeacherHandler)
     # event clicked for button in add
     ui.QButtonAClear.clicked.connect(clearContentsAddSubjects)
     ui.QButtonAAdd.clicked.connect(addSubject)
@@ -246,7 +246,7 @@ def deleteSubject():
 # show Student
 
 
-def callBackShowHomeTeacher():
+def showHomeTeacherHandler():
     return showHomeTeacher([('', '', '', 'GIAO VIEN')])
 
 
@@ -256,7 +256,7 @@ def showStudent():
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     # default
-    ui.QButtonBack.clicked.connect(callBackShowHomeTeacher)
+    ui.QButtonBack.clicked.connect(showHomeTeacherHandler)
 
     # event clicked for button in add
     ui.tab.setCurrentWidget(ui.Add)
@@ -277,8 +277,8 @@ def showStudent():
 
     ui.QButtonSAClear.clicked.connect(clearContentsShowAllStudent)
     ui.QButtonShowAll.clicked.connect(suggestShowAllStudent)
-    ui.QLineSAMaSV.returnPressed.connect(suggestDeleteStudent)
-    ui.QLineSATenSV.returnPressed.connect(suggestDeleteStudent)
+    ui.QLineSAMaSV.returnPressed.connect(suggestShowAllStudent)
+    ui.QLineSATenSV.returnPressed.connect(suggestShowAllStudent)
 
 # add student
 
@@ -378,14 +378,6 @@ def suggestUpdateStudent():
         ui.QTableUpdate.clearContents()
         ui.QTableUpdate.setColumnCount(8)
         ui.QTableUpdate.setRowCount(10)
-        ui.QTableUpdate.setColumnWidth(0, 100)
-        ui.QTableUpdate.setColumnWidth(1, 500)
-        ui.QTableUpdate.setColumnWidth(2, 100)
-        ui.QTableUpdate.setColumnWidth(3, 50)
-        ui.QTableUpdate.setColumnWidth(4, 400)
-        ui.QTableUpdate.setColumnWidth(5, 600)
-        ui.QTableUpdate.setColumnWidth(6, 100)
-        ui.QTableUpdate.setColumnWidth(7, 500)
         columns = 0
         for row in result:
             ui.QTableUpdate.setItem(columns, 0, QTableWidgetItem(row[0]))
@@ -471,7 +463,7 @@ def suggestDeleteStudent():
             ui.QLineDMaSV.setDisabled(True)
             ui.QLineDTenSV.setDisabled(True)
         ui.QTableDelete.clearContents()
-        ui.QTableDelete.setColumnCount(7)
+        ui.QTableDelete.setColumnCount(8)
         ui.QTableDelete.setRowCount(10)
         columns = 0
         for row in result:
@@ -482,6 +474,8 @@ def suggestDeleteStudent():
             ui.QTableDelete.setItem(columns, 4, QTableWidgetItem(row[5]))
             ui.QTableDelete.setItem(columns, 5, QTableWidgetItem(row[6]))
             ui.QTableDelete.setItem(columns, 6, QTableWidgetItem(row[7]))
+            ui.QTableDelete.setItem(columns, 7, QTableWidgetItem(row[8]))
+
             columns += 1
 
     except sql.Error as e:
@@ -490,7 +484,7 @@ def suggestDeleteStudent():
 
 def deleteStudent():
     try:
-        if ui.QLineDMaSV.isEnabled() == True and ui.QLineDMaSV.isEnabled() == True:
+        if ui.QLineDMaSV.isEnabled() and ui.QLineDMaSV.isEnabled():
             return MBox(0, "Error", "You need block ", 16)
         cur = myDB.cursor()
         MaSV = ui.QLineDMaSV.text().strip()
@@ -523,13 +517,13 @@ def suggestShowAllStudent():
         MaSV = ui.QLineSAMaSV.text().strip()
         TenSV = ui.QLineSATenSV.text().strip()
         if MaSV == '':
-            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%'".format(
                 TenSV)
         if TenSV == '':
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%'".format(
                 MaSV)
         else:
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' AND TenSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' AND TenSV LIKE '%{}%'".format(
                 MaSV, TenSV)
         cur.execute(query)
         result = cur.fetchall()
@@ -539,8 +533,8 @@ def suggestShowAllStudent():
             ui.QLineSAMaSV.setDisabled(True)
             ui.QLineSATenSV.setDisabled(True)
         ui.QTableShowAll.clearContents()
-        ui.QTableShowAll.setColumnCount(7)
-        ui.QTableShowAll.setRowCount(10)
+        ui.QTableShowAll.setColumnCount(8)
+        ui.QTableShowAll.setRowCount(len(result))
         columns = 0
         for row in result:
             ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(row[0]))
@@ -550,6 +544,7 @@ def suggestShowAllStudent():
             ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[5]))
             ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[6]))
             ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[7]))
+            ui.QTableShowAll.setItem(columns, 7, QTableWidgetItem(row[8]))
             columns += 1
 
     except sql.Error as e:
@@ -564,7 +559,7 @@ def showHomeQuestion():
     MainWindow.showMaximized()
     # default here add
     ui.tab.setCurrentWidget(ui.Add)
-    ui.ButtonBacked.clicked.connect(callBackShowHomeTeacher)
+    ui.ButtonBacked.clicked.connect(showHomeTeacherHandler)
     # default ID is
     try:
         cur = myDB.cursor()
@@ -600,7 +595,7 @@ def answerFilter(option):
         return ui.QLineAOPA.text().strip()
     if option == 'B':
         return ui.QLineAOPB.text().strip()
-    elif option == 'C':
+    if option == 'C':
         return ui.QLineAOPC.text().strip()
     else:
         return ui.QLineAOPD.text().strip()
