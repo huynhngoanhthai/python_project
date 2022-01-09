@@ -903,7 +903,7 @@ def showHomeStudent(info):
     ui.showtenlop.setText(info1[0][6])
     ui.showpassword.setText(info1[0][7])
     # event clicked for button in THI
-    ui.inputmamh.returnPressed.connect(callBackShowTakeTest())
+    ui.inputmamh.returnPressed.connect(callBackShowTakeTest)
     ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
 
 
