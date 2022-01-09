@@ -53,7 +53,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -375,7 +375,7 @@
      </widget>
      <widget class="QTableWidget" name="QTableUpdate">
       <property name="enabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -386,7 +386,7 @@
        </rect>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -406,15 +406,12 @@
       <property name="font">
        <font>
         <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="autoScrollMargin">
-       <number>16</number>
       </property>
       <property name="editTriggers">
        <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
@@ -883,7 +880,7 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
+        <pointsize>12</pointsize>
         <weight>75</weight>
         <bold>true</bold>
         <stylestrategy>PreferAntialias</stylestrategy>
@@ -1176,9 +1173,6 @@
       </property>
      </widget>
      <widget class="QTableWidget" name="QTableShowAll">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -1195,9 +1189,9 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>16</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="layoutDirection">
@@ -1302,6 +1296,13 @@
       <column>
        <property name="text">
         <string>Email</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
       </column>
      </widget>

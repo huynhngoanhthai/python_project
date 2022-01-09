@@ -277,8 +277,8 @@ def showStudent():
 
     ui.QButtonSAClear.clicked.connect(clearContentsShowAllStudent)
     ui.QButtonShowAll.clicked.connect(suggestShowAllStudent)
-    ui.QLineSAMaSV.returnPressed.connect(suggestDeleteStudent)
-    ui.QLineSATenSV.returnPressed.connect(suggestDeleteStudent)
+    ui.QLineSAMaSV.returnPressed.connect(suggestShowAllStudent)
+    ui.QLineSATenSV.returnPressed.connect(suggestShowAllStudent)
 
 # add student
 
@@ -463,7 +463,7 @@ def suggestDeleteStudent():
             ui.QLineDMaSV.setDisabled(True)
             ui.QLineDTenSV.setDisabled(True)
         ui.QTableDelete.clearContents()
-        ui.QTableDelete.setColumnCount(7)
+        ui.QTableDelete.setColumnCount(8)
         ui.QTableDelete.setRowCount(10)
         columns = 0
         for row in result:
@@ -474,6 +474,8 @@ def suggestDeleteStudent():
             ui.QTableDelete.setItem(columns, 4, QTableWidgetItem(row[5]))
             ui.QTableDelete.setItem(columns, 5, QTableWidgetItem(row[6]))
             ui.QTableDelete.setItem(columns, 6, QTableWidgetItem(row[7]))
+            ui.QTableDelete.setItem(columns, 7, QTableWidgetItem(row[8]))
+
             columns += 1
 
     except sql.Error as e:
@@ -515,13 +517,13 @@ def suggestShowAllStudent():
         MaSV = ui.QLineSAMaSV.text().strip()
         TenSV = ui.QLineSATenSV.text().strip()
         if MaSV == '':
-            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%'".format(
                 TenSV)
         if TenSV == '':
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%'".format(
                 MaSV)
         else:
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' AND TenSV LIKE '%{}%' LIMIT 10".format(
+            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' AND TenSV LIKE '%{}%'".format(
                 MaSV, TenSV)
         cur.execute(query)
         result = cur.fetchall()
@@ -531,8 +533,8 @@ def suggestShowAllStudent():
             ui.QLineSAMaSV.setDisabled(True)
             ui.QLineSATenSV.setDisabled(True)
         ui.QTableShowAll.clearContents()
-        ui.QTableShowAll.setColumnCount(7)
-        ui.QTableShowAll.setRowCount(10)
+        ui.QTableShowAll.setColumnCount(8)
+        ui.QTableShowAll.setRowCount(len(result))
         columns = 0
         for row in result:
             ui.QTableShowAll.setItem(columns, 0, QTableWidgetItem(row[0]))
@@ -542,6 +544,7 @@ def suggestShowAllStudent():
             ui.QTableShowAll.setItem(columns, 4, QTableWidgetItem(row[5]))
             ui.QTableShowAll.setItem(columns, 5, QTableWidgetItem(row[6]))
             ui.QTableShowAll.setItem(columns, 6, QTableWidgetItem(row[7]))
+            ui.QTableShowAll.setItem(columns, 7, QTableWidgetItem(row[8]))
             columns += 1
 
     except sql.Error as e:
