@@ -561,15 +561,25 @@ def showHomeQuestion():
     ui.tab.setCurrentWidget(ui.Add)
     ui.ButtonBacked.clicked.connect(showHomeTeacherHandler)
     # default ID is
+    cur = myDB.cursor()
     try:
-        cur = myDB.cursor()
         cur.execute("SELECT max(MaCH) FROM dmch")
         result = cur.fetchall()[0][0]+1
     except:
         result = 1
     ui.IDAddQuestion.setText(str(result))
+    try:
+        cur.execute("SELECT MaMH,TenMH FROM dmmh")
+        result = cur.fetchall()
+        temp = []
+        for item in result:
+            ui.QComboxAMaMH.addItem(item[0] + "-" + item[1])
+            ui.QComboxUMaMH.addItem(item[0] + "-" + item[1])
+            temp.append(item[0])
+        ui.MaMH = temp
+    except sql.Error as e:
+        return MBox(0, "Error", str(e), 32)
     # event clicked for button in add
-    ui.QLineAMaMH.returnPressed.connect(addQuestion)
     ui.AddQuestion.clicked.connect(addQuestion)
     ui.ClearQuestion.clicked.connect(clearContentsAddQuestion)
     # event clicked for button in Update
@@ -619,16 +629,15 @@ def addQuestion():
 
         Answer = answerFilter(tempAnswer)
 
-        MaMH = ui.QLineAMaMH.text().strip()
-
+        MaMH = ui.QComboxAMaMH.currentText().split("-")
         checked = isCheckedEmpty(IDQuestion, Question,
-                                 OPA, OPB, OPC, OPD, Answer, MaMH)
+                                 OPA, OPB, OPC, OPD, Answer, MaMH[0])
         if not checked:
             return MBox(0, "Error", "not empty", 16)
 
         query = "INSERT INTO dmch (MaCH, CauHoi, CauA,CauB,CauC,CauD,DapAn,MaMH) VALUES (%s, %s,%s,%s, %s,%s,%s, %s)"
         cur.execute(query, (IDQuestion, Question,
-                    OPA, OPB, OPC, OPD, Answer, MaMH))
+                    OPA, OPB, OPC, OPD, Answer, MaMH[0]))
         MBox(0, "Successfully", "Successfully", 32)
         myDB.commit()
         showHomeQuestion()
@@ -642,8 +651,8 @@ def clearContentsAddQuestion():
     ui.QLineAOPB.clear()
     ui.QLineAOPC.clear()
     ui.QLineAOPD.clear()
-    ui.QLineAAnswer.clear()
     ui.QLineAMaMH.clear()
+    ui.QComBoxAAnswer.setCurrentIndex(0)
 
 # Update
 
@@ -655,10 +664,19 @@ def clearContentsUpdateQuestion():
     ui.QLineUOPB.clear()
     ui.QLineUOPC.clear()
     ui.QLineUOPD.clear()
-    ui.QLineUAnswer.clear()
-    ui.QLineUMaMH.clear()
     ui.QLineUIDCauHoi.setDisabled(False)
     ui.QTableUpdate.clearContents()
+
+
+def printAnswerFiltered(answer):
+    if answer == ui.QLineUOPA.text():
+        return 0
+    if answer == ui.QLineUOPB.text():
+        return 1
+    if answer == ui.QLineUOPC.text():
+        return 2
+    else:
+        return 3
 
 
 def suggestUpdateQuestion():
@@ -676,8 +694,9 @@ def suggestUpdateQuestion():
             ui.QLineUOPB.setText(result[0][3])
             ui.QLineUOPC.setText(result[0][4])
             ui.QLineUOPD.setText(result[0][5])
-            ui.QLineUAnswer.setText(result[0][6])
-            ui.QLineUMaMH.setText(result[0][7])
+            ui.QComboxUAnswer.setCurrentIndex(
+                printAnswerFiltered(result[0][6]))
+            ui.QComboxUMaMH.setCurrentIndex(ui.MaMH.index(result[0][7]))
             ui.QLineUIDCauHoi.setDisabled(True)
         ui.QTableUpdate.clearContents()
         ui.QTableUpdate.setColumnCount(8)
@@ -698,6 +717,17 @@ def suggestUpdateQuestion():
         MBox(0, "Error", str(e), 16)
 
 
+def answerFilterForUpdate(option):
+    if option == 'A':
+        return ui.QLineUOPA.text().strip()
+    if option == 'B':
+        return ui.QLineUOPB.text().strip()
+    if option == 'C':
+        return ui.QLineUOPC.text().strip()
+    else:
+        return ui.QLineUOPD.text().strip()
+
+
 def updateQuestion():
     try:
         cur = myDB.cursor()
@@ -714,9 +744,11 @@ def updateQuestion():
 
         OPD = ui.QLineUOPD.text().strip()
 
-        Answer = ui.QLineUAnswer.text().strip()
+        tempAnswer = ui.QComboxUAnswer.currentText()
 
-        MaMH = ui.QLineUMaMH.text().strip()
+        Answer = answerFilterForUpdate(tempAnswer)
+
+        MaMH = ui.QComboxUMaMH.currentText().split("-")[0]
 
         checked = isCheckedEmpty(IDQuestion, Question,
                                  OPA, OPB, OPC, OPD, Answer, MaMH)
@@ -1179,11 +1211,11 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    showLogin()
+    # showLogin()
     # showHomeTeacher(123)
     # showStudent()
     # showSubjects()
     # showTakeTest()
     # showHomeStudent()
-    # showHomeQuestion()
+    showHomeQuestion()
     sys.exit(app.exec())

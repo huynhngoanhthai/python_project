@@ -155,19 +155,6 @@
          <string>CAU D</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="QLineAMaMH">
-        <property name="geometry">
-         <rect>
-          <x>420</x>
-          <y>300</y>
-          <width>501</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>MA MON</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
@@ -328,6 +315,16 @@
          </property>
         </item>
        </widget>
+       <widget class="QComboBox" name="QComboxAMaMH">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>300</y>
+          <width>501</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="Update">
        <attribute name="title">
@@ -364,7 +361,7 @@
          <rect>
           <x>775</x>
           <y>210</y>
-          <width>701</width>
+          <width>741</width>
           <height>241</height>
          </rect>
         </property>
@@ -715,30 +712,51 @@
          <string>CAU D</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="QLineUAnswer">
+       <widget class="QComboBox" name="QComboxUAnswer">
         <property name="geometry">
          <rect>
           <x>400</x>
           <y>400</y>
-          <width>361</width>
-          <height>20</height>
+          <width>69</width>
+          <height>22</height>
          </rect>
         </property>
-        <property name="placeholderText">
-         <string>DAP AN</string>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
         </property>
+        <item>
+         <property name="text">
+          <string>A</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>B</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>C</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>D</string>
+         </property>
+        </item>
        </widget>
-       <widget class="QLineEdit" name="QLineUMaMH">
+       <widget class="QComboBox" name="QComboxUMaMH">
         <property name="geometry">
          <rect>
           <x>400</x>
           <y>430</y>
           <width>361</width>
-          <height>20</height>
+          <height>22</height>
          </rect>
-        </property>
-        <property name="placeholderText">
-         <string>MA MON HOC</string>
         </property>
        </widget>
       </widget>
@@ -1193,18 +1211,16 @@
   <tabstop>QLineUOPA</tabstop>
   <tabstop>QLineAOPD</tabstop>
   <tabstop>QComboBoxAAnswer</tabstop>
-  <tabstop>QLineDCauHoi</tabstop>
-  <tabstop>QLineAMaMH</tabstop>
+  <tabstop>QComboxAMaMH</tabstop>
   <tabstop>ClearQuestion</tabstop>
   <tabstop>AddQuestion</tabstop>
+  <tabstop>QLineDCauHoi</tabstop>
   <tabstop>UpdateQuestion</tabstop>
   <tabstop>QTableUpdate</tabstop>
   <tabstop>QLineUIDCauHoi</tabstop>
   <tabstop>QLineUOPB</tabstop>
   <tabstop>QLineUOPC</tabstop>
   <tabstop>QLineUOPD</tabstop>
-  <tabstop>QLineUAnswer</tabstop>
-  <tabstop>QLineUMaMH</tabstop>
   <tabstop>ClearDelete</tabstop>
   <tabstop>DeleteQuestion</tabstop>
   <tabstop>QTableDelete</tabstop>
@@ -1219,6 +1235,7 @@
   <tabstop>ButtonBacked</tabstop>
   <tabstop>QLineUQuestion</tabstop>
   <tabstop>ClearUpdate</tabstop>
+  <tabstop>tab</tabstop>
  </tabstops>
  <resources/>
  <connections/>
