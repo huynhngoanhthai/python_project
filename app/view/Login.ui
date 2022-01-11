@@ -19,7 +19,7 @@
      <rect>
       <x>230</x>
       <y>119</y>
-      <width>231</width>
+      <width>421</width>
       <height>31</height>
      </rect>
     </property>
@@ -30,16 +30,13 @@
       <bold>true</bold>
      </font>
     </property>
-    <property name="placeholderText">
-     <string>UserName</string>
-    </property>
    </widget>
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>230</x>
       <y>160</y>
-      <width>231</width>
+      <width>421</width>
       <height>31</height>
      </rect>
     </property>
@@ -52,9 +49,6 @@
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
-    </property>
-    <property name="placeholderText">
-     <string>PassWord</string>
     </property>
    </widget>
    <widget class="QPushButton" name="login">
@@ -82,7 +76,7 @@
      <rect>
       <x>230</x>
       <y>200</y>
-      <width>241</width>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
@@ -97,6 +91,26 @@
      <string>see password</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="QButtonForgotPassword">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>270</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>ForgotPassword</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -104,7 +118,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

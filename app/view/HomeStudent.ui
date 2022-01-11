@@ -27,7 +27,7 @@
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="studentprofile">
      <attribute name="title">
@@ -192,7 +192,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Password:</string>
+       <string>Email:</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="showmasv">
@@ -434,10 +434,137 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="UpdatePassword">
+     <attribute name="title">
+      <string>UpdatePassword</string>
+     </attribute>
+     <widget class="QLineEdit" name="QLineUPOldPassword">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>160</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUPNewPassword">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>200</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="QButtonUPUpdatePassword">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="QButtonUPClear">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>160</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Old Password</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>216</x>
+        <y>200</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>New Password</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="QLineUPNewPassword_2">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>240</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>240</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>New Password</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>student</tabstop>
+  <tabstop>showmasv</tabstop>
+  <tabstop>showhosv</tabstop>
+  <tabstop>showtensv</tabstop>
+  <tabstop>showphai</tabstop>
+  <tabstop>showngaysinh</tabstop>
+  <tabstop>shownoisinh</tabstop>
+  <tabstop>showtenlop</tabstop>
+  <tabstop>showpassword</tabstop>
+  <tabstop>buttonvaothi</tabstop>
+  <tabstop>inputmamh</tabstop>
+  <tabstop>QLineUPOldPassword</tabstop>
+  <tabstop>QLineUPNewPassword</tabstop>
+  <tabstop>QLineUPNewPassword_2</tabstop>
+  <tabstop>QButtonUPUpdatePassword</tabstop>
+  <tabstop>QButtonUPClear</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
