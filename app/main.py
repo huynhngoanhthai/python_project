@@ -69,6 +69,7 @@ def showSendMail():
     ui.QLineEmail.returnPressed.connect(sendEmailForgotPassword)
     ui.QButtonBack.clicked.connect(showLogin)
 
+
 def clearContentsSendMail():
     ui.QLineEmail.clear()
 
@@ -977,7 +978,8 @@ def showHomeStudent(info):
     # event clicked for button in updatePassword
     ui.QButtonUPClear.clicked.connect(clearContentsUpdatePassword)
     ui.QButtonUPUpdatePassword.clicked.connect(updatePassword)
-    ui.ui.QLineUPNewPassword_2.returnPressed.connect(updatePassword)
+    ui.QLineUPNewPassword_2.returnPressed.connect(updatePassword)
+
 
 def clearContentsUpdatePassword():
     ui.QLineUPOldPassword.clear()
@@ -1027,7 +1029,7 @@ def showTakeTest(MaMH, result):
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
-
+    ui.MaMH = result[0][7]
     ui.DSDapAnDB = []
     for item in result:
         ui.DSDapAnDB.append(item[6])
@@ -1278,6 +1280,13 @@ def ketQuaThi():
             diem += 1
 
     print(diem)
+
+    try:
+        cur = myDB.cursor()
+        cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
+                    (infoStudent[0][0], ui.MaMH, diem))
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
 
 
 if __name__ == "__main__":
