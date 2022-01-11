@@ -1009,6 +1009,19 @@ def updatePassword():
         MBox(0, "Error", str(e), 16)
 
 
+def checkStudentExamined(MaSV):
+    try:
+        cur = myDB.cursor()
+        cur.execute("SELECT MaSV FROM dmkq WHERE MaSV = %s", (MaSV,))
+        result = cur.fetchall()
+        if not result:
+            return True
+        else:
+            return False
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
+
+
 def callBackShowTakeTest():
     MaMH = ui.inputmamh.text()
     if not isCheckedEmpty(MaMH):
@@ -1019,6 +1032,8 @@ def callBackShowTakeTest():
     result = cur.fetchall()
     if len(result) < 10:
         return MBox(0, "Error", "Không đủ số lượng câu hỏi hoặc không tồn tại mã môn", 16)
+    if not checkStudentExamined(infoStudent[0][0]):
+        return MBox(0, "Error", "Sinh Viên Đã thi môn này rồi", 16)
     showTakeTest(MaMH, result)
 
 
@@ -1029,7 +1044,7 @@ def showTakeTest(MaMH, result):
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
-    ui.MaMH = result[0][7]
+    ui.result = result
     ui.DSDapAnDB = []
     for item in result:
         ui.DSDapAnDB.append(item[6])
@@ -1270,21 +1285,23 @@ def onClicked():
 
 
 def ketQuaThi():
-    print(ui.DSDapAnDB)
-    print(ui.DSDapAnSV)
-
-    diem = 0
-
-    for i in range(0, len(ui.DSDapAnSV)):
-        if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
-            diem += 1
-
-    print(diem)
-
     try:
+
+        diem = 0
+
+        for i in range(0, len(ui.DSDapAnSV)):
+            if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
+                diem += 1
+
+        print(diem)
+
         cur = myDB.cursor()
         cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
-                    (infoStudent[0][0], ui.MaMH, diem))
+                    (infoStudent[0][0], ui.result[0][7], diem))
+        myDB.commit()
+        MBox(0, "Successfully", "ban thi được {} ".format(diem), 32)
+
+        showHomeStudent(infoStudent)
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
