@@ -59,10 +59,6 @@ class Ui_MainWindow(object):
         self.QButtonForgotPassword.setFont(font)
         self.QButtonForgotPassword.setObjectName("QButtonForgotPassword")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
@@ -75,4 +71,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.login.setText(_translate("MainWindow", "Login"))
         self.seePassword.setText(_translate("MainWindow", "see password"))
-        self.QButtonForgotPassword.setText(_translate("MainWindow", "ForgotPassword"))
+        self.QButtonForgotPassword.setText(
+            _translate("MainWindow", "ForgotPassword"))
