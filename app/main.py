@@ -890,13 +890,13 @@ def showHomeStudent(info):
     ui.student.setCurrentWidget(ui.studentprofile)
     # info Student Login
     ui.showmasv.setText(info1[0][0])
-    ui.showhosv.setText(info1[0][1])
-    ui.showtensv.setText(info1[0][2])
-    ui.showphai.setText(info1[0][3])
-    ui.showngaysinh.setText(info1[0][4])
-    ui.shownoisinh.setText(info1[0][5])
-    ui.showtenlop.setText(info1[0][6])
-    ui.showpassword.setText(info1[0][7])
+    ui.showhosv.setText(info1[0][2])
+    ui.showtensv.setText(info1[0][3])
+    ui.showphai.setText(info1[0][4])
+    ui.showngaysinh.setText(info1[0][5])
+    ui.shownoisinh.setText(info1[0][6])
+    ui.showtenlop.setText(info1[0][7])
+    ui.showpassword.setText(info1[0][8])
     # event clicked for button in THI
     ui.inputmamh.returnPressed.connect(callBackShowTakeTest)
     ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
@@ -920,8 +920,8 @@ def showTakeTest(MaMH, result):
     print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
+    MainWindow.showMaximized()
 
     ui.DSDapAnDB = []
     for item in result:

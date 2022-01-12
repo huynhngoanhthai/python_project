@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>983</width>
-    <height>632</height>
+    <width>1914</width>
+    <height>940</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <widget class="QTabWidget" name="student">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>951</width>
-      <height>611</height>
+      <x>400</x>
+      <y>120</y>
+      <width>1041</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="studentprofile">
      <attribute name="title">
@@ -36,8 +36,8 @@
      <widget class="QLabel" name="title">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>20</y>
+        <x>480</x>
+        <y>70</y>
         <width>271</width>
         <height>51</height>
        </rect>
@@ -54,8 +54,8 @@
      <widget class="QLabel" name="masv">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>100</y>
+        <x>200</x>
+        <y>150</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -72,8 +72,8 @@
      <widget class="QLabel" name="hosv">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>150</y>
+        <x>200</x>
+        <y>200</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -90,8 +90,8 @@
      <widget class="QLabel" name="tensv">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>200</y>
+        <x>190</x>
+        <y>250</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -108,8 +108,8 @@
      <widget class="QLabel" name="phai">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>250</y>
+        <x>200</x>
+        <y>300</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -126,8 +126,8 @@
      <widget class="QLabel" name="ngaysinh">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>300</y>
+        <x>200</x>
+        <y>350</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -144,8 +144,8 @@
      <widget class="QLabel" name="noisinh">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>350</y>
+        <x>200</x>
+        <y>400</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -162,8 +162,8 @@
      <widget class="QLabel" name="tenlop">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>400</y>
+        <x>200</x>
+        <y>450</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -180,8 +180,8 @@
      <widget class="QLabel" name="password">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>450</y>
+        <x>200</x>
+        <y>500</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -192,14 +192,14 @@
        </font>
       </property>
       <property name="text">
-       <string>Password:</string>
+       <string>Email:</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="showmasv">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>100</y>
+        <x>350</x>
+        <y>150</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -223,8 +223,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showhosv">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>150</y>
+        <x>350</x>
+        <y>200</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -245,8 +245,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showtensv">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>200</y>
+        <x>350</x>
+        <y>250</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -267,8 +267,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showphai">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>250</y>
+        <x>350</x>
+        <y>300</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -289,8 +289,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showngaysinh">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>300</y>
+        <x>350</x>
+        <y>350</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -311,8 +311,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="shownoisinh">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>350</y>
+        <x>350</x>
+        <y>400</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -333,8 +333,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showtenlop">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>400</y>
+        <x>350</x>
+        <y>450</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -355,8 +355,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QTextBrowser" name="showpassword">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>450</y>
+        <x>350</x>
+        <y>500</y>
         <width>541</width>
         <height>41</height>
        </rect>
@@ -382,8 +382,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="title_2">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>120</y>
+        <x>410</x>
+        <y>110</y>
         <width>311</width>
         <height>81</height>
        </rect>
@@ -400,8 +400,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="buttonvaothi">
       <property name="geometry">
        <rect>
-        <x>330</x>
-        <y>350</y>
+        <x>400</x>
+        <y>340</y>
         <width>261</width>
         <height>41</height>
        </rect>
@@ -418,8 +418,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QLineEdit" name="inputmamh">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>240</y>
+        <x>290</x>
+        <y>230</y>
         <width>521</width>
         <height>41</height>
        </rect>
