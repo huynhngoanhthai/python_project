@@ -53,11 +53,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-<<<<<<< HEAD
-     <number>0</number>
-=======
      <number>4</number>
->>>>>>> dbae57f6d7b4d9646ef86dd8f2c478f94a17fc78
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">

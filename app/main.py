@@ -85,13 +85,13 @@ def sendEmailForgotPassword():
         if not result:
             return MBox(0, "Error", "not find", 16)
         passwordRandom = get_random_string(8)
-        cur.execute("UPDATE dmsv SET Password=%s",
-                    (generate_password_hash(passwordRandom),))
+        cur.execute("UPDATE dmsv SET Password=%s where email = %s",
+                    (generate_password_hash(passwordRandom), Email))
         myDB.commit()
         sendMail(Email, "Forgot Password",
                  "Your Password is {}".format(passwordRandom))
         clearContentsSendMail()
-        sleep(2)
+        # sleep(2)
         showLogin()
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
@@ -108,7 +108,7 @@ def showHomeTeacher(info):
     global ui
     ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default name for GV
     ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
@@ -326,6 +326,7 @@ def showStudent():
     # event clicked for button in Show diem
     ui.QButtonSDClear.clicked.connect(clearContentsShowDiemStudent)
     ui.QButtonSDSearch.clicked.connect(showDiemStudent)
+    ui.QLineSDMaMH.returnPressed.connect(showDiemStudent)
 
 # add student
 
@@ -974,6 +975,8 @@ def showHomeStudent(info):
     # event clicked for button in THI
     ui.inputmamh.returnPressed.connect(callBackShowTakeTest)
     ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
+    # Back TO LOGIN_USER
+    ui.backToLogin.clicked.connect(showLogin)
 
     # event clicked for button in updatePassword
     ui.QButtonUPClear.clicked.connect(clearContentsUpdatePassword)
