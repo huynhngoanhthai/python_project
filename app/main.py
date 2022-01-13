@@ -85,13 +85,13 @@ def sendEmailForgotPassword():
         if not result:
             return MBox(0, "Error", "not find", 16)
         passwordRandom = get_random_string(8)
-        cur.execute("UPDATE dmsv SET Password=%s",
-                    (generate_password_hash(passwordRandom),))
+        cur.execute("UPDATE dmsv SET Password=%s where email = %s",
+                    (generate_password_hash(passwordRandom), Email))
         myDB.commit()
         sendMail(Email, "Forgot Password",
                  "Your Password is {}".format(passwordRandom))
         clearContentsSendMail()
-        sleep(2)
+        # sleep(2)
         showLogin()
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
@@ -108,7 +108,7 @@ def showHomeTeacher(info):
     global ui
     ui = HomeTeacher.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.show()
+    MainWindow.showMaximized()
     # default name for GV
     ui.NAMEGV.setText(info[0][3])
     ui.QButtonCH.clicked.connect(showHomeQuestion)
@@ -956,6 +956,8 @@ def showHomeStudent(info):
     # event clicked for button in THI
     ui.inputmamh.returnPressed.connect(callBackShowTakeTest)
     ui.buttonvaothi.clicked.connect(callBackShowTakeTest)
+    # Back TO LOGIN_USER
+    ui.backToLogin.clicked.connect(showLogin)
 
     # event clicked for button in updatePassword
     ui.QButtonUPClear.clicked.connect(clearContentsUpdatePassword)
@@ -991,10 +993,11 @@ def updatePassword():
         MBox(0, "Error", str(e), 16)
 
 
-def checkStudentExamined(MaSV):
+def checkStudentExamined(MaSV, MaMH):
     try:
         cur = myDB.cursor()
-        cur.execute("SELECT MaSV FROM dmkq WHERE MaSV = %s", (MaSV,))
+        cur.execute(
+            "SELECT MaSV,MaMH FROM dmkq WHERE MaSV = %s AND MaMH = %s", (MaSV, MaMH))
         result = cur.fetchall()
         if not result:
             return True
@@ -1014,7 +1017,7 @@ def callBackShowTakeTest():
     result = cur.fetchall()
     if len(result) < 10:
         return MBox(0, "Error", "Không đủ số lượng câu hỏi hoặc không tồn tại mã môn", 16)
-    if not checkStudentExamined(infoStudent[0][0]):
+    if not checkStudentExamined(infoStudent[0][0], MaMH):
         return MBox(0, "Error", "Sinh Viên Đã thi môn này rồi", 16)
     showTakeTest(MaMH, result)
 
@@ -1024,7 +1027,6 @@ def showTakeTest(MaMH, result):
     print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.showMaximized()
     ui.tabWidget.setCurrentWidget(ui.tab)
     ui.result = result
     ui.DSDapAnDB = []
