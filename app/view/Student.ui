@@ -53,7 +53,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -375,7 +375,7 @@
      </widget>
      <widget class="QTableWidget" name="QTableUpdate">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -862,7 +862,7 @@
      </widget>
      <widget class="QTableWidget" name="QTableDelete">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
