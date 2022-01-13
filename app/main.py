@@ -321,8 +321,7 @@ def showStudent():
 
     ui.QButtonSAClear.clicked.connect(clearContentsShowAllStudent)
     ui.QButtonShowAll.clicked.connect(showAllStudent)
-    ui.QLineSAMaSV.returnPressed.connect(showAllStudent)
-    ui.QLineSATenSV.returnPressed.connect(showAllStudent)
+    ui.QLineSATenLop.returnPressed.connect(showAllStudent)
     # event clicked for button in Show diem
     ui.QButtonSDClear.clicked.connect(clearContentsShowDiemStudent)
     ui.QButtonSDSearch.clicked.connect(showDiemStudent)
@@ -550,35 +549,17 @@ def deleteStudent():
 
 
 def clearContentsShowAllStudent():
-    ui.QLineSAMaSV.clear()
-    ui.QLineSATenSV.clear()
+    ui.QLineSATenLop.clear()
     ui.QTableDelete.clearContents()
-    ui.QLineSAMaSV.setEnabled(True)
-    ui.QLineSATenSV.setEnabled(True)
 
 
 def showAllStudent():
     try:
-        query = ""
         cur = myDB.cursor()
-        MaSV = ui.QLineSAMaSV.text().strip()
-        TenSV = ui.QLineSATenSV.text().strip()
-        if MaSV == '':
-            query = "SELECT * FROM dmsv WHERE TenSV LIKE '%{}%'".format(
-                TenSV)
-        if TenSV == '':
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%'".format(
-                MaSV)
-        else:
-            query = "SELECT * FROM dmsv WHERE MaSV LIKE '%{}%' AND TenSV LIKE '%{}%'".format(
-                MaSV, TenSV)
+        TenLop = ui.QLineSATenLop.text().strip()
+        query = "SELECT * FROM dmsv WHERE TenLop LIKE '%{}%'".format(TenLop)
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
-            ui.QLineSAMaSV.setText(result[0][0])
-            ui.QLineSATenSV.setText(result[0][3])
-            ui.QLineSAMaSV.setDisabled(True)
-            ui.QLineSATenSV.setDisabled(True)
         ui.QTableShowAll.clearContents()
         ui.QTableShowAll.setColumnCount(8)
         ui.QTableShowAll.setRowCount(len(result))
@@ -1012,10 +993,11 @@ def updatePassword():
         MBox(0, "Error", str(e), 16)
 
 
-def checkStudentExamined(MaSV):
+def checkStudentExamined(MaSV, MaMH):
     try:
         cur = myDB.cursor()
-        cur.execute("SELECT MaSV FROM dmkq WHERE MaSV = %s", (MaSV,))
+        cur.execute(
+            "SELECT MaSV,MaMH FROM dmkq WHERE MaSV = %s AND MaMH = %s", (MaSV, MaMH))
         result = cur.fetchall()
         if not result:
             return True
@@ -1035,7 +1017,7 @@ def callBackShowTakeTest():
     result = cur.fetchall()
     if len(result) < 10:
         return MBox(0, "Error", "Không đủ số lượng câu hỏi hoặc không tồn tại mã môn", 16)
-    if not checkStudentExamined(infoStudent[0][0]):
+    if not checkStudentExamined(infoStudent[0][0], MaMH):
         return MBox(0, "Error", "Sinh Viên Đã thi môn này rồi", 16)
     showTakeTest(MaMH, result)
 
