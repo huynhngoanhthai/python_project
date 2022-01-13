@@ -325,6 +325,7 @@ def showStudent():
     # event clicked for button in Show diem
     ui.QButtonSDClear.clicked.connect(clearContentsShowDiemStudent)
     ui.QButtonSDSearch.clicked.connect(showDiemStudent)
+    ui.QLineSDMaMH.returnPressed.connect(showDiemStudent)
 
 # add student
 
