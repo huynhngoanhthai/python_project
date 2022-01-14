@@ -112,11 +112,25 @@
        <height>41</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
     </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>uname</tabstop>
+  <tabstop>password</tabstop>
+  <tabstop>seePassword</tabstop>
+  <tabstop>login</tabstop>
+  <tabstop>QButtonForgotPassword</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

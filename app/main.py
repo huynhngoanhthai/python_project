@@ -1,15 +1,15 @@
+import sys
+from werkzeug.security import generate_password_hash, check_password_hash
+from PyQt5.QtCore import QDate
+from PyQt5.QtWidgets import QLineEdit,  QTableWidgetItem
+from PyQt5 import QtWidgets
+import mysql.connector as sql
+# import file code func
 from messageBox import MBox
 from database import myDB
 from sendMail import sendMail
 from radomPassword import get_random_string
-import sys
-from time import sleep
-from werkzeug.security import generate_password_hash, check_password_hash
-from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QRadioButton, QTableWidgetItem
-from PyQt5 import QtWidgets
-import mysql.connector as sql
-# import file
+# import file designer
 import view.Login as Login
 import view.SendEmail as HomeSendEmail
 import view.HomeQuestion as HomeQuestion
@@ -63,6 +63,15 @@ def showSendMail():
     ui = HomeSendEmail.Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.showMaximized()
+    try:
+        cur = myDB.cursor()
+        cur.execute("SELECT Email FROM dmsv ")
+        result = cur.fetchall()
+        ui.Email = []
+        for row in result:
+            ui.Email.append(row[0])
+    except sql.Error as e:
+        MBox(0, "Error", str(e), 16)
     # Send an Email
     ui.QButtonSend.clicked.connect(sendEmailForgotPassword)
     ui.QButtonClear.clicked.connect(clearContentsSendMail)
@@ -80,10 +89,10 @@ def sendEmailForgotPassword():
         Email = ui.QLineEmail.text().strip()
         if not isCheckedEmpty(Email):
             return MBox(0, "Error", "Not empty", 16)
-        cur.execute("SELECT * FROM dmsv WHERE email=%s", (Email,))
-        result = cur.fetchall()
-        if not result:
+        if not Email in ui.Email:
             return MBox(0, "Error", "not find", 16)
+        if not "@" in Email:
+            return MBox(0, "Error", "not @", 16)
         passwordRandom = get_random_string(8)
         cur.execute("UPDATE dmsv SET Password=%s where email = %s",
                     (generate_password_hash(passwordRandom), Email))
@@ -179,10 +188,11 @@ def suggestUpdateSubjects():
     try:
         cur = myDB.cursor()
         MaMH = ui.QLineUMaMH.text().strip()
-        query = "SELECT * FROM dmmh WHERE MaMH LIKE '%{}%';".format(MaMH)
+        query = "SELECT * FROM dmmh WHERE MaMH LIKE '%{}%' ".format(
+            MaMH)
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
+        if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineUMaMH.setText(result[0][0])
             ui.QLineUTenMH.setText(result[0][1])
             ui.QBoxUSoTiet.setValue(result[0][2])
@@ -249,7 +259,7 @@ def suggestDeleteSubjects():
 
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
+        if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineDMaMH.setText(result[0][0])
             ui.QLineDTenMH.setText(result[0][1])
             ui.QLineDMaMH.setDisabled(True)
@@ -361,7 +371,8 @@ def addStudent():
 
         Lop = ui.QLineALop.text()
         Email = ui.QLineAEmail.text().strip()
-
+        if not "@" in Email:
+            return MBox(0, "Error", "not @", 16)
         checked = isCheckedEmpty(
             MaSV, HoSV, TenSV, NgaySinh, NoiSinh, Lop, Email)
         if not checked:
@@ -408,7 +419,7 @@ def suggestUpdateStudent():
         cur.execute(query)
         result = cur.fetchall()
 
-        if len(result) == 1:
+        if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineUMaSV.setText(result[0][0])
             ui.QLineUHoSV.setText(result[0][2])
             ui.QLineUTenSV.setText(result[0][3])
@@ -459,6 +470,8 @@ def updateStudent():
         NoiSinh = ui.QLineUNoiSinh.text().strip()
         TenLop = ui.QLineULop.text().strip()
         Email = ui.QLineUEmail.text().strip()
+        if not "@" in Email:
+            return MBox(0, "Error", "not @", 16)
         checked = isCheckedEmpty(
             MaSV, HoSV, TenSV, Phai, NgaySinh, NoiSinh, TenLop, Email)
         if not checked:
@@ -504,7 +517,7 @@ def suggestDeleteStudent():
                 MaSV, TenSV)
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
+        if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineDMaSV.setText(result[0][0])
             ui.QLineDTenSV.setText(result[0][3])
             ui.QLineDMaSV.setDisabled(True)
@@ -748,7 +761,7 @@ def suggestUpdateQuestion():
             IDQuestion)
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
+        if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineUIDCauHoi.setText(str(result[0][0]))
             ui.QLineUQuestion.setText(result[0][1])
             ui.QLineUOPA.setText(result[0][2])
@@ -846,7 +859,7 @@ def suggestDeleteQuestion():
                 IDQuestion, CauHoi)
         cur.execute(query)
         result = cur.fetchall()
-        if len(result) == 1:
+        if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineDIDCauHoi.setText(str(result[0][0]))
             ui.QLineDCauHoi.setText(result[0][1])
             ui.QLineDIDCauHoi.setDisabled(True)
