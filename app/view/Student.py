@@ -708,7 +708,7 @@ class Ui_MainWindow(object):
         self.label_26.setObjectName("label_26")
         self.tab.addTab(self.ShowDiem, "")
         self.QButtonBack = QtWidgets.QPushButton(self.centralwidget)
-        self.QButtonBack.setGeometry(QtCore.QRect(1400, 820, 251, 41))
+        self.QButtonBack.setGeometry(QtCore.QRect(1510, 820, 141, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
@@ -836,7 +836,7 @@ class Ui_MainWindow(object):
         self.QButtonSDClear.setText(_translate("MainWindow", "Clear"))
         self.label_26.setText(_translate("MainWindow", "Ma Mon Hoc"))
         self.tab.setTabText(self.tab.indexOf(self.ShowDiem), _translate("MainWindow", "ShowDiem"))
-        self.QButtonBack.setText(_translate("MainWindow", "BACK TO LOGIN"))
+        self.QButtonBack.setText(_translate("MainWindow", "BACK"))
 
 
 if __name__ == "__main__":

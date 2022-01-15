@@ -1685,9 +1685,9 @@
    <widget class="QPushButton" name="QButtonBack">
     <property name="geometry">
      <rect>
-      <x>1400</x>
+      <x>1510</x>
       <y>820</y>
-      <width>251</width>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
@@ -1699,7 +1699,7 @@
      </font>
     </property>
     <property name="text">
-     <string>BACK TO LOGIN</string>
+     <string>BACK</string>
     </property>
    </widget>
   </widget>

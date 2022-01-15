@@ -310,7 +310,7 @@ class Ui_MainWindow(object):
         self.QTableDelete.raise_()
         self.tab.addTab(self.Delete, "")
         self.QButtonBack = QtWidgets.QPushButton(self.centralwidget)
-        self.QButtonBack.setGeometry(QtCore.QRect(1370, 810, 181, 41))
+        self.QButtonBack.setGeometry(QtCore.QRect(1450, 810, 101, 41))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.QButtonBack.setFont(font)
@@ -382,7 +382,7 @@ class Ui_MainWindow(object):
         self.QLineDMaMH.setPlaceholderText(_translate("MainWindow", "Ma Mon Hoc"))
         self.QLineDTenMH.setPlaceholderText(_translate("MainWindow", "Ten Mon Hoc"))
         self.tab.setTabText(self.tab.indexOf(self.Delete), _translate("MainWindow", "Delete"))
-        self.QButtonBack.setText(_translate("MainWindow", "BACK TO LOGIN"))
+        self.QButtonBack.setText(_translate("MainWindow", "BACK"))
 
 
 if __name__ == "__main__":
