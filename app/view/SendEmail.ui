@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1219</width>
-    <height>828</height>
+    <width>1632</width>
+    <height>891</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>380</y>
+      <x>650</x>
+      <y>280</y>
       <width>621</width>
       <height>431</height>
      </rect>
@@ -28,7 +28,7 @@
       <rect>
        <x>180</x>
        <y>140</y>
-       <width>351</width>
+       <width>421</width>
        <height>41</height>
       </rect>
      </property>
@@ -77,10 +77,10 @@
     <widget class="QPushButton" name="QButtonBack">
      <property name="geometry">
       <rect>
-       <x>500</x>
-       <y>360</y>
-       <width>111</width>
-       <height>71</height>
+       <x>390</x>
+       <y>390</y>
+       <width>211</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -89,7 +89,7 @@
       </font>
      </property>
      <property name="text">
-      <string>BACK</string>
+      <string>BACK TO LOGIN</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">

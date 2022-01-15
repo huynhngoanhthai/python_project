@@ -17,14 +17,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>300</x>
       <y>140</y>
       <width>1271</width>
       <height>711</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -33,9 +33,9 @@
      <widget class="QRadioButton" name="D">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>450</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -51,9 +51,9 @@
      <widget class="QRadioButton" name="C">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>380</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -69,10 +69,10 @@
      <widget class="QRadioButton" name="A">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>240</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -87,28 +87,33 @@
      <widget class="QLabel" name="question">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>230</x>
         <y>100</y>
-        <width>371</width>
-        <height>81</height>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Ai là abc?</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QRadioButton" name="B">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>310</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -123,15 +128,17 @@
      <widget class="QLabel" name="id_question">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>100</y>
-        <width>141</width>
-        <height>81</height>
+        <x>180</x>
+        <y>110</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -146,10 +153,10 @@
      <widget class="QRadioButton" name="B_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>310</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -164,9 +171,9 @@
      <widget class="QRadioButton" name="C_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>380</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -182,9 +189,9 @@
      <widget class="QRadioButton" name="D_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>450</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -200,28 +207,33 @@
      <widget class="QLabel" name="question_2">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>230</x>
         <y>100</y>
-        <width>541</width>
-        <height>81</height>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Cái gì là ijk?</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QRadioButton" name="A_2">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>240</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -236,15 +248,17 @@
      <widget class="QLabel" name="id_question2">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>100</y>
-        <width>131</width>
-        <height>81</height>
+        <x>180</x>
+        <y>110</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -259,9 +273,9 @@
      <widget class="QRadioButton" name="C_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>380</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -277,28 +291,33 @@
      <widget class="QLabel" name="question_3">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>110</y>
-        <width>541</width>
-        <height>81</height>
+        <x>230</x>
+        <y>100</y>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Ai là 123456?</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QRadioButton" name="B_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>310</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -313,10 +332,10 @@
      <widget class="QRadioButton" name="A_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>240</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -331,9 +350,9 @@
      <widget class="QRadioButton" name="D_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>450</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -349,15 +368,17 @@
      <widget class="QLabel" name="id_question3">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>180</x>
         <y>110</y>
-        <width>191</width>
-        <height>71</height>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -372,15 +393,17 @@
      <widget class="QLabel" name="id_question4">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>90</y>
-        <width>141</width>
-        <height>81</height>
+        <x>180</x>
+        <y>110</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -390,10 +413,10 @@
      <widget class="QRadioButton" name="A_4">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>330</x>
         <y>230</y>
-        <width>361</width>
-        <height>41</height>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -408,9 +431,9 @@
      <widget class="QRadioButton" name="D_4">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>330</x>
         <y>440</y>
-        <width>361</width>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -426,10 +449,10 @@
      <widget class="QRadioButton" name="B_4">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>330</x>
         <y>300</y>
-        <width>361</width>
-        <height>41</height>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -444,9 +467,9 @@
      <widget class="QRadioButton" name="C_4">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>330</x>
         <y>370</y>
-        <width>371</width>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -462,19 +485,24 @@
      <widget class="QLabel" name="question_4">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>90</y>
-        <width>541</width>
-        <height>81</height>
+        <x>230</x>
+        <y>100</y>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>123?</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -485,15 +513,17 @@
      <widget class="QLabel" name="id_question5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>100</y>
-        <width>121</width>
-        <height>81</height>
+        <x>180</x>
+        <y>110</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -503,10 +533,10 @@
      <widget class="QRadioButton" name="A_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>240</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -521,9 +551,9 @@
      <widget class="QRadioButton" name="D_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>450</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -539,10 +569,10 @@
      <widget class="QRadioButton" name="B_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>310</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -557,9 +587,9 @@
      <widget class="QRadioButton" name="C_5">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>380</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -575,19 +605,24 @@
      <widget class="QLabel" name="question_5">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>230</x>
         <y>100</y>
-        <width>541</width>
-        <height>81</height>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>456?</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -598,15 +633,17 @@
      <widget class="QLabel" name="id_question6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>100</y>
-        <width>111</width>
-        <height>51</height>
+        <x>180</x>
+        <y>110</y>
+        <width>71</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -616,10 +653,10 @@
      <widget class="QRadioButton" name="A_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>240</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -634,9 +671,9 @@
      <widget class="QRadioButton" name="D_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>450</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -652,10 +689,10 @@
      <widget class="QRadioButton" name="B_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>310</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -670,9 +707,9 @@
      <widget class="QRadioButton" name="C_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>380</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -688,19 +725,24 @@
      <widget class="QLabel" name="question_6">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>230</x>
         <y>100</y>
-        <width>701</width>
-        <height>51</height>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>28</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>?</string>
+       <string>A?</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -711,15 +753,17 @@
      <widget class="QLabel" name="id_question7">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>100</y>
+        <x>180</x>
+        <y>110</y>
         <width>71</width>
-        <height>61</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -729,10 +773,10 @@
      <widget class="QRadioButton" name="A_7">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>210</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -747,9 +791,9 @@
      <widget class="QRadioButton" name="D_7">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>420</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -765,10 +809,10 @@
      <widget class="QRadioButton" name="B_7">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>280</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -783,9 +827,9 @@
      <widget class="QRadioButton" name="C_7">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>350</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -801,19 +845,24 @@
      <widget class="QLabel" name="question_7">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>230</x>
         <y>100</y>
-        <width>731</width>
-        <height>61</height>
+        <width>761</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>AAAAA?</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -824,15 +873,17 @@
      <widget class="QLabel" name="id_question8">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>180</x>
         <y>110</y>
         <width>71</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -842,10 +893,10 @@
      <widget class="QRadioButton" name="A_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>200</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -860,9 +911,9 @@
      <widget class="QRadioButton" name="D_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>410</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -878,10 +929,10 @@
      <widget class="QRadioButton" name="B_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>270</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>671</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -896,9 +947,9 @@
      <widget class="QRadioButton" name="C_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>340</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>671</width>
         <height>51</height>
        </rect>
       </property>
@@ -914,19 +965,24 @@
      <widget class="QLabel" name="question_8">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>110</y>
+        <x>230</x>
+        <y>100</y>
         <width>751</width>
-        <height>51</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>18</pointsize>
+        <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>??????????????</string>
+       <string>A?????????????</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -937,15 +993,17 @@
      <widget class="QLabel" name="id_question9">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>100</y>
+        <x>180</x>
+        <y>110</y>
         <width>71</width>
-        <height>51</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
@@ -955,10 +1013,10 @@
      <widget class="QRadioButton" name="A_9">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>210</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>661</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -973,9 +1031,9 @@
      <widget class="QRadioButton" name="D_9">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>420</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>661</width>
         <height>51</height>
        </rect>
       </property>
@@ -991,10 +1049,10 @@
      <widget class="QRadioButton" name="B_9">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>280</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>661</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -1009,9 +1067,9 @@
      <widget class="QRadioButton" name="C_9">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>350</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>661</width>
         <height>51</height>
        </rect>
       </property>
@@ -1027,19 +1085,24 @@
      <widget class="QLabel" name="question_9">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>230</x>
         <y>100</y>
         <width>761</width>
-        <height>51</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>ABACAS?</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -1050,28 +1113,33 @@
      <widget class="QLabel" name="question_10">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>110</y>
-        <width>711</width>
-        <height>71</height>
+        <x>230</x>
+        <y>90</y>
+        <width>851</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Câu 10: 6?</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QRadioButton" name="A_10">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>210</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>230</y>
+        <width>601</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -1086,9 +1154,9 @@
      <widget class="QRadioButton" name="D_10">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>420</y>
-        <width>361</width>
+        <x>330</x>
+        <y>440</y>
+        <width>601</width>
         <height>51</height>
        </rect>
       </property>
@@ -1104,10 +1172,10 @@
      <widget class="QRadioButton" name="B_10">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>280</y>
-        <width>361</width>
-        <height>41</height>
+        <x>330</x>
+        <y>300</y>
+        <width>601</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -1122,9 +1190,9 @@
      <widget class="QRadioButton" name="C_10">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>350</y>
-        <width>371</width>
+        <x>330</x>
+        <y>370</y>
+        <width>601</width>
         <height>51</height>
        </rect>
       </property>
@@ -1161,12 +1229,14 @@
         <x>180</x>
         <y>110</y>
         <width>71</width>
-        <height>71</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">

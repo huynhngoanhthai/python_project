@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1438</width>
-    <height>643</height>
+    <width>1614</width>
+    <height>922</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1341</width>
+      <x>370</x>
+      <y>250</y>
+      <width>1181</width>
       <height>541</height>
      </rect>
     </property>
@@ -51,7 +51,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Add">
      <attribute name="title">
@@ -60,31 +60,46 @@
      <widget class="QLineEdit" name="QLineAMaMH">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>520</x>
         <y>160</y>
         <width>311</width>
-        <height>20</height>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineATenMH">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>190</y>
+        <x>520</x>
+        <y>230</y>
         <width>311</width>
-        <height>20</height>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QPushButton" name="QButtonAAdd">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>310</y>
+        <x>540</x>
+        <y>390</y>
         <width>75</width>
-        <height>23</height>
+        <height>32</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Add</string>
@@ -93,11 +108,16 @@
      <widget class="QPushButton" name="QButtonAClear">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>310</y>
+        <x>710</x>
+        <y>390</y>
         <width>75</width>
-        <height>23</height>
+        <height>32</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Clear</string>
@@ -106,21 +126,33 @@
      <widget class="QSpinBox" name="QBoxASoTiet">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>240</y>
+        <x>520</x>
+        <y>300</y>
         <width>42</width>
-        <height>22</height>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>410</x>
         <y>160</y>
-        <width>47</width>
-        <height>16</height>
+        <width>100</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>MaMH</string>
@@ -129,11 +161,18 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>190</y>
-        <width>47</width>
-        <height>16</height>
+        <x>410</x>
+        <y>230</y>
+        <width>100</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>TenMH</string>
@@ -142,11 +181,18 @@
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>146</x>
-        <y>240</y>
-        <width>51</width>
-        <height>20</height>
+        <x>410</x>
+        <y>300</y>
+        <width>100</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>SoTiet</string>
@@ -155,10 +201,10 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>490</x>
         <y>60</y>
-        <width>231</width>
-        <height>51</height>
+        <width>271</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -181,10 +227,15 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>280</y>
-        <width>75</width>
-        <height>23</height>
+        <y>340</y>
+        <width>80</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Update</string>
@@ -194,10 +245,15 @@
       <property name="geometry">
        <rect>
         <x>430</x>
-        <y>280</y>
-        <width>75</width>
-        <height>23</height>
+        <y>340</y>
+        <width>80</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Clear</string>
@@ -210,9 +266,9 @@
       <property name="geometry">
        <rect>
         <x>665</x>
-        <y>160</y>
-        <width>281</width>
-        <height>241</height>
+        <y>140</y>
+        <width>401</width>
+        <height>291</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -297,8 +353,8 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>720</x>
-        <y>130</y>
+        <x>800</x>
+        <y>90</y>
         <width>161</width>
         <height>20</height>
        </rect>
@@ -321,48 +377,67 @@
       <property name="geometry">
        <rect>
         <x>330</x>
-        <y>130</y>
-        <width>281</width>
-        <height>16</height>
+        <y>110</y>
+        <width>291</width>
+        <height>25</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>11</pointsize>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>Press Enter for suggest</string>
+       <string>Press Enter For Suggest</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineUMaMH">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>300</x>
         <y>170</y>
         <width>311</width>
-        <height>20</height>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineUTenMH">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>200</y>
+        <x>300</x>
+        <y>220</y>
         <width>311</width>
-        <height>20</height>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
      </widget>
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>180</x>
         <y>170</y>
-        <width>47</width>
-        <height>21</height>
+        <width>85</width>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>MaMH</string>
@@ -371,11 +446,18 @@
      <widget class="QLabel" name="label_19">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>200</y>
-        <width>47</width>
-        <height>21</height>
+        <x>180</x>
+        <y>220</y>
+        <width>85</width>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>TenMH</string>
@@ -384,11 +466,18 @@
      <widget class="QLabel" name="label_20">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>230</y>
-        <width>47</width>
-        <height>21</height>
+        <x>180</x>
+        <y>270</y>
+        <width>85</width>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>SoTiet</string>
@@ -397,11 +486,16 @@
      <widget class="QSpinBox" name="QBoxUSoTiet">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>230</y>
+        <x>300</x>
+        <y>270</y>
         <width>42</width>
-        <height>22</height>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
      </widget>
     </widget>
@@ -412,11 +506,16 @@
      <widget class="QPushButton" name="QButtonDClear">
       <property name="geometry">
        <rect>
-        <x>930</x>
-        <y>90</y>
-        <width>75</width>
-        <height>23</height>
+        <x>920</x>
+        <y>130</y>
+        <width>80</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Clear</string>
@@ -425,11 +524,16 @@
      <widget class="QPushButton" name="QButtonDDelete">
       <property name="geometry">
        <rect>
-        <x>840</x>
+        <x>920</x>
         <y>90</y>
-        <width>75</width>
-        <height>23</height>
+        <width>80</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Delete</string>
@@ -438,8 +542,8 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>50</y>
+        <x>480</x>
+        <y>40</y>
         <width>281</width>
         <height>31</height>
        </rect>
@@ -452,7 +556,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Press Enter for suggest</string>
+       <string>Press Enter For Suggest</string>
       </property>
      </widget>
      <widget class="QTableWidget" name="QTableDelete">
@@ -461,9 +565,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>420</x>
         <y>120</y>
-        <width>331</width>
+        <width>381</width>
         <height>351</height>
        </rect>
       </property>
@@ -535,11 +639,18 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>606</x>
+        <x>560</x>
         <y>90</y>
-        <width>71</width>
-        <height>21</height>
+        <width>141</width>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>TEN MON HOC</string>
@@ -548,11 +659,18 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>230</x>
         <y>90</y>
-        <width>71</width>
-        <height>20</height>
+        <width>141</width>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>MA MON HOC</string>
@@ -561,24 +679,34 @@
      <widget class="QLineEdit" name="QLineDMaMH">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>380</x>
         <y>90</y>
         <width>161</width>
-        <height>20</height>
+        <height>25</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="placeholderText">
-       <string>MA MON HOC</string>
+       <string>Ma Mon Hoc</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="QLineDTenMH">
       <property name="geometry">
        <rect>
-        <x>680</x>
+        <x>720</x>
         <y>90</y>
         <width>151</width>
-        <height>20</height>
+        <height>25</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="dragEnabled">
        <bool>false</bool>
@@ -587,7 +715,7 @@
        <bool>false</bool>
       </property>
       <property name="placeholderText">
-       <string>TEN MON HOC</string>
+       <string>Ten Mon Hoc</string>
       </property>
       <property name="cursorMoveStyle">
        <enum>Qt::LogicalMoveStyle</enum>
@@ -606,14 +734,19 @@
    <widget class="QPushButton" name="QButtonBack">
     <property name="geometry">
      <rect>
-      <x>1250</x>
-      <y>540</y>
-      <width>91</width>
-      <height>51</height>
+      <x>1370</x>
+      <y>810</y>
+      <width>181</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>BACK</string>
+     <string>BACK TO LOGIN</string>
     </property>
    </widget>
   </widget>
@@ -622,7 +755,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1438</width>
+     <width>1614</width>
      <height>26</height>
     </rect>
    </property>
