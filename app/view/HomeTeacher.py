@@ -76,12 +76,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.QButtonMH.setText(_translate("MainWindow", "Thêm môn học"))
+        self.QButtonMH.setText(_translate("MainWindow", "Thêm Môn Học"))
         self.QButtonSV.setText(_translate("MainWindow", "Thêm SV"))
         self.NAMEGV.setText(_translate("MainWindow", "GIAO VIEN"))
         self.label.setText(_translate("MainWindow", "Welcome"))
-        self.QButtonCH.setText(_translate("MainWindow", "thêm câu hỏi"))
-        self.QButtonLogout.setText(_translate("MainWindow", "LOGOUT"))
+        self.QButtonCH.setText(_translate("MainWindow", "Thêm Câu Hỏi"))
+        self.QButtonLogout.setText(_translate("MainWindow", "LOG OUT"))
 
 
 if __name__ == "__main__":

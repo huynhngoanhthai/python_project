@@ -144,7 +144,7 @@ class Ui_MainWindow(object):
         self.D_3.setFont(font)
         self.D_3.setObjectName("D_3")
         self.id_question3 = QtWidgets.QLabel(self.tab_3)
-        self.id_question3.setGeometry(QtCore.QRect(180, 110, 71, 41))
+        self.id_question3.setGeometry(QtCore.QRect(180, 120, 71, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
@@ -476,7 +476,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

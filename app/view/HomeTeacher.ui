@@ -53,7 +53,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Thêm môn học</string>
+      <string>Thêm Môn Học</string>
      </property>
     </widget>
     <widget class="QPushButton" name="QButtonSV">
@@ -129,7 +129,7 @@
       </font>
      </property>
      <property name="text">
-      <string>thêm câu hỏi</string>
+      <string>Thêm Câu Hỏi</string>
      </property>
     </widget>
     <widget class="QPushButton" name="QButtonLogout">
@@ -147,7 +147,7 @@
       </font>
      </property>
      <property name="text">
-      <string>LOGOUT</string>
+      <string>LOG OUT</string>
      </property>
     </widget>
    </widget>
