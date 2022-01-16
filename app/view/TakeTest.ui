@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1220,7 +1220,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Ket Thuc Bai Thi</string>
+       <string>Kết Thúc Bài Thi</string>
       </property>
      </widget>
      <widget class="QLabel" name="id_question10">
