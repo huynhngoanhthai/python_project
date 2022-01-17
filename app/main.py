@@ -949,7 +949,7 @@ def suggestShowAllQuestion():
 
 def showHomeStudent(info):
     global ui
-    # info1 ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
+    # infoStudent ĐỂ GIỮ LẠI DỮ LIỆU XỬ LÍ DƯỚI CÁC HÀM DƯỚI
     global infoStudent
     infoStudent = info
     ui = HomeStudent.Ui_MainWindow()
@@ -1001,7 +1001,7 @@ def updatePassword():
                     (generate_password_hash(newPassword), infoStudent[0][0]))
         clearContentsUpdatePassword()
         myDB.commit()
-        MBox(0, "Suggestfully", "Suggestfully update password", 32)
+        MBox(0, "Successfully", "Successfully update password", 32)
     except sql.Error as e:
         MBox(0, "Error", str(e), 16)
 
@@ -1283,16 +1283,20 @@ def onClicked():
 def ketQuaThi():
     try:
         diem = 0
-        for i in range(0, len(ui.DSDapAnSV)):
-            if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
-                diem += 1
-        print(diem)
+        if not len(ui.DSDapAnSV) == 0:
+            for i in range(0, len(ui.DSDapAnSV)):
+                if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
+                    diem += 1
+            print(diem)
 
-        cur = myDB.cursor()
-        cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
-                    (infoStudent[0][0], ui.result[0][7], diem))
-        myDB.commit()
-        MBox(0, "Successfully", "Bạn thi được {} ".format(diem), 32)
+            cur = myDB.cursor()
+            cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
+                        (infoStudent[0][0], ui.result[0][7], diem))
+            myDB.commit()
+            MBox(0, "Successfully", "Bạn thi được {} điểm".format(diem), 32)
+        else:
+
+            MBox(0, "Successfully", "Bạn thi được {} điểm".format(diem), 32)
 
         showHomeStudent(infoStudent)
     except sql.Error as e:
@@ -1303,6 +1307,8 @@ if __name__ == "__main__":
     ui = ''
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    # MainWindow.setWindowTitle("Chương Trình Thi Trắc Nghiệm")
+    # MainWindow.setWindowIcon(":/images/Logo-Hoc-Vien-Cong-Nghe-Buu-Chinh-Vien-Thong-PTITSimple.png")
     showLogin()
     # showHomeTeacher(123)
     # showStudent()
