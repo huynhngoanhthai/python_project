@@ -1048,7 +1048,6 @@ def callBackShowTakeTest():
 
 def showTakeTest(MaMH, result):
     global ui
-    print(MaMH)
     ui = TakeTest.Ui_MainWindow()
     ui.setupUi(MainWindow)
     ui.tabWidget.setCurrentWidget(ui.tab)
@@ -1292,19 +1291,17 @@ def onClicked():
 
 def ketQuaThi():
     try:
-
         diem = 0
         for i in range(0, len(ui.DSDapAnSV)):
             if ui.DSDapAnDB[i] == ui.DSDapAnSV[i]:
                 diem += 1
-
         print(diem)
 
         cur = myDB.cursor()
         cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
                     (infoStudent[0][0], ui.result[0][7], diem))
         myDB.commit()
-        MBox(0, "Successfully", "ban thi được {} ".format(diem), 32)
+        MBox(0, "Successfully", "Bạn thi được {} ".format(diem), 32)
 
         showHomeStudent(infoStudent)
     except sql.Error as e:

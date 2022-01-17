@@ -14,14 +14,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1219, 828)
+        MainWindow.resize(1632, 891)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(730, 380, 621, 431))
+        self.widget.setGeometry(QtCore.QRect(650, 280, 621, 431))
         self.widget.setObjectName("widget")
         self.QLineEmail = QtWidgets.QLineEdit(self.widget)
-        self.QLineEmail.setGeometry(QtCore.QRect(180, 140, 351, 41))
+        self.QLineEmail.setGeometry(QtCore.QRect(180, 140, 421, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.QLineEmail.setFont(font)
@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
         self.QButtonClear.setFont(font)
         self.QButtonClear.setObjectName("QButtonClear")
         self.QButtonBack = QtWidgets.QPushButton(self.widget)
-        self.QButtonBack.setGeometry(QtCore.QRect(500, 360, 111, 71))
+        self.QButtonBack.setGeometry(QtCore.QRect(390, 390, 211, 41))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.QButtonBack.setFont(font)
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.QButtonSend.setText(_translate("MainWindow", "Send"))
         self.QButtonClear.setText(_translate("MainWindow", "Clear"))
-        self.QButtonBack.setText(_translate("MainWindow", "BACK"))
+        self.QButtonBack.setText(_translate("MainWindow", "BACK TO LOGIN"))
         self.label.setText(_translate("MainWindow", "Email:"))
 
 
