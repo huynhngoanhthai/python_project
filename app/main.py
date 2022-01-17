@@ -192,6 +192,8 @@ def suggestUpdateSubjects():
             MaMH)
         cur.execute(query)
         result = cur.fetchall()
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineUMaMH.setText(result[0][0])
             ui.QLineUTenMH.setText(result[0][1])
@@ -259,6 +261,8 @@ def suggestDeleteSubjects():
 
         cur.execute(query)
         result = cur.fetchall()
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineDMaMH.setText(result[0][0])
             ui.QLineDTenMH.setText(result[0][1])
@@ -418,7 +422,8 @@ def suggestUpdateStudent():
             MaSV)
         cur.execute(query)
         result = cur.fetchall()
-
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineUMaSV.setText(result[0][0])
             ui.QLineUHoSV.setText(result[0][2])
@@ -517,6 +522,8 @@ def suggestDeleteStudent():
                 MaSV, TenSV)
         cur.execute(query)
         result = cur.fetchall()
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineDMaSV.setText(result[0][0])
             ui.QLineDTenSV.setText(result[0][3])
@@ -761,6 +768,8 @@ def suggestUpdateQuestion():
             IDQuestion)
         cur.execute(query)
         result = cur.fetchall()
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineUIDCauHoi.setText(str(result[0][0]))
             ui.QLineUQuestion.setText(result[0][1])
@@ -859,6 +868,8 @@ def suggestDeleteQuestion():
                 IDQuestion, CauHoi)
         cur.execute(query)
         result = cur.fetchall()
+        if len(result) == 0:
+            return MBox(0, "Error", "not found", 16)
         if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineDIDCauHoi.setText(str(result[0][0]))
             ui.QLineDCauHoi.setText(result[0][1])
@@ -1044,7 +1055,7 @@ def showTakeTest(MaMH, result):
     ui.DSDapAnDB = []
     for item in result:
         ui.DSDapAnDB.append(item[6])
-
+    ui.DSDapAnSV = []
     # ID_cau hoi
     ui.id_question.setText(str(result[0][0]))
     ui.id_question2.setText(str(result[1][0]))
@@ -1179,8 +1190,6 @@ def showTakeTest(MaMH, result):
 
 
 def onClicked():
-    ui.DSDapAnSV = []
-
     if ui.A.isChecked():
         ui.DSDapAnSV.append(ui.A.text()[3::])
     elif ui.B.isChecked():
