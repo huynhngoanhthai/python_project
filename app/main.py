@@ -90,7 +90,7 @@ def sendEmailForgotPassword():
         if not isCheckedEmpty(Email):
             return MBox(0, "Error", "Not empty", 16)
         if not Email in ui.Email:
-            return MBox(0, "Error", "not find", 16)
+            return MBox(0, "Error", "NOT FOUNDED", 16)
         if not "@" in Email:
             return MBox(0, "Error", "not @", 16)
         passwordRandom = get_random_string(8)
@@ -193,7 +193,7 @@ def suggestUpdateSubjects():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineUMaMH.setText(result[0][0])
             ui.QLineUTenMH.setText(result[0][1])
@@ -262,7 +262,7 @@ def suggestDeleteSubjects():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or result[0][0] == MaMH:
             ui.QLineDMaMH.setText(result[0][0])
             ui.QLineDTenMH.setText(result[0][1])
@@ -423,7 +423,7 @@ def suggestUpdateStudent():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineUMaSV.setText(result[0][0])
             ui.QLineUHoSV.setText(result[0][2])
@@ -523,7 +523,7 @@ def suggestDeleteStudent():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or result[0][0] == MaSV:
             ui.QLineDMaSV.setText(result[0][0])
             ui.QLineDTenSV.setText(result[0][3])
@@ -714,7 +714,7 @@ def addQuestion():
         checked = isCheckedEmpty(IDQuestion, Question,
                                  OPA, OPB, OPC, OPD, Answer, MaMH[0])
         if not checked:
-            return MBox(0, "Error", "not empty", 16)
+            return MBox(0, "Error", "NOT EMPTY", 16)
 
         query = "INSERT INTO dmch (MaCH, CauHoi, CauA,CauB,CauC,CauD,DapAn,MaMH) VALUES (%s, %s,%s,%s, %s,%s,%s, %s)"
         cur.execute(query, (IDQuestion, Question,
@@ -769,7 +769,7 @@ def suggestUpdateQuestion():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineUIDCauHoi.setText(str(result[0][0]))
             ui.QLineUQuestion.setText(result[0][1])
@@ -816,7 +816,7 @@ def updateQuestion():
         cur = myDB.cursor()
         IDQuestion = ui.QLineUIDCauHoi.text().strip()
         if ui.QLineUIDCauHoi.isEnabled():
-            return MBox(0, "Error", "you need block", 16)
+            return MBox(0, "Error", "You Need Block", 16)
         Question = ui.QLineUQuestion.text().strip()
 
         OPA = ui.QLineUOPA.text().strip()
@@ -836,7 +836,7 @@ def updateQuestion():
         checked = isCheckedEmpty(IDQuestion, Question,
                                  OPA, OPB, OPC, OPD, Answer, MaMH)
         if not checked:
-            return MBox(0, "Error", "not empty", 16)
+            return MBox(0, "Error", "NOT EMPTY", 16)
 
         query = "UPDATE dmch SET CauHoi=%s,CauA=%s,CauB=%s,CauC=%s,CauD=%s,DapAn=%s,MaMH=%s WHERE MaCH=%s"
         cur.execute(query, (Question,
@@ -869,7 +869,7 @@ def suggestDeleteQuestion():
         cur.execute(query)
         result = cur.fetchall()
         if len(result) == 0:
-            return MBox(0, "Error", "not found", 16)
+            return MBox(0, "Error", "NOT FOUND", 16)
         if len(result) == 1 or str(result[0][0]) == IDQuestion:
             ui.QLineDIDCauHoi.setText(str(result[0][0]))
             ui.QLineDCauHoi.setText(result[0][1])
@@ -900,7 +900,7 @@ def deleteQuestion():
         IDQuestion = ui.QLineDIDCauHoi.text().strip()
         CauHoi = ui.QLineDCauHoi.text().strip()
         if ui.QLineDIDCauHoi.isEnabled() == True or ui.QLineDIDCauHoi.isEnabled() == True:
-            return MBox(0, "Error", "You need block ", 16)
+            return MBox(0, "Error", "You Need Block ", 16)
 
         cur.execute(
             "DELETE FROM dmch WHERE MaCH = %s AND CauHoi = %s", (IDQuestion, CauHoi))
@@ -1000,14 +1000,14 @@ def updatePassword():
         cur = myDB.cursor()
         olbPassword = ui.QLineUPOldPassword.text()
         if not check_password_hash(infoStudent[0][1], olbPassword):
-            return MBox(0, "Error", "password wrong", 16)
+            return MBox(0, "Error", "Password Wrong", 16)
         newPassword = ui.QLineUPNewPassword.text()
         newPassword_2 = ui.QLineUPNewPassword_2.text()
         checked = isCheckedEmpty(olbPassword, newPassword, newPassword_2)
         if not checked:
-            return MBox(0, "Error", "not empty", 16)
+            return MBox(0, "Error", "NOT EMPTY", 16)
         if newPassword != newPassword_2:
-            return MBox(0, "Error", "password wrong", 16)
+            return MBox(0, "Error", "Password Wrong", 16)
         cur.execute("UPDATE dmsv SET Password=%s WHERE MaSV=%s",
                     (generate_password_hash(newPassword), infoStudent[0][0]))
         clearContentsUpdatePassword()
@@ -1034,7 +1034,7 @@ def checkStudentExamined(MaSV, MaMH):
 def callBackShowTakeTest():
     MaMH = ui.inputmamh.text()
     if not isCheckedEmpty(MaMH):
-        return MBox(0, "Error", "Not empty", 32)
+        return MBox(0, "Error", "Not Empty", 32)
     cur = myDB.cursor()
     query = "SELECT * FROM dmch WHERE MaMH = %s "
     cur.execute(query, (MaMH,))
@@ -1298,14 +1298,11 @@ def ketQuaThi():
                     diem += 1
             print(diem)
 
-            cur = myDB.cursor()
-            cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
-                        (infoStudent[0][0], ui.result[0][7], diem))
-            myDB.commit()
-            MBox(0, "Successfully", "Bạn thi được {} điểm".format(diem), 32)
-        else:
-
-            MBox(0, "Successfully", "Bạn thi được {} điểm".format(diem), 32)
+        cur = myDB.cursor()
+        cur.execute("INSERT INTO dmkq (MaSV,MaMH,diem) VALUES (%s,%s, %s);",
+                    (infoStudent[0][0], ui.result[0][7], diem))
+        myDB.commit()
+        MBox(0, "Successfully", "Bạn Thi Được {}  Điểm".format(diem), 32)
 
         showHomeStudent(infoStudent)
     except sql.Error as e:
